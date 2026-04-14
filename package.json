@@ -1,5 +1,5 @@
 {
-  "name": "odialang",
+  "name": "@devsuvam/odialang",
   "version": "1.0.0",
   "description": "A file-based, CLI-driven programming language with Odia (Oriya) keywords that compiles to JavaScript",
   "main": "dist/cli/index.js",
@@ -28,11 +28,11 @@
     "regional-language",
     "indian-languages"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Jyotishankar Patra <jyotipatra.subham@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/odialang.git"
+    "url": "git+https://github.com/yourusername/odialang.git"
   },
   "bugs": {
     "url": "https://github.com/yourusername/odialang/issues"

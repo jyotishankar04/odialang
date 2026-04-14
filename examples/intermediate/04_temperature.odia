@@ -1,0 +1,103 @@
+# Example 4: Temperature Converter
+# Convert between Celsius, Fahrenheit, and Kelvin
+
+# Celsius to Fahrenheit
+# Formula: (C × 9/5) + 32 = F
+karya celsiusToFahrenheit(celsius)
+  dhara fahrenheit = (celsius * 9 / 5) + 32
+  fera fahrenheit
+sesa
+
+# Fahrenheit to Celsius
+# Formula: (F - 32) × 5/9 = C
+karya fahrenheitToCelsius(fahrenheit)
+  dhara celsius = (fahrenheit - 32) * 5 / 9
+  fera celsius
+sesa
+
+# Celsius to Kelvin
+# Formula: C + 273.15 = K
+karya celsiusToKelvin(celsius)
+  fera celsius + 273.15
+sesa
+
+# Kelvin to Celsius
+# Formula: K - 273.15 = C
+karya kelvinToCelsius(kelvin)
+  fera kelvin - 273.15
+sesa
+
+# Display temperature
+dekha "=== TEMPERATURE CONVERTER ==="
+dekha ""
+
+# Test Celsius to Fahrenheit conversions
+dekha "=== Celsius to Fahrenheit ==="
+dhara c1 = 0
+dhara c2 = 100
+dhara c3 = 37
+dhara c4 = -40
+
+dekha c1 + "°C = " + celsiusToFahrenheit(c1) + "°F"
+dekha c2 + "°C = " + celsiusToFahrenheit(c2) + "°F"
+dekha "Body temp " + c3 + "°C = " + celsiusToFahrenheit(c3) + "°F"
+dekha c4 + "°C = " + celsiusToFahrenheit(c4) + "°F"
+
+# Test Fahrenheit to Celsius
+dekha ""
+dekha "=== Fahrenheit to Celsius ==="
+dhara f1 = 32
+dhara f2 = 212
+dhara f3 = 98.6
+
+dekha f1 + "°F = " + fahrenheitToCelsius(f1) + "°C"
+dekha f2 + "°F = " + fahrenheitToCelsius(f2) + "°C"
+dekha "Body temp " + f3 + "°F = " + fahrenheitToCelsius(f3) + "°C"
+
+# Test Kelvin conversions
+dekha ""
+dekha "=== Kelvin Conversions ==="
+dhara k1 = 273.15
+dhara k2 = 373.15
+dhara k3 = 0
+
+dekha "Water freezes: " + k1 + "K = " + kelvinToCelsius(k1) + "°C"
+dekha "Water boils: " + k2 + "K = " + kelvinToCelsius(k2) + "°C"
+dekha "Absolute zero: " + k3 + "K = " + kelvinToCelsius(k3) + "°C"
+
+# Practical example
+dekha ""
+dekha "=== Practical Example ==="
+dhara roomTempC = 25
+dhara roomTempF = celsiusToFahrenheit(roomTempC)
+dhara roomTempK = celsiusToKelvin(roomTempC)
+
+dekha "Room temperature:"
+dekha "  " + roomTempC + "°C"
+dekha "  " + roomTempF + "°F"
+dekha "  " + roomTempK + "K"
+
+# Output:
+# === TEMPERATURE CONVERTER ===
+# 
+# === Celsius to Fahrenheit ===
+# 0°C = 32°F
+# 100°C = 212°F
+# Body temp 37°C = 98.6°F
+# -40°C = -40°F
+#
+# === Fahrenheit to Celsius ===
+# 32°F = 0°C
+# 212°F = 100°C
+# Body temp 98.6°F = 37°C
+#
+# === Kelvin Conversions ===
+# Water freezes: 273.15K = 0°C
+# Water boils: 373.15K = 100°C
+# Absolute zero: 0K = -273.15°C
+#
+# === Practical Example ===
+# Room temperature:
+#   25°C
+#   77°F
+#   298.15K

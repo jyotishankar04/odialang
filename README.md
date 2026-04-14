@@ -1,84 +1,41 @@
 # Odialang 🌸
 
-A file-based, CLI-driven programming language with Odia (Oriya) keywords that compiles to JavaScript. Write code in your native language and run it anywhere!
+A file-based, CLI-driven programming language with **Odia (Oriya) keywords** that compiles to JavaScript. Write code in your native language and run it anywhere!
 
-## 📋 Table of Contents
+[![npm version](https://img.shields.io/npm/v/@devsuvam/odialang.svg)](https://www.npmjs.com/package/@devsuvam/odialang)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 
-- [What is Odialang?](#what-is-odialang)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [CLI Commands](#cli-commands)
-- [Language Syntax](#language-syntax)
-- [Examples](#examples)
-- [Project Structure](#project-structure)
-- [Development](#development)
+```odia
+# Welcome to Odialang!
+dhara name = "World"
+dekha "Hello, " + name + "!"
 
-## 🌟 What is Odialang?
+karya greet(person)
+  dekha "Namaskar, " + person + "!"
+sesa
 
-Odialang is a programming language designed to make coding accessible to Odia speakers. It uses Odia words as keywords while compiling to JavaScript for execution.
-
-### Key Features
-
-- 📝 **Odia Keywords**: Write code using familiar Odia words
-- 🚀 **Compiles to JavaScript**: Runs on any Node.js environment
-- 🛠️ **CLI Interface**: Simple command-line tool for compilation and execution
-- 📁 **File-based**: Write `.odia` files and run them directly
-- 🔍 **Debug Tools**: View tokens and AST for debugging
-
-## 📦 Installation
-
-### Prerequisites
-
-- Node.js >= 18.0.0
-- npm
-
-### Install from npm (Recommended)
-
-```bash
-# Install globally
-npm install -g odialang
-
-# Verify installation
-odia --help
-```
-
-### Install from Source
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/odialang.git
-cd Odialang
-
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-
-# Link globally for `odia` command
-npm link
-
-# Or use directly without linking
-npm start -- --help
-```
-
-### Verify Installation
-
-```bash
-odia --help
+greet("Odia")
 ```
 
 ## 🚀 Quick Start
 
-Create a file `hello.odia`:
+### Install
 
-```odia
-# This is a comment
-dhara name = "World"
-dekha "Hello, " + name + "!"
+```bash
+npm install -g @devsuvam/odialang
 ```
 
-Run it:
+### Create Your First Program
+
+Create `hello.odia`:
+
+```odia
+dekha "Namaskar, Odia!"
+dekha "Welcome to Odialang!"
+```
+
+### Run It
 
 ```bash
 odia hello.odia
@@ -86,301 +43,175 @@ odia hello.odia
 
 Output:
 ```
-Hello, World!
+Namaskar, Odia!
+Welcome to Odialang!
 ```
 
-## 🖥️ CLI Commands
+## 📚 Documentation
 
-### Run a file
-```bash
-odia <file.odia>
-odia run <file.odia>
-```
+| Document | Description |
+|----------|-------------|
+| [📖 Tutorial](docs/TUTORIAL.md) | Step-by-step guide for beginners |
+| [📋 Language Spec](docs/LANGUAGE.md) | Complete syntax and grammar reference |
+| [🤝 Contributing](docs/CONTRIBUTING.md) | How to contribute to the project |
+| [📝 Changelog](docs/CHANGELOG.md) | Version history and updates |
 
-### Compile to JavaScript
-```bash
-odia compile <file.odia>              # Outputs file.js
-odia compile <file.odia> <output.js>  # Specify output name
-```
+## 🎯 Features
 
-### Debug Commands
-```bash
-odia tokens <file.odia>   # View tokenized output
-odia ast <file.odia>      # View Abstract Syntax Tree
-```
+- 🌏 **Native Language** - Program using familiar Odia words
+- ⚡ **Compiles to JavaScript** - Runs on any Node.js platform
+- 🛠️ **CLI Interface** - Simple commands for run, compile, and debug
+- 📁 **File-based** - Write `.odia` files and execute directly
+- 🔍 **Debug Tools** - View tokens and AST for learning
 
-### Help
-```bash
-odia --help
-odia -h
-```
+## 💡 Language Keywords
 
-## 📝 Language Syntax
-
-### Keywords Reference
-
-| Odia Keyword | English Meaning | Purpose |
-|--------------|-----------------|---------|
-| `dhara` | let/variable | Variable declaration |
-| `dekha` | show/print | Print to console |
+| Odia | English | Usage |
+|------|---------|-------|
+| `dhara` | let | Variable declaration |
+| `dekha` | print | Output to console |
 | `jadi` | if | Conditional statement |
 | `tahale` | then | If-block start |
-| `nahele` | else | Else-block |
+| `nahele` | else | Else block |
 | `jebe` | while | While loop |
-| `karya` | function | Function declaration |
-| `fera` | return | Return statement |
-| `sesa` | end | Block end |
-| `aarambha` | start/begin | For loop |
-| `ru` | from | Range operator |
+| `aarambha` | for | For loop start |
+| `ru` | from/to | Range in for loop |
+| `karya` | function | Function definition |
+| `fera` | return | Return value |
+| `sesa` | end | Block terminator |
 | `sata` | true | Boolean true |
 | `micha` | false | Boolean false |
 
-### Variables
+## 📖 Example Programs
+
+### Variables and Printing
 
 ```odia
-# Strings
 dhara name = "Rama"
-
-# Numbers
 dhara age = 25
-dhara pi = 3.14
+dhara isHappy = sata
 
-# Booleans
-dhara isActive = sata
-dhara isDone = micha
+dekha "Name: " + name
+dekha "Age: " + age
+dekha "Happy: " + isHappy
 ```
 
-### Print Statements
+### Conditionals
 
 ```odia
-dekha "Hello World"
-dekha "Value: " + variable
-dekha 42
-```
+dhara marks = 85
 
-### Conditionals (If-Else)
-
-```odia
-jadi condition tahale
-  # if block
+jadi marks >= 60 tahale
+  dekha "You passed!"
 nahele
-  # else block
-sesa
-```
-
-Example:
-```odia
-dhara x = 10
-
-jadi x > 5 tahale
-  dekha "x is greater than 5"
-nahele
-  dekha "x is 5 or less"
+  dekha "You failed"
 sesa
 ```
 
 ### Loops
 
-#### While Loop
 ```odia
-dhara count = 0
-
-jebe count < 5 tahale
+# While loop
+dhara count = 1
+jebe count <= 5 tahale
   dekha "Count: " + count
   count = count + 1
 sesa
-```
 
-#### For Loop
-```odia
-aarambha i = 1 ru 10
-  dekha "Iteration: " + i
+# For loop
+aarambha i = 1 ru 5
+  dekha "Number: " + i
 sesa
 ```
 
 ### Functions
 
 ```odia
-karya functionName(param1, param2)
-  # function body
-  fera value
-sesa
-```
-
-Example:
-```odia
 karya add(a, b)
   fera a + b
 sesa
 
-dhara result = add(5, 3)
-dekha "5 + 3 = " + result
+dhara result = add(10, 20)
+dekha "Sum: " + result
 ```
 
-### Operators
+See [examples/](examples/) folder for more programs.
 
-| Operator | Description |
-|----------|-------------|
-| `+` | Addition / String concatenation |
-| `-` | Subtraction |
-| `*` | Multiplication |
-| `/` | Division |
-| `=` | Assignment |
-| `==` | Equal to |
-| `!=` | Not equal to |
-| `>` | Greater than |
-| `<` | Less than |
-| `>=` | Greater than or equal |
-| `<=` | Less than or equal |
+## 🖥️ CLI Commands
 
-### Comments
-
-```odia
-# Single line comment
-# Another comment
-dhara x = 10  # inline comment
-```
-
-## 📚 Examples
-
-### Example 1: Hello World
-```odia
-# hello.odia
-dekha "Namaskar, Odia!"
-dekha "Welcome to Odialang"
-```
-
-### Example 2: Calculator
-```odia
-karya calculate(a, b, operation)
-  jadi operation == "add" tahale
-    fera a + b
-  sesa
-  
-  jadi operation == "subtract" tahale
-    fera a - b
-  sesa
-  
-  fera 0
-sesa
-
-dhara result = calculate(10, 5, "add")
-dekha "Result: " + result
-```
-
-### Example 3: Factorial
-```odia
-karya factorial(n)
-  jadi n <= 1 tahale
-    fera 1
-  sesa
-  
-  fera n * factorial(n - 1)
-sesa
-
-dhara num = 5
-dekha "Factorial of " + num + " is: " + factorial(num)
-```
-
-### Example 4: FizzBuzz
-```odia
-aarambha i = 1 ru 20
-  dhara output = ""
-  
-  jadi i % 3 == 0 tahale
-    output = output + "Fizz"
-  sesa
-  
-  jadi i % 5 == 0 tahale
-    output = output + "Buzz"
-  sesa
-  
-  jadi output == "" tahale
-    output = i
-  sesa
-  
-  dekha output
-sesa
-```
-
-## 🏗️ Project Structure
-
-```
-Odialang/
-├── src/
-│   ├── cli/           # CLI commands
-│   │   ├── index.ts   # Main CLI entry
-│   │   ├── run.ts     # Run command
-│   │   └── compile.ts # Compile command
-│   ├── lexer/         # Tokenizer
-│   │   ├── tokenizer.ts
-│   │   ├── tokenTypes.ts
-│   │   └── keywords.ts
-│   ├── parser/        # Parser
-│   │   ├── parser.ts
-│   │   └── ast.ts
-│   └── codegen/       # Code generation
-│       └── generate.ts
-├── examples/          # Example .odia files
-├── dist/              # Compiled JavaScript
-├── package.json
-├── tsconfig.json
-└── README.md
-```
-
-## 🛠️ Development
-
-### Build
 ```bash
+# Run a .odia file
+odia <file.odia>
+odia run <file.odia>
+
+# Compile to JavaScript
+odia compile <file.odia>              # Outputs file.js
+odia compile <file.odia> <output.js>  # Custom output name
+
+# Debug commands
+odia tokens <file.odia>   # View tokens
+odia ast <file.odia>      # View AST
+
+# Help
+odia --help
+```
+
+## 🏗️ Installation from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/devsuvam/odialang.git
+cd odialang
+
+# Install dependencies
+npm install
+
+# Build
 npm run build
-```
 
-### Clean
-```bash
-npm run clean
-```
-
-### Link for global usage
-```bash
+# Link globally
 npm link
+
+# Test
+odia --help
 ```
 
-### Development mode (with ts-node)
+## 🧑‍💻 Development
+
 ```bash
+# Build project
+npm run build
+
+# Clean build files
+npm run clean
+
+# Development mode
 npm run dev
 ```
 
-## 🐛 Debugging
+## 🤝 Contributing
 
-### View Tokens
-```bash
-odia tokens examples/hello.odia
-```
-Shows the lexical tokens generated from your source code.
+We welcome contributions! Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
 
-### View AST
-```bash
-odia ast examples/hello.odia
-```
-Shows the Abstract Syntax Tree representation.
+### Quick Contributions
+
+- 🐛 [Report bugs](https://github.com/devsuvam/odialang/issues)
+- 💡 [Suggest features](https://github.com/devsuvam/odialang/issues)
+- 📝 [Improve docs](docs/)
+- 🌐 Translate to other languages
 
 ## 📄 License
 
-MIT License
+[MIT](LICENSE) © 2026 Odialang Contributors
 
 ## 🙏 Acknowledgments
 
+- Built for the Odia-speaking community
 - Inspired by the desire to make programming accessible in regional languages
-- Built with TypeScript and Node.js
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
-- Add more Odia keywords
-- Improve documentation
+- Powered by TypeScript and Node.js
 
 ---
 
-Made with ❤️ for the Odia community
+**Made with ❤️ for Odia programmers** 🇮🇳
+
+[⭐ Star this repo](https://github.com/devsuvam/odialang) if you find it useful!

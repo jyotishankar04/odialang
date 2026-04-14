@@ -1,0 +1,107 @@
+# Example 2: Prime Number Checker
+# Check if a number is prime
+
+# Function to check if a number is prime
+karya isPrime(n)
+  # Numbers less than 2 are not prime
+  jadi n < 2 tahale
+    fera micha
+  sesa
+  
+  # 2 is prime
+  jadi n == 2 tahale
+    fera sata
+  sesa
+  
+  # Even numbers are not prime
+  jadi n % 2 == 0 tahale
+    fera micha
+  sesa
+  
+  # Check odd divisors up to square root of n
+  dhara i = 3
+  jebe i * i <= n tahale
+    jadi n % i == 0 tahale
+      fera micha
+    sesa
+    i = i + 2
+  sesa
+  
+  fera sata
+sesa
+
+# Test the function
+dekha "=== PRIME NUMBER CHECKER ==="
+dekha ""
+
+# Test individual numbers
+dhara test1 = 17
+dhara test2 = 24
+dhara test3 = 29
+dhara test4 = 1
+
+jadi isPrime(test1) tahale
+  dekha test1 + " is prime"
+nahele
+  dekha test1 + " is not prime"
+sesa
+
+jadi isPrime(test2) tahale
+  dekha test2 + " is prime"
+nahele
+  dekha test2 + " is not prime"
+sesa
+
+jadi isPrime(test3) tahale
+  dekha test3 + " is prime"
+nahele
+  dekha test3 + " is not prime"
+sesa
+
+jadi isPrime(test4) tahale
+  dekha test4 + " is prime"
+nahele
+  dekha test4 + " is not prime"
+sesa
+
+# Print all primes from 1 to 50
+dekha ""
+dekha "=== Prime numbers from 1 to 50 ==="
+dhara count = 0
+
+aarambha num = 1 ru 50
+  jadi isPrime(num) tahale
+    dekha num
+    count = count + 1
+  sesa
+sesa
+
+dekha ""
+dekha "Total prime numbers found: " + count
+
+# Output:
+# === PRIME NUMBER CHECKER ===
+# 
+# 17 is prime
+# 24 is not prime
+# 29 is prime
+# 1 is not prime
+# 
+# === Prime numbers from 1 to 50 ===
+# 2
+# 3
+# 5
+# 7
+# 11
+# 13
+# 17
+# 19
+# 23
+# 29
+# 31
+# 37
+# 41
+# 43
+# 47
+# 
+# Total prime numbers found: 15

@@ -1,0 +1,70 @@
+# Example 4: Conditionals (If-Else)
+# Making decisions in your program
+
+# Simple if statement
+dhara age = 18
+dekha "Age: " + age
+
+jadi age >= 18 tahale
+  dekha "You are an adult"
+sesa
+
+# If-else statement
+dekha ""
+dhara marks = 75
+dekha "Marks: " + marks
+
+jadi marks >= 60 tahale
+  dekha "Result: PASSED"
+nahele
+  dekha "Result: FAILED"
+sesa
+
+# Multiple conditions
+dekha ""
+dhara score = 85
+dekha "Score: " + score
+
+jadi score >= 90 tahale
+  dekha "Grade: A"
+sesa
+
+jadi score >= 80 tahale
+  dekha "Grade: B"
+sesa
+
+jadi score >= 70 tahale
+  dekha "Grade: C"
+nahele
+  dekha "Grade: F"
+sesa
+
+# Check positive/negative/zero
+dekha ""
+dhara number = -5
+dekha "Number: " + number
+
+jadi number > 0 tahale
+  dekha "The number is positive"
+sesa
+
+jadi number < 0 tahale
+  dekha "The number is negative"
+sesa
+
+jadi number == 0 tahale
+  dekha "The number is zero"
+sesa
+
+# Output:
+# Age: 18
+# You are an adult
+# 
+# Marks: 75
+# Result: PASSED
+#
+# Score: 85
+# Grade: B
+#
+# Number: -5
+# The number is negative

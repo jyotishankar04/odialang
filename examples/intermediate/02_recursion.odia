@@ -1,0 +1,87 @@
+# Example 2: Recursion
+# Functions that call themselves
+
+# Factorial: n! = n * (n-1) * (n-2) * ... * 1
+# Example: 5! = 5 * 4 * 3 * 2 * 1 = 120
+karya factorial(n)
+  # Base case: factorial of 0 or 1 is 1
+  jadi n <= 1 tahale
+    fera 1
+  sesa
+  
+  # Recursive case: n! = n * (n-1)!
+  fera n * factorial(n - 1)
+sesa
+
+dekha "=== Factorial ==="
+dekha "5! = " + factorial(5)
+dekha "3! = " + factorial(3)
+dekha "7! = " + factorial(7)
+
+# Power calculation: base^exponent
+# Example: 2^3 = 2 * 2 * 2 = 8
+karya power(base, exponent)
+  # Base case: anything^0 = 1
+  jadi exponent == 0 tahale
+    fera 1
+  sesa
+  
+  # Recursive case: base^exp = base * base^(exp-1)
+  fera base * power(base, exponent - 1)
+sesa
+
+dekha ""
+dekha "=== Power ==="
+dekha "2^3 = " + power(2, 3)
+dekha "5^2 = " + power(5, 2)
+dekha "3^4 = " + power(3, 4)
+
+# Countdown using recursion
+karya countdown(n)
+  jadi n > 0 tahale
+    dekha n
+    countdown(n - 1)
+  sesa
+sesa
+
+dekha ""
+dekha "=== Countdown (5 to 1) ==="
+countdown(5)
+
+# Sum of digits
+karya sumDigits(n)
+  jadi n == 0 tahale
+    fera 0
+  sesa
+  
+  dhara lastDigit = n % 10
+  dhara remaining = n / 10
+  fera lastDigit + sumDigits(remaining)
+sesa
+
+dekha ""
+dekha "=== Sum of Digits ==="
+dekha "Sum of digits in 123: " + sumDigits(123)
+dekha "Sum of digits in 4567: " + sumDigits(4567)
+
+# Output:
+# === Factorial ===
+# 5! = 120
+# 3! = 6
+# 7! = 5040
+#
+# === Power ===
+# 2^3 = 8
+# 5^2 = 25
+# 3^4 = 81
+#
+# === Countdown (5 to 1) ===
+# 5
+# 4
+# 3
+# 2
+# 1
+#
+# === Sum of Digits ===
+# Sum of digits in 123: 6
+# Sum of digits in 4567: 22

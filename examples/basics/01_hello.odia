@@ -1,0 +1,18 @@
+# Example 1: Hello World
+# The most basic program - prints a greeting
+
+# Print a simple message
+dekha "Hello, World!"
+
+# Print in Odia
+dekha "Namaskar, Odia!"
+
+# Print multiple lines
+dekha "Welcome to"
+dekha "Odialang!"
+
+# Output:
+# Hello, World!
+# Namaskar, Odia!
+# Welcome to
+# Odialang!

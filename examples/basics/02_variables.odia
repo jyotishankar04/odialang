@@ -1,0 +1,42 @@
+# Example 2: Variables
+# Learn about different data types
+
+# String variable (text)
+dhara name = "Rama"
+dhara greeting = "Hello"
+dekha greeting + " " + name
+
+# Number variables
+dhara age = 25
+dhara pi = 3.14
+dhara negative = -10
+dekha "Age: " + age
+dekha "Pi: " + pi
+dekha "Negative: " + negative
+
+# Boolean variables (true/false)
+dhara isStudent = sata
+dhara isWorking = micha
+dekha "Is student: " + isStudent
+dekha "Is working: " + isWorking
+
+# Changing variable values
+dhara score = 0
+dekha "Initial score: " + score
+
+score = 10
+dekha "After assignment: " + score
+
+score = score + 5
+dekha "After adding 5: " + score
+
+# Output:
+# Hello Rama
+# Age: 25
+# Pi: 3.14
+# Negative: -10
+# Is student: true
+# Is working: false
+# Initial score: 0
+# After assignment: 10
+# After adding 5: 15
