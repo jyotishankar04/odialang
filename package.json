@@ -1,0 +1,25 @@
+{
+  "name": "odialang",
+  "version": "1.0.0",
+  "description": "An Odia-style programming language that compiles to JavaScript",
+  "private": true,
+  "main": "dist/cli/index.js",
+  "bin": {
+    "odia": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "node --loader ts-node/esm src/cli/index.ts",
+    "start": "node dist/cli/index.js",
+    "clean": "rm -rf dist",
+    "link": "npm link"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
