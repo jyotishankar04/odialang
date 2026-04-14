@@ -1,0 +1,37 @@
+{
+  "name": "odialang-syntax",
+  "version": "1.0.0",
+  "description": "Syntax highlighting for Odialang programming language",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "grammars/",
+    "themes/",
+    "monaco/",
+    "index.js",
+    "index.d.ts",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Tests not implemented yet\""
+  },
+  "keywords": [
+    "odia",
+    "odialang",
+    "syntax-highlighting",
+    "textmate",
+    "monaco",
+    "grammar"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devsuvam/odialang",
+    "directory": "syntax-highlighting"
+  },
+  "bugs": {
+    "url": "https://github.com/devsuvam/odialang/issues"
+  },
+  "homepage": "https://github.com/devsuvam/odialang#readme"
+}

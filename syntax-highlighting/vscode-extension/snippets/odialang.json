@@ -1,0 +1,74 @@
+{
+  "Variable Declaration": {
+    "prefix": "dhara",
+    "body": ["dhara ${1:name} = ${2:value}"],
+    "description": "Declare a variable"
+  },
+  "Print Statement": {
+    "prefix": "dekha",
+    "body": ["dekha ${1:message}"],
+    "description": "Print to console"
+  },
+  "If Statement": {
+    "prefix": "jadi",
+    "body": [
+      "jadi ${1:condition} tahale",
+      "  ${2:# code}",
+      "sesa"
+    ],
+    "description": "If conditional statement"
+  },
+  "If-Else Statement": {
+    "prefix": "jadi-else",
+    "body": [
+      "jadi ${1:condition} tahale",
+      "  ${2:# code}",
+      "nahele",
+      "  ${3:# code}",
+      "sesa"
+    ],
+    "description": "If-Else conditional statement"
+  },
+  "While Loop": {
+    "prefix": "jebe",
+    "body": [
+      "jebe ${1:condition}",
+      "  ${2:# code}",
+      "sesa"
+    ],
+    "description": "While loop"
+  },
+  "For Loop": {
+    "prefix": "aarambha",
+    "body": [
+      "aarambha ${1:i} = ${2:1} ru ${3:10}",
+      "  ${4:# code}",
+      "sesa"
+    ],
+    "description": "For loop with range"
+  },
+  "Function Declaration": {
+    "prefix": "karya",
+    "body": [
+      "karya ${1:functionName}(${2:params})",
+      "  ${3:# code}",
+      "sesa"
+    ],
+    "description": "Define a function"
+  },
+  "Function with Return": {
+    "prefix": "karya-return",
+    "body": [
+      "karya ${1:functionName}(${2:params})",
+      "  ${3:# code}",
+      "  fera ${4:value}",
+      "sesa"
+    ],
+    "description": "Define a function with return value"
+  },
+  "Comment": {
+    "prefix": "#",
+    "body": ["# ${1:comment}"],
+    "description": "Add a comment"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "odialang-vscode",
+  "displayName": "Odialang Support",
+  "description": "Syntax highlighting for Odialang programming language",
+  "version": "1.0.0",
+  "publisher": "devsuvam",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "odia",
+    "odialang",
+    "programming language",
+    "syntax highlighting"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "odialang",
+        "aliases": [
+          "Odialang",
+          "odia"
+        ],
+        "extensions": [
+          ".odia"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/odia-icon.svg",
+          "dark": "./icons/odia-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "odialang",
+        "scopeName": "source.odia",
+        "path": "./syntaxes/odialang.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "odialang",
+        "path": "./snippets/odialang.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devsuvam/odialang"
+  },
+  "bugs": {
+    "url": "https://github.com/devsuvam/odialang/issues"
+  },
+  "homepage": "https://github.com/devsuvam/odialang#readme",
+  "license": "MIT"
+}

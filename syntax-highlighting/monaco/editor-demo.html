@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odialang Editor - Monaco</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #0D1117;
+      color: #E6EDF3;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      background: #161B22;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #30363D;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      color: #FF7B72;
+    }
+    
+    .toolbar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    select, button {
+      padding: 0.5rem 1rem;
+      background: #21262D;
+      border: 1px solid #30363D;
+      color: #E6EDF3;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    
+    button:hover {
+      background: #30363D;
+    }
+    
+    button.primary {
+      background: #238636;
+      border-color: #238636;
+    }
+    
+    button.primary:hover {
+      background: #2EA043;
+    }
+    
+    main {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    
+    #editor {
+      flex: 1;
+    }
+    
+    .output-panel {
+      width: 400px;
+      background: #161B22;
+      border-left: 1px solid #30363D;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .output-header {
+      padding: 1rem;
+      background: #21262D;
+      border-bottom: 1px solid #30363D;
+      font-weight: 600;
+    }
+    
+    #output {
+      flex: 1;
+      padding: 1rem;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+    
+    .examples {
+      padding: 1rem;
+      background: #21262D;
+      border-top: 1px solid #30363D;
+    }
+    
+    .examples h3 {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #8B949E;
+    }
+    
+    .example-btn {
+      margin: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌸 Odialang Editor</h1>
+    <div class="toolbar">
+      <select id="theme-select">
+        <option value="odialang-dark">Odialang Dark</option>
+        <option value="odialang-light">Odialang Light</option>
+      </select>
+      <button onclick="clearOutput()">Clear Output</button>
+      <button class="primary" onclick="runCode()">▶ Run</button>
+    </div>
+  </header>
+  
+  <main>
+    <div id="editor"></div>
+    
+    <div class="output-panel">
+      <div class="output-header">Output</div>
+      <div id="output">Click "Run" to execute your code...</div>
+      
+      <div class="examples">
+        <h3>Examples</h3>
+        <button class="example-btn" onclick="loadExample('hello')">Hello</button>
+        <button class="example-btn" onclick="loadExample('variables')">Variables</button>
+        <button class="example-btn" onclick="loadExample('ifelse')">If-Else</button>
+        <button class="example-btn" onclick="loadExample('loop')">Loop</button>
+        <button class="example-btn" onclick="loadExample('function')">Function</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Monaco Editor Loader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+  <script src="odialang-monaco.js"></script>
+  
+  <script>
+    let editor;
+    
+    // Example code snippets
+    const examples = {
+      hello: `# Welcome to Odialang!
+dekha "Namaskar, Odia!"
+dekha "Welcome to the web editor!"`,
+      
+      variables: `# Variables in Odialang
+dhara name = "Rama"
+dhara age = 25
+dhara isHappy = sata
+
+dekha "Name: " + name
+dekha "Age: " + age
+dekha "Happy: " + isHappy`,
+      
+      ifelse: `# If-Else Statement
+dhara marks = 85
+
+jadi marks >= 60 tahale
+  dekha "You passed!"
+nahele
+  dekha "You need to study more"
+sesa
+
+dekha "Your marks: " + marks`,
+      
+      loop: `# While Loop
+dhara count = 1
+
+jebe count <= 5
+  dekha "Count: " + count
+  count = count + 1
+sesa
+
+# For Loop
+aarambha i = 1 ru 5
+  dekha "Number: " + i
+sesa`,
+      
+      function: `# Functions
+karya greet(name)
+  dekha "Namaskar, " + name + "!"
+sesa
+
+karya add(a, b)
+  fera a + b
+sesa
+
+greet("Odia")
+dhara result = add(10, 20)
+dekha "10 + 20 = " + result`
+    };
+    
+    // Initialize Monaco Editor
+    require.config({
+      paths: {
+        'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs'
+      }
+    });
+    
+    require(['vs/editor/editor.main'], function() {
+      // Register Odialang language
+      registerOdialangLanguage(monaco);
+      
+      // Create editor
+      editor = monaco.editor.create(document.getElementById('editor'), {
+        value: examples.hello,
+        language: 'odialang',
+        theme: 'odialang-dark',
+        fontSize: 14,
+        minimap: { enabled: false },
+        automaticLayout: true,
+        scrollBeyondLastLine: false,
+        wordWrap: 'on',
+        lineNumbers: 'on',
+        roundedSelection: false,
+        scrollbar: {
+          useShadows: false,
+          verticalHasArrows: true,
+          horizontalHasArrows: true,
+          vertical: 'visible',
+          horizontal: 'visible'
+        }
+      });
+      
+      // Theme selector
+      document.getElementById('theme-select').addEventListener('change', function(e) {
+        monaco.editor.setTheme(e.target.value);
+      });
+    });
+    
+    function loadExample(name) {
+      if (editor && examples[name]) {
+        editor.setValue(examples[name]);
+      }
+    }
+    
+    function clearOutput() {
+      document.getElementById('output').textContent = 'Output cleared...';
+    }
+    
+    function runCode() {
+      const output = document.getElementById('output');
+      output.textContent = 'Running...\n\n';
+      
+      // In a real implementation, you'd send the code to a backend
+      // or use a WebAssembly compiler. For demo purposes, we show:
+      output.textContent += 'Note: Code execution requires a backend server.\n';
+      output.textContent += 'This is a syntax highlighting demo only.\n\n';
+      output.textContent += 'To execute Odialang code:\n';
+      output.textContent += '1. Save the code to a .odia file\n';
+      output.textContent += '2. Run: odia filename.odia\n\n';
+      output.textContent += 'Current code:\n';
+      output.textContent += '---\n';
+      output.textContent += editor.getValue();
+    }
+  </script>
+</body>
+</html>
