@@ -1,13 +1,16 @@
 {
   "name": "@devsuvam/odialang",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A file-based, CLI-driven programming language with Odia (Oriya) keywords that compiles to JavaScript",
   "main": "dist/cli/index.js",
   "bin": {
-    "odia": "dist/cli/index.js"
+    "odia": "dist/cli/index.js",
+    "odialang-setup": "scripts/setup-syntax.js"
   },
   "files": [
     "dist/",
+    "scripts/",
+    "syntax-highlighting/",
     "README.md",
     "LICENSE"
   ],
@@ -16,6 +19,7 @@
     "dev": "node --loader ts-node/esm src/cli/index.ts",
     "start": "node dist/cli/index.js",
     "clean": "rm -rf dist",
+    "postinstall": "node scripts/postinstall.js",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "keywords": [

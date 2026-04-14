@@ -47,6 +47,39 @@ Namaskar, Odia!
 Welcome to Odialang!
 ```
 
+## 🎨 Syntax Highlighting (Auto-Installed!)
+
+When you install `@devsuvam/odialang`, syntax highlighting is **automatically set up** for VSCode!
+
+### ✅ What Happens Automatically
+
+- **VSCode Extension** is copied to your extensions folder
+- **Restart VSCode** to activate syntax highlighting for `.odia` files
+- Works with all VSCode themes
+
+### 🛠️ Manual Setup (if needed)
+
+If automatic setup didn't work or you want to set up other editors:
+
+```bash
+# Run the interactive setup
+npx odialang-setup
+```
+
+Or manually:
+
+**VSCode:**
+```bash
+# Extension is already installed! Just restart VSCode.
+# If needed, reinstall:
+cp -r node_modules/@devsuvam/odialang/syntax-highlighting/vscode-extension ~/.vscode/extensions/odialang-vscode
+```
+
+**Other Editors:**
+- **Sublime Text:** Copy `syntax-highlighting/textmate/odialang.tmLanguage.json`
+- **Monaco Editor:** Import `syntax-highlighting/monaco/odialang-monaco.js`
+- **GitHub:** Add `*.odia linguist-language=Odialang` to `.gitattributes`
+
 ## 📚 Documentation
 
 | Document | Description |
