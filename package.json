@@ -26,18 +26,21 @@
     "javascript",
     "transpiler",
     "regional-language",
-    "indian-languages"
+    "indian-languages",
+    "syntax-highlighting",
+    "vscode-extension",
+    "monaco-editor"
   ],
   "author": "Jyotishankar Patra <jyotipatra.subham@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/odialang.git"
+    "url": "git+https://github.com/jyotishankar04/odialang.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/odialang/issues"
+    "url": "https://github.com/jyotishankar04/odialang/issues"
   },
-  "homepage": "https://github.com/yourusername/odialang#readme",
+  "homepage": "https://github.com/jyotishankar04/odialang#readme",
   "engines": {
     "node": ">=18.0.0"
   },
