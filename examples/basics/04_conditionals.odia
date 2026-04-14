@@ -39,9 +39,9 @@ nahele
   dekha "Grade: F"
 sesa
 
-# Check positive/negative/zero
+# Check if number is positive or not
 dekha ""
-dhara number = -5
+dhara number = 7
 dekha "Number: " + number
 
 jadi number > 0 tahale
@@ -66,5 +66,5 @@ sesa
 # Score: 85
 # Grade: B
 #
-# Number: -5
-# The number is negative
+# Number: 7
+# The number is positive

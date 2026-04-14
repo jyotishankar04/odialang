@@ -8,11 +8,11 @@ dekha greeting + " " + name
 
 # Number variables
 dhara age = 25
-dhara pi = 3.14
-dhara negative = -10
+dhara year = 2026
+dhara bigNumber = 1000
 dekha "Age: " + age
-dekha "Pi: " + pi
-dekha "Negative: " + negative
+dekha "Year: " + year
+dekha "Big number: " + bigNumber
 
 # Boolean variables (true/false)
 dhara isStudent = sata
@@ -33,8 +33,8 @@ dekha "After adding 5: " + score
 # Output:
 # Hello Rama
 # Age: 25
-# Pi: 3.14
-# Negative: -10
+# Year: 2026
+# Big number: 1000
 # Is student: true
 # Is working: false
 # Initial score: 0

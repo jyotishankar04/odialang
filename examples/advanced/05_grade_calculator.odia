@@ -97,11 +97,31 @@ karya displayReport(name, rollNumber, subject1, subject2, subject3, subject4, su
   dekha "----------------------------------------"
   
   # Check pass/fail
-  jadi hasPassed(subject1) == sata jadi hasPassed(subject2) == sata jadi hasPassed(subject3) == sata jadi hasPassed(subject4) == sata jadi hasPassed(subject5) == sata tahale
-    dekha "Result:          PASSED"
+  dhara passed = sata
+  
+  jadi hasPassed(subject1) == micha tahale
+    passed = micha
   sesa
   
-  jadi hasPassed(subject1) == micha jadi hasPassed(subject2) == micha jadi hasPassed(subject3) == micha jadi hasPassed(subject4) == micha jadi hasPassed(subject5) == micha tahale
+  jadi hasPassed(subject2) == micha tahale
+    passed = micha
+  sesa
+  
+  jadi hasPassed(subject3) == micha tahale
+    passed = micha
+  sesa
+  
+  jadi hasPassed(subject4) == micha tahale
+    passed = micha
+  sesa
+  
+  jadi hasPassed(subject5) == micha tahale
+    passed = micha
+  sesa
+  
+  jadi passed == sata tahale
+    dekha "Result:          PASSED"
+  nahele
     dekha "Result:          FAILED"
   sesa
   

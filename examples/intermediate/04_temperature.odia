@@ -1,103 +1,101 @@
-# Example 4: Temperature Converter
-# Convert between Celsius, Fahrenheit, and Kelvin
+# Example 4: Number Utilities
+# Various number manipulation functions
 
-# Celsius to Fahrenheit
-# Formula: (C × 9/5) + 32 = F
-karya celsiusToFahrenheit(celsius)
-  dhara fahrenheit = (celsius * 9 / 5) + 32
-  fera fahrenheit
+# Calculate square
+karya square(n)
+  fera n * n
 sesa
 
-# Fahrenheit to Celsius
-# Formula: (F - 32) × 5/9 = C
-karya fahrenheitToCelsius(fahrenheit)
-  dhara celsius = (fahrenheit - 32) * 5 / 9
-  fera celsius
+# Calculate cube
+karya cube(n)
+  fera n * n * n
 sesa
 
-# Celsius to Kelvin
-# Formula: C + 273.15 = K
-karya celsiusToKelvin(celsius)
-  fera celsius + 273.15
+# Calculate sum of squares from 1 to n
+karya sumOfSquares(n)
+  dhara sum = 0
+  dhara i = 1
+  
+  jebe i <= n
+    dhara sq = square(i)
+    sum = sum + sq
+    i = i + 1
+  sesa
+  
+  fera sum
 sesa
 
-# Kelvin to Celsius
-# Formula: K - 273.15 = C
-karya kelvinToCelsius(kelvin)
-  fera kelvin - 273.15
+# Calculate average
+karya average(a, b, c)
+  dhara total = a + b + c
+  fera total / 3
 sesa
 
-# Display temperature
-dekha "=== TEMPERATURE CONVERTER ==="
+# Display results
+dekha "=== NUMBER UTILITIES ==="
 dekha ""
 
-# Test Celsius to Fahrenheit conversions
-dekha "=== Celsius to Fahrenheit ==="
-dhara c1 = 0
-dhara c2 = 100
-dhara c3 = 37
-dhara c4 = -40
+# Test squares
+dekha "=== Squares ==="
+dekha "Square of 5: " + square(5)
+dekha "Square of 10: " + square(10)
+dekha "Square of 12: " + square(12)
 
-dekha c1 + "°C = " + celsiusToFahrenheit(c1) + "°F"
-dekha c2 + "°C = " + celsiusToFahrenheit(c2) + "°F"
-dekha "Body temp " + c3 + "°C = " + celsiusToFahrenheit(c3) + "°F"
-dekha c4 + "°C = " + celsiusToFahrenheit(c4) + "°F"
-
-# Test Fahrenheit to Celsius
+# Test cubes
 dekha ""
-dekha "=== Fahrenheit to Celsius ==="
-dhara f1 = 32
-dhara f2 = 212
-dhara f3 = 98.6
+dekha "=== Cubes ==="
+dekha "Cube of 3: " + cube(3)
+dekha "Cube of 5: " + cube(5)
+dekha "Cube of 7: " + cube(7)
 
-dekha f1 + "°F = " + fahrenheitToCelsius(f1) + "°C"
-dekha f2 + "°F = " + fahrenheitToCelsius(f2) + "°C"
-dekha "Body temp " + f3 + "°F = " + fahrenheitToCelsius(f3) + "°C"
-
-# Test Kelvin conversions
+# Test sum of squares
 dekha ""
-dekha "=== Kelvin Conversions ==="
-dhara k1 = 273.15
-dhara k2 = 373.15
-dhara k3 = 0
+dekha "=== Sum of Squares ==="
+dekha "Sum of squares 1 to 5: " + sumOfSquares(5)
+dekha "Sum of squares 1 to 10: " + sumOfSquares(10)
 
-dekha "Water freezes: " + k1 + "K = " + kelvinToCelsius(k1) + "°C"
-dekha "Water boils: " + k2 + "K = " + kelvinToCelsius(k2) + "°C"
-dekha "Absolute zero: " + k3 + "K = " + kelvinToCelsius(k3) + "°C"
-
-# Practical example
+# Test average
 dekha ""
-dekha "=== Practical Example ==="
-dhara roomTempC = 25
-dhara roomTempF = celsiusToFahrenheit(roomTempC)
-dhara roomTempK = celsiusToKelvin(roomTempC)
+dekha "=== Average ==="
+dekha "Average of 10, 20, 30: " + average(10, 20, 30)
+dekha "Average of 75, 85, 95: " + average(75, 85, 95)
 
-dekha "Room temperature:"
-dekha "  " + roomTempC + "°C"
-dekha "  " + roomTempF + "°F"
-dekha "  " + roomTempK + "K"
+# Combined example
+dekha ""
+dekha "=== Combined Example ==="
+dhara num = 6
+dhara sq = square(num)
+dhara cb = cube(num)
+dhara sumSq = sumOfSquares(num)
+
+dekha "Number: " + num
+dekha "Square: " + sq
+dekha "Cube: " + cb
+dekha "Sum of squares 1 to " + num + ": " + sumSq
 
 # Output:
-# === TEMPERATURE CONVERTER ===
+# === NUMBER UTILITIES ===
 # 
-# === Celsius to Fahrenheit ===
-# 0°C = 32°F
-# 100°C = 212°F
-# Body temp 37°C = 98.6°F
-# -40°C = -40°F
+# === Squares ===
+# Square of 5: 25
+# Square of 10: 100
+# Square of 12: 144
 #
-# === Fahrenheit to Celsius ===
-# 32°F = 0°C
-# 212°F = 100°C
-# Body temp 98.6°F = 37°C
+# === Cubes ===
+# Cube of 3: 27
+# Cube of 5: 125
+# Cube of 7: 343
 #
-# === Kelvin Conversions ===
-# Water freezes: 273.15K = 0°C
-# Water boils: 373.15K = 100°C
-# Absolute zero: 0K = -273.15°C
+# === Sum of Squares ===
+# Sum of squares 1 to 5: 55
+# Sum of squares 1 to 10: 385
 #
-# === Practical Example ===
-# Room temperature:
-#   25°C
-#   77°F
-#   298.15K
+# === Average ===
+# Average of 10, 20, 30: 20
+# Average of 75, 85, 95: 85
+#
+# === Combined Example ===
+# Number: 6
+# Square: 36
+# Cube: 216
+# Sum of squares 1 to 6: 91

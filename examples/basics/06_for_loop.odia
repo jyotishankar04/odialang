@@ -34,19 +34,12 @@ sesa
 
 dekha "Total: " + total
 
-# Print stars
+# Print squares
 dekha ""
-dekha "=== Stars Pattern ==="
-aarambha row = 1 ru 5
-  dhara stars = ""
-  dhara col = 1
-  
-  jebe col <= row tahale
-    stars = stars + "*"
-    col = col + 1
-  sesa
-  
-  dekha stars
+dekha "=== Squares of 1 to 10 ==="
+aarambha num = 1 ru 10
+  dhara square = num * num
+  dekha num + "^2 = " + square
 sesa
 
 # Output:
@@ -73,9 +66,8 @@ sesa
 # === Sum of 1 to 100 ===
 # Total: 5050
 #
-# === Stars Pattern ===
-# *
-# **
-# ***
-# ****
-# *****
+# === Squares of 1 to 10 ===
+# 1^2 = 1
+# 2^2 = 4
+# 3^2 = 9
+# ...

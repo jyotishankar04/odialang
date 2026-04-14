@@ -48,22 +48,6 @@ dekha ""
 dekha "=== Countdown (5 to 1) ==="
 countdown(5)
 
-# Sum of digits
-karya sumDigits(n)
-  jadi n == 0 tahale
-    fera 0
-  sesa
-  
-  dhara lastDigit = n % 10
-  dhara remaining = n / 10
-  fera lastDigit + sumDigits(remaining)
-sesa
-
-dekha ""
-dekha "=== Sum of Digits ==="
-dekha "Sum of digits in 123: " + sumDigits(123)
-dekha "Sum of digits in 4567: " + sumDigits(4567)
-
 # Output:
 # === Factorial ===
 # 5! = 120

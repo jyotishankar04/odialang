@@ -5,7 +5,7 @@
 dekha "=== Counting 1 to 5 ==="
 dhara count = 1
 
-jebe count <= 5 tahale
+jebe count <= 5
   dekha "Count: " + count
   count = count + 1
 sesa
@@ -15,7 +15,7 @@ dekha ""
 dekha "=== Countdown ==="
 dhara timer = 5
 
-jebe timer > 0 tahale
+jebe timer > 0
   dekha "Time: " + timer
   timer = timer - 1
 sesa
@@ -28,22 +28,21 @@ dekha "=== Sum of 1 to 10 ==="
 dhara sum = 0
 dhara num = 1
 
-jebe num <= 10 tahale
+jebe num <= 10
   sum = sum + num
   num = num + 1
 sesa
 
 dekha "Sum = " + sum
 
-# Print even numbers
+# Print numbers doubled
 dekha ""
-dekha "=== Even numbers 1 to 10 ==="
+dekha "=== Numbers doubled 1 to 10 ==="
 dhara i = 1
 
-jebe i <= 10 tahale
-  jadi i % 2 == 0 tahale
-    dekha i
-  sesa
+jebe i <= 10
+  dhara doubled = i * 2
+  dekha i + " x 2 = " + doubled
   i = i + 1
 sesa
 
@@ -66,9 +65,8 @@ sesa
 # === Sum of 1 to 10 ===
 # Sum = 55
 #
-# === Even numbers 1 to 10 ===
-# 2
-# 4
-# 6
-# 8
-# 10
+# === Numbers doubled 1 to 10 ===
+# 1 x 2 = 2
+# 2 x 2 = 4
+# 3 x 2 = 6
+# ...

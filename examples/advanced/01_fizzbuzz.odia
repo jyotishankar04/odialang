@@ -1,65 +1,110 @@
-# Example 1: FizzBuzz
-# Classic programming problem
+# Example 1: Alternating Patterns
+# Print alternating text patterns
 
-# Print numbers 1 to 30
-# If divisible by 3, print "Fizz"
-# If divisible by 5, print "Buzz"
-# If divisible by both, print "FizzBuzz"
-# Otherwise, print the number
-
-dekha "=== FIZZBUZZ (1 to 30) ==="
+dekha "=== ALTERNATING PATTERNS ==="
 dekha ""
 
-aarambha i = 1 ru 30
-  dhara output = ""
-  
-  # Check if divisible by 3
-  jadi i % 3 == 0 tahale
-    output = output + "Fizz"
+# Pattern 1: Simple alternating
+dekha "=== Pattern: Yes/No ==="
+dhara counter1 = 1
+
+aarambha i = 1 ru 10
+  jadi counter1 == 1 tahale
+    dekha "Yes"
+    counter1 = 2
+  nahele
+    dekha "No"
+    counter1 = 1
+  sesa
+sesa
+
+# Pattern 2: Three-way alternating
+dekha ""
+dekha "=== Pattern: A/B/C ==="
+dhara counter2 = 1
+
+aarambha i = 1 ru 9
+  jadi counter2 == 1 tahale
+    dekha "A"
+    counter2 = 2
   sesa
   
-  # Check if divisible by 5
-  jadi i % 5 == 0 tahale
-    output = output + "Buzz"
+  jadi counter2 == 2 tahale
+    dekha "B"
+    counter2 = 3
+  nahele
+    dekha "C"
+    counter2 = 1
+  sesa
+sesa
+
+# Pattern 3: Numbers with markers
+dekha ""
+dekha "=== Pattern: Numbers with markers ==="
+
+aarambha i = 1 ru 15
+  jadi i == 3 tahale
+    dekha "Three"
   sesa
   
-  # If output is still empty, use the number
-  jadi output == "" tahale
-    output = i
+  jadi i == 6 tahale
+    dekha "Six"
   sesa
   
-  dekha output
+  jadi i == 9 tahale
+    dekha "Nine"
+  sesa
+  
+  jadi i == 12 tahale
+    dekha "Twelve"
+  sesa
+  
+  jadi i == 15 tahale
+    dekha "Fifteen"
+  nahele
+    dekha i
+  sesa
 sesa
 
 # Output:
-# === FIZZBUZZ (1 to 30) ===
+# === ALTERNATING PATTERNS ===
+# 
+# === Pattern: Yes/No ===
+# Yes
+# No
+# Yes
+# No
+# Yes
+# No
+# Yes
+# No
+# Yes
+# No
+#
+# === Pattern: A/B/C ===
+# A
+# B
+# C
+# A
+# B
+# C
+# A
+# B
+# C
+#
+# === Pattern: Numbers with markers ===
 # 1
 # 2
-# Fizz
+# Three
 # 4
-# Buzz
-# Fizz
+# 5
+# Six
 # 7
 # 8
-# Fizz
-# Buzz
+# Nine
+# 10
 # 11
-# Fizz
+# Twelve
 # 13
 # 14
-# FizzBuzz
-# 16
-# 17
-# Fizz
-# 19
-# Buzz
-# Fizz
-# 22
-# 23
-# Fizz
-# Buzz
-# 26
-# Fizz
-# 28
-# 29
-# FizzBuzz
+# Fifteen

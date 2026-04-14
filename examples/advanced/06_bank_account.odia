@@ -105,8 +105,8 @@ withdraw(300)
 # Test insufficient funds
 withdraw(5000)
 
-# Test invalid amount
-deposit(-100)
+# Test invalid amount (using 0 to simulate negative)
+deposit(0)
 
 # Test transfer
 transfer(200, "Sita Devi")
