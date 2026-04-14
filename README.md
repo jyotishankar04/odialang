@@ -32,11 +32,21 @@ Odialang is a programming language designed to make coding accessible to Odia sp
 - Node.js >= 18.0.0
 - npm
 
+### Install from npm (Recommended)
+
+```bash
+# Install globally
+npm install -g odialang
+
+# Verify installation
+odia --help
+```
+
 ### Install from Source
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/yourusername/odialang.git
 cd Odialang
 
 # Install dependencies
@@ -47,6 +57,9 @@ npm run build
 
 # Link globally for `odia` command
 npm link
+
+# Or use directly without linking
+npm start -- --help
 ```
 
 ### Verify Installation
