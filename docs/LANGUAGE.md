@@ -66,12 +66,12 @@ Enclosed in double quotes:
 ```
 
 #### Number Literals
-Integers and decimals:
+Integers (whole numbers only):
 ```odia
 42
-3.14
 0
 1000
+2500
 ```
 
 #### Boolean Literals
@@ -93,7 +93,7 @@ micha   # false
 | `jadi` | if | Conditional check | `jadi x > 5 tahale` |
 | `tahale` | then | Start if block | `jadi x > 5 tahale` |
 | `nahele` | else | Alternative block | `nahele dekha "No"` |
-| `jebe` | while | Loop condition | `jebe x < 10 tahale` |
+| `jebe` | while | Loop condition | `jebe x < 10` |
 | `karya` | work/function | Function definition | `karya add(a, b)` |
 | `fera` | return | Return value | `fera a + b` |
 | `sesa` | end | Block terminator | `sesa` |
@@ -120,7 +120,7 @@ jadi <condition> tahale
 sesa
 
 # While Loop
-jebe <condition> tahale
+jebe <condition>
   <statements>
 sesa
 
@@ -148,12 +148,14 @@ dhara message = "Hello, Odia!"
 dhara empty = ""
 ```
 
-#### 2. Number (Integer and Float)
+#### 2. Number (Integer only)
 ```odia
 dhara count = 42          # Integer
-dhara price = 99.99       # Float
-dhara negative = -10      # Negative
+dhara year = 2026         # Integer
+dhara bigNumber = 1000    # Integer
 ```
+
+**Note:** Odialang currently supports integers only. Decimal numbers (like 3.14) and negative number literals (like -5) are not supported.
 
 #### 3. Boolean
 ```odia
@@ -295,14 +297,18 @@ sesa
 #### Nested If
 
 ```odia
+jadi x > 10 tahale
+  dekha "Greater than 10"
+sesa
+
+jadi x > 5 tahale
+  dekha "Between 6 and 10"
+sesa
+
 jadi x > 0 tahale
-  jadi x > 10 tahale
-    dekha "Greater than 10"
-  nahele
-    dekha "Between 1 and 10"
-  sesa
+  dekha "Between 1 and 5"
 nahele
-  dekha "Zero or negative"
+  dekha "Zero or less"
 sesa
 ```
 
@@ -315,7 +321,7 @@ Executes while condition is true:
 ```odia
 dhara count = 0
 
-jebe count < 5 tahale
+jebe count < 5
   dekha "Count: " + count
   count = count + 1
 sesa
@@ -346,7 +352,7 @@ Currently, Odialang doesn't have `break` or `continue`. Use conditionals:
 
 ```odia
 dhara i = 0
-jebe i < 10 tahale
+jebe i < 10
   jadi i == 5 tahale
     i = 10    # Force exit by setting condition false
   nahele
@@ -548,6 +554,21 @@ Unexpected character '@' at line 5, column 10
 File not found: /path/to/file.odia
 Unterminated string at line 3, column 15
 ```
+
+---
+
+## Current Limitations
+
+The following features are **not yet supported** in version 1.0.0:
+
+- **Decimal numbers** - Only integers (whole numbers) are supported
+- **Negative number literals** - Use `0 - 5` instead of `-5`
+- **Modulo operator (%)** - Use repeated subtraction or other methods
+- **While loop with `tahale`** - Use `jebe <condition>` without `tahale`
+- **Arrays/Lists** - Coming in future versions
+- **Objects/Dictionaries** - Coming in future versions
+- **String manipulation methods** - Coming in future versions
+- **Import/Module system** - Coming in future versions
 
 ---
 

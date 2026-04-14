@@ -113,7 +113,7 @@ sesa
 ```odia
 # While loop
 dhara count = 1
-jebe count <= 5 tahale
+jebe count <= 5
   dekha "Count: " + count
   count = count + 1
 sesa

@@ -107,13 +107,15 @@ dhara name = "Odia Language"
 dekha message + " " + name    # Joining strings
 ```
 
-#### 2. Numbers
+#### 2. Numbers (Integers only)
 ```odia
 dhara year = 2026
-dhara pi = 3.14
-dhara negative = -10
+dhara count = 42
+dhara bigNumber = 1000
 dekha year
 ```
+
+**Note:** Odialang currently supports integers only. Decimal numbers and negative literals are not supported.
 
 #### 3. Booleans (True/False)
 ```odia
@@ -156,7 +158,7 @@ dhara b = 3
 dekha "Addition: " + (a + b)        # 13
 dekha "Subtraction: " + (a - b)     # 7
 dekha "Multiplication: " + (a * b)  # 30
-dekha "Division: " + (a / b)        # 3.33...
+dekha "Division: " + (a / b)        # 3 (integer division)
 ```
 
 ### String Concatenation
@@ -239,9 +241,8 @@ sesa
 
 Write a program that:
 1. Takes a number
-2. Checks if it's positive, negative, or zero
-3. Checks if it's even or odd
-4. Displays appropriate messages
+2. Checks if it's greater than 10, between 5 and 10, or less than 5
+3. Displays appropriate messages for each range
 
 ---
 
@@ -255,7 +256,7 @@ Use `jebe` (while) to repeat actions:
 # Count from 1 to 5
 dhara count = 1
 
-jebe count <= 5 tahale
+jebe count <= 5
   dekha "Count: " + count
   count = count + 1
 sesa
@@ -276,7 +277,7 @@ Count: 5
 # Countdown from 10
 dhara timer = 10
 
-jebe timer > 0 tahale
+jebe timer > 0
   dekha "Time remaining: " + timer
   timer = timer - 1
 sesa
