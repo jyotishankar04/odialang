@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,9 +34,12 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", inter.variable, jetbrainsMono.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Navbar />
-        {children}
-        <Footer />
+        <TooltipProvider>
+          <Toaster />
+          <Navbar />
+          {children}
+          <Footer />
+        </TooltipProvider>
       </body>
     </html>
   );
