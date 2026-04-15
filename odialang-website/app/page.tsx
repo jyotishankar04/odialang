@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card,  CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CodeExample from "./components/CodeExample";
 import { BookOpen, Code2, Languages, Sparkles, Terminal, Check, Copy } from "lucide-react";
@@ -32,7 +32,7 @@ export default function Home() {
                 v1.0.1 is here!
               </Badge>
               <Link href="/docs/changelog/" className="text-sm text-muted-foreground hover:text-primary">
-                What's new? →
+                What&#39;s new? →
               </Link>
             </div>
 
