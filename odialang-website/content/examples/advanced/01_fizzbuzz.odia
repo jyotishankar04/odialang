@@ -1,0 +1,110 @@
+# Example 1: Alternating Patterns
+# Print alternating text patterns
+
+dekha "=== ALTERNATING PATTERNS ==="
+dekha ""
+
+# Pattern 1: Simple alternating
+dekha "=== Pattern: Yes/No ==="
+dhara counter1 = 1
+
+aarambha i = 1 ru 10
+  jadi counter1 == 1 tahale
+    dekha "Yes"
+    counter1 = 2
+  nahele
+    dekha "No"
+    counter1 = 1
+  sesa
+sesa
+
+# Pattern 2: Three-way alternating
+dekha ""
+dekha "=== Pattern: A/B/C ==="
+dhara counter2 = 1
+
+aarambha i = 1 ru 9
+  jadi counter2 == 1 tahale
+    dekha "A"
+    counter2 = 2
+  sesa
+  
+  jadi counter2 == 2 tahale
+    dekha "B"
+    counter2 = 3
+  nahele
+    dekha "C"
+    counter2 = 1
+  sesa
+sesa
+
+# Pattern 3: Numbers with markers
+dekha ""
+dekha "=== Pattern: Numbers with markers ==="
+
+aarambha i = 1 ru 15
+  jadi i == 3 tahale
+    dekha "Three"
+  sesa
+  
+  jadi i == 6 tahale
+    dekha "Six"
+  sesa
+  
+  jadi i == 9 tahale
+    dekha "Nine"
+  sesa
+  
+  jadi i == 12 tahale
+    dekha "Twelve"
+  sesa
+  
+  jadi i == 15 tahale
+    dekha "Fifteen"
+  nahele
+    dekha i
+  sesa
+sesa
+
+# Output:
+# === ALTERNATING PATTERNS ===
+# 
+# === Pattern: Yes/No ===
+# Yes
+# No
+# Yes
+# No
+# Yes
+# No
+# Yes
+# No
+# Yes
+# No
+#
+# === Pattern: A/B/C ===
+# A
+# B
+# C
+# A
+# B
+# C
+# A
+# B
+# C
+#
+# === Pattern: Numbers with markers ===
+# 1
+# 2
+# Three
+# 4
+# 5
+# Six
+# 7
+# 8
+# Nine
+# 10
+# 11
+# Twelve
+# 13
+# 14
+# Fifteen

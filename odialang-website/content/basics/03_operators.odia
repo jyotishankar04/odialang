@@ -1,0 +1,59 @@
+# Example 3: Operators
+# Arithmetic and comparison operations
+
+dhara a = 10
+dhara b = 3
+
+# Arithmetic operators
+dekha "=== Arithmetic Operators ==="
+dekha "a = " + a + ", b = " + b
+dekha "Addition: " + a + " + " + b + " = " + (a + b)
+dekha "Subtraction: " + a + " - " + b + " = " + (a - b)
+dekha "Multiplication: " + a + " * " + b + " = " + (a * b)
+dekha "Division: " + a + " / " + b + " = " + (a / b)
+
+# String concatenation
+dekha ""
+dekha "=== String Concatenation ==="
+dhara first = "Hello"
+dhara second = "World"
+dekha first + " " + second + "!"
+
+# Comparison operators
+dekha ""
+dekha "=== Comparison Operators ==="
+dekha "a > b: " + (a > b)
+dekha "a < b: " + (a < b)
+dekha "a == b: " + (a == b)
+dekha "a != b: " + (a != b)
+dekha "a >= b: " + (a >= b)
+dekha "a <= b: " + (a <= b)
+
+# Equal values
+dhara x = 5
+dhara y = 5
+dekha ""
+dekha "x = " + x + ", y = " + y
+dekha "x == y: " + (x == y)
+
+# Output:
+# === Arithmetic Operators ===
+# a = 10, b = 3
+# Addition: 10 + 3 = 13
+# Subtraction: 10 - 3 = 7
+# Multiplication: 10 * 3 = 30
+# Division: 10 / 3 = 3.333...
+# 
+# === String Concatenation ===
+# Hello World!
+#
+# === Comparison Operators ===
+# a > b: true
+# a < b: false
+# a == b: false
+# a != b: true
+# a >= b: true
+# a <= b: false
+#
+# x = 5, y = 5
+# x == y: true

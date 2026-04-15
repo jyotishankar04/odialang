@@ -1,0 +1,72 @@
+# Example 5: While Loop
+# Repeat actions with conditions
+
+# Count from 1 to 5
+dekha "=== Counting 1 to 5 ==="
+dhara count = 1
+
+jebe count <= 5
+  dekha "Count: " + count
+  count = count + 1
+sesa
+
+# Countdown
+dekha ""
+dekha "=== Countdown ==="
+dhara timer = 5
+
+jebe timer > 0
+  dekha "Time: " + timer
+  timer = timer - 1
+sesa
+
+dekha "Blast off!"
+
+# Sum of numbers 1 to 10
+dekha ""
+dekha "=== Sum of 1 to 10 ==="
+dhara sum = 0
+dhara num = 1
+
+jebe num <= 10
+  sum = sum + num
+  num = num + 1
+sesa
+
+dekha "Sum = " + sum
+
+# Print numbers doubled
+dekha ""
+dekha "=== Numbers doubled 1 to 10 ==="
+dhara i = 1
+
+jebe i <= 10
+  dhara doubled = i * 2
+  dekha i + " x 2 = " + doubled
+  i = i + 1
+sesa
+
+# Output:
+# === Counting 1 to 5 ===
+# Count: 1
+# Count: 2
+# Count: 3
+# Count: 4
+# Count: 5
+# 
+# === Countdown ===
+# Time: 5
+# Time: 4
+# Time: 3
+# Time: 2
+# Time: 1
+# Blast off!
+#
+# === Sum of 1 to 10 ===
+# Sum = 55
+#
+# === Numbers doubled 1 to 10 ===
+# 1 x 2 = 2
+# 2 x 2 = 4
+# 3 x 2 = 6
+# ...
