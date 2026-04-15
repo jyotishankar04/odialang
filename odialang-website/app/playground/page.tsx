@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Play, Download, Loader2, PanelRightClose, PanelRightOpen, Code, FileOutput, Network, GitBranch } from "lucide-react";
+import { Play, Download, Loader2, PanelRightClose, PanelRightOpen, Code, FileOutput, Network, GitBranch, GripVertical } from "lucide-react";
 
 // Dynamically import Monaco Editor to avoid SSR issues
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
@@ -85,6 +85,9 @@ function PlaygroundContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [showOutput, setShowOutput] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [panelWidth, setPanelWidth] = useState(320);
+  const [isResizing, setIsResizing] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (exampleParam && examples[exampleParam]) {
@@ -94,9 +97,11 @@ function PlaygroundContent() {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth < 768) {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
         setShowOutput(false);
+        setPanelWidth(window.innerWidth);
       }
     };
     checkMobile();
@@ -104,10 +109,44 @@ function PlaygroundContent() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsResizing(true);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isResizing || !containerRef.current || isMobile) return;
+      
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const newWidth = containerRect.right - e.clientX;
+      const minWidth = 200;
+      const maxWidth = containerRect.width * 0.6;
+      
+      setPanelWidth(Math.min(Math.max(newWidth, minWidth), maxWidth));
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    if (isResizing) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isResizing, isMobile]);
+
   const handleRun = async () => {
     setIsLoading(true);
     setActiveTab("output");
-    setShowOutput(true);
+    if (!showOutput && !isMobile) {
+      setShowOutput(true);
+    }
     
     setTimeout(() => {
       setOutput(`Namaskar, Odia!
@@ -201,6 +240,22 @@ This playground shows the compiled JavaScript.`);
             </SelectContent>
           </Select>
           
+          {!isMobile && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowOutput(!showOutput)}
+              className="text-muted-foreground hover:text-foreground"
+              title={showOutput ? "Hide output" : "Show output"}
+            >
+              {showOutput ? (
+                <PanelRightClose className="h-4 w-4" />
+              ) : (
+                <PanelRightOpen className="h-4 w-4" />
+              )}
+            </Button>
+          )}
+          
           {isMobile && (
             <Button
               variant="outline"
@@ -247,35 +302,81 @@ This playground shows the compiled JavaScript.`);
       </div>
 
       {/* Editor and Output */}
-      <div className="flex flex-1 overflow-hidden">
+      <div ref={containerRef} className="flex flex-1 overflow-hidden">
         {/* Editor */}
-        <div className={`flex-1 ${showOutput && !isMobile ? 'border-r border-border' : ''} ${!showOutput ? 'w-full' : ''}`}>
-          <MonacoEditor
-            height="100%"
-            language="odialang"
-            theme="odialang-dark"
-            value={code}
-            onChange={(value) => setCode(value || "")}
-            beforeMount={handleEditorMount}
-            options={{
-              minimap: { enabled: false },
-              fontSize: 13,
-              fontFamily: "JetBrains Mono, monospace",
-              lineNumbers: "on",
-              roundedSelection: false,
-              scrollBeyondLastLine: false,
-              readOnly: false,
-              automaticLayout: true,
-              padding: { top: 12 },
-              wordWrap: "on",
-              lineNumbersMinChars: 3,
-            }}
-          />
-        </div>
+        {showOutput && !isMobile && (
+          <div 
+            className="relative"
+            style={{ width: `calc(100% - ${panelWidth}px)` }}
+          >
+            <MonacoEditor
+              height="100%"
+              language="odialang"
+              theme="odialang-dark"
+              value={code}
+              onChange={(value) => setCode(value || "")}
+              beforeMount={handleEditorMount}
+              options={{
+                minimap: { enabled: false },
+                fontSize: 13,
+                fontFamily: "JetBrains Mono, monospace",
+                lineNumbers: "on",
+                roundedSelection: false,
+                scrollBeyondLastLine: false,
+                readOnly: false,
+                automaticLayout: true,
+                padding: { top: 12 },
+                wordWrap: "on",
+                lineNumbersMinChars: 3,
+              }}
+            />
+          </div>
+        )}
+
+        {(!showOutput || isMobile) && (
+          <div className="flex-1">
+            <MonacoEditor
+              height="100%"
+              language="odialang"
+              theme="odialang-dark"
+              value={code}
+              onChange={(value) => setCode(value || "")}
+              beforeMount={handleEditorMount}
+              options={{
+                minimap: { enabled: false },
+                fontSize: 13,
+                fontFamily: "JetBrains Mono, monospace",
+                lineNumbers: "on",
+                roundedSelection: false,
+                scrollBeyondLastLine: false,
+                readOnly: false,
+                automaticLayout: true,
+                padding: { top: 12 },
+                wordWrap: "on",
+                lineNumbersMinChars: 3,
+              }}
+            />
+          </div>
+        )}
+
+        {/* Resizer */}
+        {showOutput && !isMobile && (
+          <div
+            className={`w-1 cursor-col-resize bg-border hover:bg-primary transition-colors flex items-center justify-center ${
+              isResizing ? 'bg-primary' : ''
+            }`}
+            onMouseDown={handleMouseDown}
+          >
+            <GripVertical className="h-4 w-4 text-muted-foreground opacity-50" />
+          </div>
+        )}
 
         {/* Output Panel - hidden on mobile unless toggled */}
         {showOutput && (
-          <div className={`${isMobile ? 'fixed inset-0 z-50 bg-background' : 'w-full sm:w-80 md:w-96'} flex flex-col`}>
+          <div 
+            className={`${isMobile ? 'fixed inset-0 z-50 bg-background' : ''} flex flex-col`}
+            style={isMobile ? {} : { width: panelWidth }}
+          >
             {isMobile && (
               <div className="flex items-center justify-between border-b border-border px-3 py-2">
                 <span className="text-sm font-medium">Output</span>
