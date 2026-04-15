@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Play, Download, Loader2 } from "lucide-react";
+import { Play, Download, Loader2, PanelRightClose, PanelRightOpen, Code, FileOutput, Network, GitBranch } from "lucide-react";
 
 // Dynamically import Monaco Editor to avoid SSR issues
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
@@ -83,6 +83,8 @@ function PlaygroundContent() {
   const [output, setOutput] = useState("");
   const [activeTab, setActiveTab] = useState("output");
   const [isLoading, setIsLoading] = useState(false);
+  const [showOutput, setShowOutput] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (exampleParam && examples[exampleParam]) {
@@ -90,11 +92,23 @@ function PlaygroundContent() {
     }
   }, [exampleParam]);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth < 768) {
+        setShowOutput(false);
+      }
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleRun = async () => {
     setIsLoading(true);
     setActiveTab("output");
+    setShowOutput(true);
     
-    // Simulate compilation/execution
     setTimeout(() => {
       setOutput(`Namaskar, Odia!
 Welcome to Odialang!
@@ -115,7 +129,6 @@ This playground shows the compiled JavaScript.`);
   };
 
   const handleEditorMount = (monaco: any) => {
-    // Register Odialang language
     monaco.languages.register({ id: "odialang", extensions: [".odia"] });
     
     monaco.languages.setMonarchTokensProvider("odialang", {
@@ -164,10 +177,10 @@ This playground shows the compiled JavaScript.`);
   };
 
   return (
-    <div className="flex h-[calc(100vh-4rem)] flex-col">
+    <div className="flex flex-col h-[calc(100vh-4rem)]">
       {/* Toolbar */}
-      <div className="flex items-center justify-between border-b border-white/10 bg-[#0a0a0a] px-4 py-3">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-border bg-background px-3 py-3">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Select
             value={exampleParam || ""}
             onValueChange={(value) => {
@@ -176,10 +189,10 @@ This playground shows the compiled JavaScript.`);
               }
             }}
           >
-            <SelectTrigger className="w-[180px] bg-white/5 border-white/10 text-zinc-300">
-              <SelectValue placeholder="Load example..." />
+            <SelectTrigger className="w-[140px] sm:w-[180px] text-xs sm:text-sm">
+              <SelectValue placeholder="Load..." />
             </SelectTrigger>
-            <SelectContent className="bg-[#1a1a1a] border-white/10">
+            <SelectContent>
               <SelectItem value="hello">Hello World</SelectItem>
               <SelectItem value="variables">Variables</SelectItem>
               <SelectItem value="conditionals">Conditionals</SelectItem>
@@ -187,31 +200,48 @@ This playground shows the compiled JavaScript.`);
               <SelectItem value="functions">Functions</SelectItem>
             </SelectContent>
           </Select>
+          
+          {isMobile && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowOutput(!showOutput)}
+              className="ml-auto"
+            >
+              {showOutput ? (
+                <PanelRightClose className="h-4 w-4" />
+              ) : (
+                <PanelRightOpen className="h-4 w-4" />
+              )}
+            </Button>
+          )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
           <Button
             variant="outline"
             size="sm"
             onClick={handleDownload}
-            className="border-white/10 bg-white/5 hover:bg-white/10"
+            className="text-xs sm:text-sm"
           >
-            <Download className="mr-2 h-4 w-4" />
-            Download
+            <Download className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden sm:inline">Download</span>
+            <span className="sm:hidden">DL</span>
           </Button>
           
           <Button
             size="sm"
             onClick={handleRun}
             disabled={isLoading}
-            className="bg-pink-500 hover:bg-pink-600 text-white"
+            className="text-xs sm:text-sm"
           >
             {isLoading ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 animate-spin" />
             ) : (
-              <Play className="mr-2 h-4 w-4" />
+              <Play className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
             )}
-            {isLoading ? "Running..." : "Run"}
+            <span className="hidden sm:inline">{isLoading ? "Running..." : "Run"}</span>
+            <span className="sm:hidden">{isLoading ? "..." : "Run"}</span>
           </Button>
         </div>
       </div>
@@ -219,7 +249,7 @@ This playground shows the compiled JavaScript.`);
       {/* Editor and Output */}
       <div className="flex flex-1 overflow-hidden">
         {/* Editor */}
-        <div className="flex-1 border-r border-white/10">
+        <div className={`flex-1 ${showOutput && !isMobile ? 'border-r border-border' : ''} ${!showOutput ? 'w-full' : ''}`}>
           <MonacoEditor
             height="100%"
             language="odialang"
@@ -229,65 +259,80 @@ This playground shows the compiled JavaScript.`);
             beforeMount={handleEditorMount}
             options={{
               minimap: { enabled: false },
-              fontSize: 14,
+              fontSize: 13,
               fontFamily: "JetBrains Mono, monospace",
               lineNumbers: "on",
               roundedSelection: false,
               scrollBeyondLastLine: false,
               readOnly: false,
               automaticLayout: true,
-              padding: { top: 16 },
+              padding: { top: 12 },
+              wordWrap: "on",
+              lineNumbersMinChars: 3,
             }}
           />
         </div>
 
-        {/* Output Panel */}
-        <div className="flex w-96 flex-col bg-[#0d1117]">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="w-full rounded-none border-b border-white/10 bg-transparent p-0">
-              {["output", "javascript", "tokens", "ast"].map((tab) => (
-                <TabsTrigger
-                  key={tab}
-                  value={tab}
-                  className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-pink-500 data-[state=active]:bg-transparent data-[state=active]:text-white text-zinc-500 text-xs"
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+        {/* Output Panel - hidden on mobile unless toggled */}
+        {showOutput && (
+          <div className={`${isMobile ? 'fixed inset-0 z-50 bg-background' : 'w-full sm:w-80 md:w-96'} flex flex-col`}>
+            {isMobile && (
+              <div className="flex items-center justify-between border-b border-border px-3 py-2">
+                <span className="text-sm font-medium">Output</span>
+                <Button variant="ghost" size="sm" onClick={() => setShowOutput(false)}>
+                  <PanelRightClose className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
+              <TabsList className="w-full rounded-none border-b border-border bg-transparent p-0 justify-start">
+                <TabsTrigger value="output" className="text-xs px-2 sm:px-4 data-[state=active]:border-b-2" >
+                  <FileOutput className="h-3 w-3 sm:mr-1" />
+                  <span className="hidden sm:inline">Output</span>
                 </TabsTrigger>
-              ))}
-            </TabsList>
-            
-            <TabsContent value="output" className="m-0 p-4">
-              <pre className="font-mono text-sm text-zinc-300">
-                {output || "Click 'Run' to see output"}
-              </pre>
-            </TabsContent>
-            
-            <TabsContent value="javascript" className="m-0 p-4">
-              <pre className="font-mono text-sm text-zinc-400">
-                {`// Compiled JavaScript will appear here
-// This feature requires the compiler backend
+                <TabsTrigger value="javascript" className="text-xs px-2 sm:px-4 data-[state=active]:border-b-2">
+                  <Code className="h-3 w-3 sm:mr-1" />
+                  <span className="hidden sm:inline">JS</span>
+                </TabsTrigger>
+                <TabsTrigger value="tokens" className="text-xs px-2 sm:px-4 data-[state=active]:border-b-2">
+                  <Network className="h-3 w-3 sm:mr-1" />
+                  <span className="hidden sm:inline">Tokens</span>
+                </TabsTrigger>
+                <TabsTrigger value="ast" className="text-xs px-2 sm:px-4 data-[state=active]:border-b-2">
+                  <GitBranch className="h-3 w-3 sm:mr-1" />
+                  <span className="hidden sm:inline">AST</span>
+                </TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="output" className="flex-1 m-0 p-3 overflow-auto">
+                <pre className="font-mono text-xs sm:text-sm text-foreground whitespace-pre-wrap">
+                  {output || "Click 'Run' to see output"}
+                </pre>
+              </TabsContent>
+              
+              <TabsContent value="javascript" className="flex-1 m-0 p-3 overflow-auto">
+                <pre className="font-mono text-xs sm:text-sm text-muted-foreground whitespace-pre-wrap">{`// Compiled JavaScript
+// Backend required for execution
 
-// Example output:
 let message = "Hello, Odia!";
 console.log(message);`}
-              </pre>
-            </TabsContent>
-            
-            <TabsContent value="tokens" className="m-0 p-4">
-              <pre className="font-mono text-xs text-zinc-500">
-                {`Tokens will be displayed here
-showing the lexical analysis`}
-              </pre>
-            </TabsContent>
-            
-            <TabsContent value="ast" className="m-0 p-4">
-              <pre className="font-mono text-xs text-zinc-500">
-                {`Abstract Syntax Tree will be
-displayed here`}
-              </pre>
-            </TabsContent>
-          </Tabs>
-        </div>
+                </pre>
+              </TabsContent>
+              
+              <TabsContent value="tokens" className="flex-1 m-0 p-3 overflow-auto">
+                <pre className="font-mono text-xs text-muted-foreground whitespace-pre-wrap">{`// Token analysis
+// Available in full version`}
+                </pre>
+              </TabsContent>
+              
+              <TabsContent value="ast" className="flex-1 m-0 p-3 overflow-auto">
+                <pre className="font-mono text-xs text-muted-foreground whitespace-pre-wrap">{`// AST viewer
+// Available in full version`}
+                </pre>
+              </TabsContent>
+            </Tabs>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -297,7 +342,7 @@ export default function PlaygroundPage() {
   return (
     <Suspense fallback={
       <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
-        <div className="text-zinc-500">Loading playground...</div>
+        <div className="text-muted-foreground">Loading playground...</div>
       </div>
     }>
       <PlaygroundContent />

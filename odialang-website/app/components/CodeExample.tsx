@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const codeExamples = [
   {
@@ -59,18 +61,42 @@ export default function CodeExample() {
   const [activeTab, setActiveTab] = useState("hello");
   const activeExample = codeExamples.find((ex) => ex.id === activeTab);
 
+  const highlightLine = (line: string) => {
+    const keywords = ["dhara", "dekha", "jadi", "tahale", "nahele", "jebe", "karya", "fera", "sesa", "aarambha", "ru", "kar"];
+    
+    if (line.startsWith("#")) {
+      return <span className="text-muted-foreground">{line}</span>;
+    }
+    
+    return line.split(" ").map((word, j) => {
+      if (keywords.includes(word)) {
+        return <span key={j} className="text-primary">{word} </span>;
+      }
+      if (word === "sata" || word === "micha") {
+        return <span key={j} className="text-blue-400">{word} </span>;
+      }
+      if (!isNaN(Number(word))) {
+        return <span key={j} className="text-blue-400">{word} </span>;
+      }
+      if (word.startsWith('"') && word.endsWith('"')) {
+        return <span key={j} className="text-green-400">{word} </span>;
+      }
+      return <span key={j}>{word} </span>;
+    });
+  };
+
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="mx-auto max-w-4xl px-4">
       {/* Tabs */}
       <div className="mb-4 flex flex-wrap gap-2">
         {codeExamples.map((example) => (
           <button
             key={example.id}
             onClick={() => setActiveTab(example.id)}
-            className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+            className={`rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all ${
               activeTab === example.id
-                ? "bg-pink-500 text-white"
-                : "bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white"
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
             }`}
           >
             {example.label}
@@ -84,56 +110,31 @@ export default function CodeExample() {
           <div className="dot dot-red" />
           <div className="dot dot-yellow" />
           <div className="dot dot-green" />
-          <span className="ml-2 text-xs text-zinc-500">example.odia</span>
+          <span className="ml-2 text-xs text-muted-foreground">example.odia</span>
         </div>
-        <div className="relative bg-[#0d1117]">
-          <pre className="overflow-x-auto p-6 text-sm">
-            <code className="font-mono text-zinc-300">
+        <div className="relative bg-card">
+          <pre className="overflow-x-auto p-4 sm:p-6 text-xs sm:text-sm">
+            <code className="font-mono text-foreground">
               {activeExample?.code.split("\n").map((line, i) => (
-                <div key={i} className="table-row">
-                  <span className="table-cell select-none pr-4 text-right text-zinc-600">
+                <div key={i} className="flex">
+                  <span className="select-none pr-3 sm:pr-4 text-muted-foreground/50 text-right w-6 sm:w-8 flex-shrink-0">
                     {i + 1}
                   </span>
-                  <span className="table-cell">
-                    {line.startsWith("#") ? (
-                      <span className="text-zinc-500">{line}</span>
-                    ) : (
-                      line.split(" ").map((word, j) => {
-                        // Simple syntax highlighting
-                        const keywords = ["dhara", "dekha", "jadi", "tahale", "nahele", "jebe", "karya", "fera", "sesa", "aarambha", "ru", "kar"];
-                        const strings = line.match(/"[^"]*"/g) || [];
-                        
-                        if (keywords.includes(word)) {
-                          return <span key={j} className="text-pink-400">{word} </span>;
-                        }
-                        if (word === "sata" || word === "micha") {
-                          return <span key={j} className="text-blue-400">{word} </span>;
-                        }
-                        if (!isNaN(Number(word))) {
-                          return <span key={j} className="text-blue-400">{word} </span>;
-                        }
-                        if (word.startsWith('"') && word.endsWith('"')) {
-                          return <span key={j} className="text-green-400">{word} </span>;
-                        }
-                        return <span key={j}>{word} </span>;
-                      })
-                    )}
-                  </span>
+                  <span className="flex-1 whitespace-pre">{highlightLine(line)}</span>
                 </div>
               ))}
             </code>
           </pre>
-          <div className="absolute right-4 top-4">
-            <a
-              href={`/playground/?example=${activeTab}`}
-              className="inline-flex items-center gap-2 rounded-lg bg-pink-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-pink-600"
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Run in Playground
-            </a>
+          <div className="absolute right-2 sm:right-4 top-2 sm:top-4">
+            <Link href={`/playground/?example=${activeTab}`}>
+              <Button size="sm" className="text-xs">
+                <svg className="mr-1.5 h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="hidden sm:inline">Run</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
