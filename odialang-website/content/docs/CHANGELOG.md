@@ -166,4 +166,4 @@ Example:
 
 ---
 
-For the complete commit history, see [GitHub commits](https://github.com/devsuvam/odialang/commits/main).
+For the complete commit history, see [GitHub commits](https://github.com/jyotishankar04/odialang/commits/main).
