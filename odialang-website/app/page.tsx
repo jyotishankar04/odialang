@@ -12,34 +12,34 @@ export default function Home() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 pb-24 sm:px-6 lg:px-8">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-pink-500/5 via-transparent to-transparent" />
+        {/* Background gradient using primary color */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
         
         <div className="relative mx-auto max-w-7xl">
           <div className="text-center">
             {/* Badge */}
             <div className="mb-8 inline-flex items-center gap-2">
-              <Badge variant="secondary" className="bg-pink-500/10 text-pink-400 border-pink-500/20">
-                <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-pink-500" />
+              <Badge variant="outline" className="border-primary/30 text-primary">
+                <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
                 v1.0.1 is here!
               </Badge>
-              <Link href="/docs/changelog/" className="text-sm text-pink-400 hover:text-pink-300">
+              <Link href="/docs/changelog/" className="text-sm text-muted-foreground hover:text-primary">
                 What's new? →
               </Link>
             </div>
 
             {/* Main heading */}
-            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Write code in{" "}
               <span className="gradient-text">Odia</span>
             </h1>
-            <p className="mx-auto mt-2 max-w-2xl text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <p className="mx-auto mt-2 max-w-2xl text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
               Compiles to JavaScript
             </p>
 
             {/* Description */}
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-              Odialang is a programming language that uses <strong className="text-white">Odia (Oriya) keywords</strong>. 
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+              Odialang is a programming language that uses <strong className="text-foreground">Odia (Oriya) keywords</strong>. 
               Write programs in your native language and run them anywhere JavaScript runs.
             </p>
 
@@ -50,14 +50,14 @@ export default function Home() {
                   <div className="dot dot-red" />
                   <div className="dot dot-yellow" />
                   <div className="dot dot-green" />
-                  <span className="ml-2 text-xs text-zinc-500">terminal</span>
+                  <span className="ml-2 text-xs text-muted-foreground">terminal</span>
                 </div>
-                <div className="flex items-center justify-between bg-[#0d1117] px-4 py-3">
-                  <code className="font-mono text-sm text-zinc-300">
+                <div className="flex items-center justify-between bg-card px-4 py-3">
+                  <code className="font-mono text-sm text-foreground">
                     npm install -g @devsuvam/odialang
                   </code>
                   <button 
-                    className="rounded-md p-1.5 text-zinc-500 hover:bg-white/5 hover:text-zinc-300"
+                    className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
                     onClick={() => navigator.clipboard.writeText('npm install -g @devsuvam/odialang')}
                     title="Copy to clipboard"
                   >
@@ -72,7 +72,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/playground/">
-                <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white">
+                <Button size="lg">
                   Try Playground
                 </Button>
               </Link>
@@ -92,25 +92,25 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="border-t border-white/10 px-4 py-24 sm:px-6 lg:px-8">
+      <section className="border-t border-border px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Why Odialang?
             </h2>
-            <p className="mt-4 text-lg text-zinc-400">
+            <p className="mt-4 text-lg text-muted-foreground">
               Programming should be accessible to everyone, in every language.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <Card key={feature.title} className="bg-white/5 border-white/10 hover:border-pink-500/30 transition-colors">
+              <Card key={feature.title} className="hover:border-primary/30 transition-colors">
                 <CardHeader>
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-600/20 text-pink-400">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     {feature.icon}
                   </div>
-                  <CardTitle className="text-white">{feature.title}</CardTitle>
+                  <CardTitle>{feature.title}</CardTitle>
                   <CardDescription>{feature.description}</CardDescription>
                 </CardHeader>
               </Card>
@@ -120,14 +120,14 @@ export default function Home() {
       </section>
 
       {/* Example Programs Preview */}
-      <section className="border-t border-white/10 px-4 py-24 sm:px-6 lg:px-8">
+      <section className="border-t border-border px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row mb-12">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 Example Programs
               </h2>
-              <p className="mt-2 text-lg text-zinc-400">
+              <p className="mt-2 text-lg text-muted-foreground">
                 From Hello World to complex algorithms
               </p>
             </div>
@@ -141,15 +141,15 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {examplePreviews.map((example) => (
               <Link key={example.title} href={`/playground/?example=${example.id}`}>
-                <Card className="bg-white/5 border-white/10 hover:border-pink-500/30 transition-all cursor-pointer h-full">
+                <Card className="hover:border-primary/30 transition-all cursor-pointer h-full">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <Badge variant="secondary" className="bg-pink-500/10 text-pink-400">
+                      <Badge variant="secondary">
                         {example.level}
                       </Badge>
-                      <Sparkles className="h-5 w-5 text-zinc-500" />
+                      <Sparkles className="h-5 w-5 text-muted-foreground" />
                     </div>
-                    <CardTitle className="text-white mt-4">{example.title}</CardTitle>
+                    <CardTitle className="mt-4">{example.title}</CardTitle>
                     <CardDescription>{example.description}</CardDescription>
                   </CardHeader>
                 </Card>
@@ -160,17 +160,17 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-white/10 px-4 py-24 sm:px-6 lg:px-8">
+      <section className="border-t border-border px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Ready to start coding in Odia?
           </h2>
-          <p className="mt-4 text-lg text-zinc-400">
+          <p className="mt-4 text-lg text-muted-foreground">
             Join the growing community of developers writing code in their native language.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/playground/">
-              <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white">
+              <Button size="lg">
                 Launch Playground
               </Button>
             </Link>
