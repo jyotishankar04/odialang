@@ -13,6 +13,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Play, Download, Loader2, PanelRightClose, PanelRightOpen, Code, FileOutput, Network, GitBranch, GripVertical } from "lucide-react";
+import { compile, execute, tokenize } from "@/lib/compiler";
+import { examplesData } from "@/lib/examples-data";
 
 // Dynamically import Monaco Editor to avoid SSR issues
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
@@ -81,6 +83,9 @@ function PlaygroundContent() {
   
   const [code, setCode] = useState(defaultCode);
   const [output, setOutput] = useState("");
+  const [compiledJs, setCompiledJs] = useState("");
+  const [tokens, setTokens] = useState("");
+  const [ast, setAst] = useState("");
   const [activeTab, setActiveTab] = useState("output");
   const [isLoading, setIsLoading] = useState(false);
   const [showOutput, setShowOutput] = useState(true);
@@ -90,8 +95,12 @@ function PlaygroundContent() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (exampleParam && examples[exampleParam]) {
+    if (!exampleParam) return;
+    
+    if (examples[exampleParam]) {
       setCode(examples[exampleParam]);
+    } else if (examplesData[exampleParam]) {
+      setCode(examplesData[exampleParam].code);
     }
   }, [exampleParam]);
 
@@ -148,14 +157,34 @@ function PlaygroundContent() {
       setShowOutput(true);
     }
     
-    setTimeout(() => {
-      setOutput(`Namaskar, Odia!
-Welcome to Odialang!
-
-[Note: Full execution requires Node.js backend]
-This playground shows the compiled JavaScript.`);
+    const compileResult = compile(code);
+    if (!compileResult.success) {
+      setOutput(`Error: ${compileResult.error}`);
+      setCompiledJs("");
+      setTokens("");
+      setAst("");
       setIsLoading(false);
-    }, 500);
+      return;
+    }
+    
+    setCompiledJs(compileResult.output);
+    
+    try {
+      const tokenList = tokenize(code);
+      setTokens(JSON.stringify(tokenList, null, 2));
+    } catch {
+      setTokens("Error generating tokens");
+    }
+    
+    const execResult = execute(code);
+    if (execResult.success) {
+      setOutput(execResult.output || "(no output)");
+    } else {
+      setOutput(`Error: ${execResult.error}`);
+    }
+    
+    setAst(`// AST generation available in full version`);
+    setIsLoading(false);
   };
 
   const handleDownload = () => {
@@ -412,23 +441,20 @@ This playground shows the compiled JavaScript.`);
               </TabsContent>
               
               <TabsContent value="javascript" className="flex-1 m-0 p-3 overflow-auto">
-                <pre className="font-mono text-xs sm:text-sm text-muted-foreground whitespace-pre-wrap">{`// Compiled JavaScript
-// Backend required for execution
-
-let message = "Hello, Odia!";
-console.log(message);`}
+                <pre className="font-mono text-xs sm:text-sm text-muted-foreground whitespace-pre-wrap">
+                  {compiledJs || `// Click 'Run' to see compiled JavaScript`}
                 </pre>
               </TabsContent>
               
               <TabsContent value="tokens" className="flex-1 m-0 p-3 overflow-auto">
-                <pre className="font-mono text-xs text-muted-foreground whitespace-pre-wrap">{`// Token analysis
-// Available in full version`}
+                <pre className="font-mono text-xs text-muted-foreground whitespace-pre-wrap">
+                  {tokens || `// Click 'Run' to see tokens`}
                 </pre>
               </TabsContent>
               
               <TabsContent value="ast" className="flex-1 m-0 p-3 overflow-auto">
-                <pre className="font-mono text-xs text-muted-foreground whitespace-pre-wrap">{`// AST viewer
-// Available in full version`}
+                <pre className="font-mono text-xs text-muted-foreground whitespace-pre-wrap">
+                  {ast || `// Click 'Run' to see AST`}
                 </pre>
               </TabsContent>
             </Tabs>

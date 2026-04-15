@@ -1,13 +1,21 @@
 'use client';
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CodeExample from "./components/CodeExample";
-import { BookOpen, Code2, Languages, Sparkles, Terminal } from "lucide-react";
+import { BookOpen, Code2, Languages, Sparkles, Terminal, Check, Copy } from "lucide-react";
 
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText('npm install -g @devsuvam/odialang');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
     <main className="flex-1">
       {/* Hero Section */}
@@ -39,7 +47,7 @@ export default function Home() {
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Odialang is a programming language that uses <strong className="text-foreground">Odia (Oriya) keywords</strong>. 
+              Odialang is a <a href="https://github.com/jyotishankar04/Odialang" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-300 underline">toy language project</a> that uses Odia (Oriya) keywords. 
               Write programs in your native language and run them anywhere JavaScript runs.
             </p>
 
@@ -58,12 +66,14 @@ export default function Home() {
                   </code>
                   <button 
                     className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
-                    onClick={() => navigator.clipboard.writeText('npm install -g @devsuvam/odialang')}
+                    onClick={handleCopy}
                     title="Copy to clipboard"
                   >
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
+                    {copied ? (
+                      <Check className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -175,7 +185,7 @@ export default function Home() {
               </Button>
             </Link>
             <a 
-              href="https://github.com/devsuvam/odialang" 
+              href="https://github.com/jyotishankar04/odialang" 
               target="_blank"
               rel="noopener noreferrer"
             >
