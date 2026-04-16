@@ -134,6 +134,28 @@ export function tokenize(input: string): Token[] {
             `Unterminated string at line ${startLine}, column ${startColumn}`,
           );
         }
+
+        if (peek() === "\\") {
+          advance();
+          const escaped = peek();
+          if (escaped === '"') {
+            value += '"';
+            advance();
+          } else if (escaped === "\\") {
+            value += "\\";
+            advance();
+          } else if (escaped === "n") {
+            value += "\n";
+            advance();
+          } else if (escaped === "t") {
+            value += "\t";
+            advance();
+          } else {
+            value += "\\";
+          }
+          continue;
+        }
+
         value += advance();
       }
 
