@@ -1,0 +1,46 @@
+# String Operations
+# Learn about working with text in Odialang
+
+# Basic string concatenation
+dhara firstName = "Rama"
+dhara lastName = "Das"
+dhara fullName = firstName + " " + lastName
+dekha "Name: " + fullName
+
+# String with numbers
+dhara age = 25
+dekha "Age: " + age
+
+# String multiplication (repeat)
+dhara line = "-"
+dhara border = line + line + line + line + line
+dekha border
+dekha "| Welcome |"
+dekha border
+
+# Multi-line strings
+dhara poem = "ଓଡ଼ିଆ ଭାଷା
+ଓଡ଼ିଆ ଭାଷା ଅତି ପ୍ରାଚୀନ
+ଏହା ଭାରତର ରତ୍ନ"
+dekha poem
+
+# String with escape sequences
+dhara quote = "He said \"Namaste\" to everyone"
+dekha quote
+
+dhara path = "C:\\Users\\Documents"
+dekha "Path: " + path
+
+# String concatenation chain
+dekha "Hello" + ", " + "World" + "!"
+
+# Output:
+# Name: Rama Das
+# Age: 25
+# -----
+# | Welcome |
+# -----
+# ଓଡ଼ିଆ ଭାଷା ଅତି ପ୍ରାଚୀନ...
+# He said "Namaste" to everyone
+# Path: C:\Users\Documents
+# Hello, World!

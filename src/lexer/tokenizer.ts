@@ -115,7 +115,7 @@ export function tokenize(input: string): Token[] {
       advance();
       continue;
     }
-    if (["+", "-", "*", "/"].includes(char ?? "")) {
+    if (["+", "-", "*", "/", "%"].includes(char ?? "")) {
       addToken(TokenType.ARITHMETIC_OPERATOR, char ?? "", line, column);
       advance();
       continue;
@@ -129,11 +129,27 @@ export function tokenize(input: string): Token[] {
       let value = "";
 
       while (current < input.length && peek() !== '"') {
-        if (peek() === "\n") {
-          throw new Error(
-            `Unterminated string at line ${startLine}, column ${startColumn}`,
-          );
+        if (peek() === "\\") {
+          advance();
+          const escaped = peek();
+          if (escaped === '"') {
+            value += '"';
+            advance();
+          } else if (escaped === "\\") {
+            value += "\\";
+            advance();
+          } else if (escaped === "n") {
+            value += "\n";
+            advance();
+          } else if (escaped === "t") {
+            value += "\t";
+            advance();
+          } else {
+            value += "\\";
+          }
+          continue;
         }
+
         value += advance();
       }
 
@@ -155,6 +171,13 @@ export function tokenize(input: string): Token[] {
 
       while (current < input.length && isDigit(peek())) {
         value += advance();
+      }
+
+      if (peek() === "." && peek(1) !== undefined && isDigit(peek(1))) {
+        value += advance();
+        while (current < input.length && isDigit(peek())) {
+          value += advance();
+        }
       }
 
       addToken(TokenType.NUMBER, Number(value), startLine, startColumn);

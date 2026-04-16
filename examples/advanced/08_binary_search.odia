@@ -1,0 +1,177 @@
+# Binary Search
+# Efficient searching in sorted data
+
+# Note: Binary search requires arrays. This example shows
+# the algorithm concept with manual comparisons.
+
+# Binary search simulation for 4 numbers
+karya binarySearch4(target, n1, n2, n3, n4)
+  dekha "Searching for " + target + " in [" + n1 + ", " + n2 + ", " + n3 + ", " + n4 + "]"
+  
+  dhara found = micha
+  dhara position = -1
+  
+  # Check each position sequentially
+  jadi n1 == target tahale
+    found = sata
+    position = 1
+    dekha "Found at position 1!"
+  sesa
+  
+  jadi found == micha tahale
+    jadi n2 == target tahale
+      found = sata
+      position = 2
+      dekha "Found at position 2!"
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n3 == target tahale
+      found = sata
+      position = 3
+      dekha "Found at position 3!"
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n4 == target tahale
+      found = sata
+      position = 4
+      dekha "Found at position 4!"
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    dekha target + " not found"
+  sesa
+sesa
+
+dekha "=== Binary Search ==="
+binarySearch4(7, 1, 4, 7, 10)
+dekha ""
+binarySearch4(3, 1, 4, 7, 10)
+dekha ""
+binarySearch4(10, 1, 4, 7, 10)
+
+# Linear search simulation
+karya linearSearch(target, n1, n2, n3, n4, n5)
+  dekha "Linear search for " + target
+  
+  dhara found = micha
+  
+  jadi n1 == target tahale
+    dekha "Found at position 1!"
+    found = sata
+  sesa
+  
+  jadi found == micha tahale
+    jadi n2 == target tahale
+      dekha "Found at position 2!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n3 == target tahale
+      dekha "Found at position 3!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n4 == target tahale
+      dekha "Found at position 4!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n5 == target tahale
+      dekha "Found at position 5!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    dekha target + " not found"
+  sesa
+sesa
+
+dekha ""
+dekha "=== Linear Search ==="
+linearSearch(8, 3, 8, 5, 9, 2)
+dekha ""
+linearSearch(7, 3, 8, 5, 9, 2)
+
+# Compare search times (simulation)
+karya compareSearch(size)
+  dekha "Searching in " + size + " elements:"
+  dekha "Linear search: ~" + size + " comparisons worst case"
+  dhara logSize = 0
+  dhara temp = size
+  jebe temp > 1
+    temp = temp / 2
+    logSize = logSize + 1
+  sesa
+  dekha "Binary search: ~" + logSize + " comparisons worst case"
+sesa
+
+dekha ""
+dekha "=== Search Efficiency ==="
+compareSearch(1000)
+dekha ""
+compareSearch(1000000)
+
+# Find min and max
+karya findMinMax(a, b, c)
+  dhara minVal = a
+  dhara maxVal = a
+  
+  jadi b < minVal tahale
+    minVal = b
+  sesa
+  jadi c < minVal tahale
+    minVal = c
+  sesa
+  
+  jadi b > maxVal tahale
+    maxVal = b
+  sesa
+  jadi c > maxVal tahale
+    maxVal = c
+  sesa
+  
+  dekha "Min: " + minVal + ", Max: " + maxVal
+sesa
+
+dekha ""
+dekha "=== Min and Max ==="
+findMinMax(5, 3, 8)
+findMinMax(100, 25, 75)
+
+# Check if sorted
+karya isSorted(a, b, c)
+  dhara result = sata
+  jadi a > b tahale
+    result = micha
+  sesa
+  jadi b > c tahale
+    result = micha
+  sesa
+  dekha "Is " + a + ", " + b + ", " + c + " sorted? " + result
+sesa
+
+dekha ""
+dekha "=== Check if Sorted ==="
+isSorted(1, 5, 9)
+isSorted(3, 7, 2)
+isSorted(10, 20, 30)
+
+# Output:
+# === Binary Search ===
+# Searching for 7 in [1, 4, 7, 10]
+# Found at position 3!
+# === Linear Search ===
+# Linear search for 8
+# Found at position 2!

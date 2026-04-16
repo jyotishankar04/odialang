@@ -1,0 +1,173 @@
+# Sorting Algorithms
+# Implementations of sorting concepts
+
+# Manual sorting of 3 numbers
+karya sort3(a, b, c)
+  dekha "Sorting " + a + ", " + b + ", " + c
+  
+  dhara smallest = a
+  dhara middle = b
+  dhara largest = c
+  
+  # Find smallest
+  jadi b < smallest tahale
+    smallest = b
+  sesa
+  jadi c < smallest tahale
+    smallest = c
+  sesa
+  
+  # Find largest
+  jadi b > largest tahale
+    largest = b
+  sesa
+  jadi c > largest tahale
+    largest = c
+  sesa
+  
+  # Middle is whatever's left
+  middle = a + b + c - smallest - largest
+  
+  dekha "Sorted: " + smallest + ", " + middle + ", " + largest
+sesa
+
+dekha "=== Manual Sorting ==="
+sort3(5, 2, 8)
+sort3(9, 1, 3)
+sort3(7, 7, 4)
+
+# Check if a list is sorted
+karya isSorted(a, b, c)
+  dhara result = sata
+  jadi a > b tahale
+    result = micha
+  sesa
+  jadi b > c tahale
+    result = micha
+  sesa
+  dekha "Is " + a + ", " + b + ", " + c + " sorted? " + result
+sesa
+
+dekha ""
+dekha "=== Check if Sorted ==="
+isSorted(1, 5, 9)
+isSorted(3, 7, 2)
+isSorted(10, 20, 30)
+
+# Find min and max
+karya findMinMax(a, b, c, d)
+  dhara minVal = a
+  dhara maxVal = a
+  
+  jadi b < minVal tahale
+    minVal = b
+  sesa
+  jadi c < minVal tahale
+    minVal = c
+  sesa
+  jadi d < minVal tahale
+    minVal = d
+  sesa
+  
+  jadi b > maxVal tahale
+    maxVal = b
+  sesa
+  jadi c > maxVal tahale
+    maxVal = c
+  sesa
+  jadi d > maxVal tahale
+    maxVal = d
+  sesa
+  
+  dekha "Min: " + minVal + ", Max: " + maxVal
+sesa
+
+dekha ""
+dekha "=== Min and Max ==="
+findMinMax(5, 3, 8, 1)
+findMinMax(100, 25, 75, 50)
+
+# Bubble sort visualization (single pass)
+karya bubblePass(n1, n2, n3, n4)
+  dekha "Before: " + n1 + ", " + n2 + ", " + n3 + ", " + n4
+  
+  dhara a = n1
+  dhara b = n2
+  dhara c = n3
+  dhara d = n4
+  dhara temp = 0
+  
+  # Pass 1: Compare adjacent and swap
+  jadi a > b tahale
+    temp = a
+    a = b
+    b = temp
+  sesa
+  
+  jadi b > c tahale
+    temp = b
+    b = c
+    c = temp
+  sesa
+  
+  jadi c > d tahale
+    temp = c
+    c = d
+    d = temp
+  sesa
+  
+  dekha "After pass: " + a + ", " + b + ", " + c + ", " + d
+sesa
+
+dekha ""
+dekha "=== Bubble Sort Pass ==="
+bubblePass(64, 25, 12, 22)
+bubblePass(8, 3, 1, 7)
+
+# Insertion position finder
+karya findInsertPosition(value, n1, n2, n3)
+  dekha "Inserting " + value + " into [" + n1 + ", " + n2 + ", " + n3 + "]"
+  
+  dhara position = 4
+  
+  jadi value <= n1 tahale
+    position = 1
+  sesa
+  
+  jadi position == 4 tahale
+    jadi value <= n2 tahale
+      position = 2
+    sesa
+  sesa
+  
+  jadi position == 4 tahale
+    jadi value <= n3 tahale
+      position = 3
+    sesa
+  sesa
+  
+  dekha "Insert at position: " + position
+sesa
+
+dekha ""
+dekha "=== Insertion Position ==="
+findInsertPosition(15, 10, 20, 30)
+findInsertPosition(5, 10, 20, 30)
+findInsertPosition(25, 10, 20, 30)
+
+# Output:
+# === Manual Sorting ===
+# Sorting 5, 2, 8
+# Sorted: 2, 5, 8
+# === Check if Sorted ===
+# Is 1, 5, 9 sorted? true
+# Is 3, 7, 2 sorted? false
+# === Min and Max ===
+# Min: 1, Max: 8
+# Min: 25, Max: 100
+# === Bubble Sort Pass ===
+# Before: 64, 25, 12, 22
+# After pass: 25, 12, 22, 64
+# === Insertion Position ===
+# Inserting 15 into [10, 20, 30]
+# Insert at position: 2

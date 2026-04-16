@@ -16,6 +16,7 @@ import type {
     ReturnStatementNode,
     StatementNode,
     StringLiteralNode,
+    UnaryExpressionNode,
     VariableDeclarationNode,
     WhileStatementNode,
 } from "./ast";
@@ -374,7 +375,7 @@ export class Parser {
 
         while (
             this.check(TokenType.ARITHMETIC_OPERATOR) &&
-            ["*", "/"].includes(String(this.peek().value))
+            ["*", "/", "%"].includes(String(this.peek().value))
         ) {
             this.advance();
             const operator = String(this.previous().value);
@@ -431,6 +432,17 @@ export class Parser {
 
     private parsePrimary(): ExpressionNode {
         const token = this.peek();
+
+        if (this.check(TokenType.ARITHMETIC_OPERATOR) && (this.peek().value === "-" || this.peek().value === "+")) {
+            const operator = this.advance().value as string;
+            const argument = this.parsePrimary();
+            const unaryNode: UnaryExpressionNode = {
+                type: "UnaryExpression",
+                operator,
+                argument,
+            };
+            return unaryNode;
+        }
 
         if (this.match(TokenType.NUMBER)) {
             const node: NumberLiteralNode = {

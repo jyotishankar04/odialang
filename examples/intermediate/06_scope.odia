@@ -1,0 +1,103 @@
+# Variable Scope
+# Understanding how variables work in different scopes
+
+dekha "=== Global vs Local Variables ==="
+
+# Global variable
+dhara globalVar = "I am global"
+dekha "Global: " + globalVar
+
+# Function with local variable
+karya testLocal()
+  dhara localVar = "I am local"
+  dekha "Inside function - Local: " + localVar
+  dekha "Inside function - Global: " + globalVar
+sesa
+
+testLocal()
+
+# Global variable can be accessed outside
+dekha "Outside function - Global: " + globalVar
+
+# Shadowing example
+dekha ""
+dekha "=== Variable Shadowing ==="
+
+dhara counter = 0
+
+karya increment()
+  dhara counter = 100  # This shadows the global counter
+  counter = counter + 1  # This modifies the local counter
+  dekha "Inside increment - counter = " + counter
+sesa
+
+dekha "Before increment - counter = " + counter
+increment()
+dekha "After increment - counter = " + counter
+
+# To modify global variable, don't declare with dhara
+dekha ""
+dekha "=== Modifying Global Variable ==="
+
+dhara count = 0
+
+karya incrementGlobal()
+  # Modifying global (no dhara = assignment to existing)
+  count = count + 1
+  dekha "Incremented to: " + count
+sesa
+
+karya resetCount()
+  count = 0
+  dekha "Count reset to: " + count
+sesa
+
+dekha "Initial count: " + count
+incrementGlobal()
+incrementGlobal()
+incrementGlobal()
+dekha "After 3 increments: " + count
+resetCount()
+dekha "After reset: " + count
+
+# Nested function scope
+dekha ""
+dekha "=== Nested Function Scope ==="
+
+karya outer()
+  dhara outerVar = "outer"
+  dekha "In outer: " + outerVar
+  
+  karya inner()
+    dhara innerVar = "inner"
+    dekha "In inner: " + innerVar
+    dekha "In inner, can see: " + outerVar
+  sesa
+  
+  inner()
+  # This would error: dekha innerVar
+sesa
+
+outer()
+
+# Output:
+# === Global vs Local Variables ===
+# Global: I am global
+# Inside function - Local: I am local
+# Inside function - Global: I am global
+# Outside function - Global: I am global
+# === Variable Shadowing ===
+# Before increment - counter = 0
+# Inside increment - counter = 101
+# After increment - counter = 0
+# === Modifying Global Variable ===
+# Initial count: 0
+# Incremented to: 1
+# Incremented to: 2
+# Incremented to: 3
+# After 3 increments: 3
+# After reset: 0
+# === Nested Function Scope ===
+# In outer: outer
+# In inner: inner
+# In inner, can see: outer

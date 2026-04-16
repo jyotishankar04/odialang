@@ -15,6 +15,7 @@ import type {
   ReturnStatementNode,
   StatementNode,
   StringLiteralNode,
+  UnaryExpressionNode,
   VariableDeclarationNode,
   WhileStatementNode,
 } from "../parser/ast";
@@ -24,7 +25,9 @@ function indent(level: number): string {
 }
 
 export function generateJavaScript(ast: ProgramNode): string {
-  return ast.body.map((stmt) => generateStatement(stmt, 0)).join("\n");
+  const helper = `function __safeDiv(a, b) { if (b === 0) { throw new Error("Division by zero"); } return a / b; }`;
+  const body = ast.body.map((stmt) => generateStatement(stmt, 0)).join("\n");
+  return helper + "\n" + body;
 }
 
 function generateStatement(node: StatementNode, level: number): string {
@@ -179,6 +182,9 @@ function generateExpression(node: ExpressionNode): string {
     case "CallExpression":
       return generateCallExpression(node);
 
+    case "UnaryExpression":
+      return generateUnaryExpression(node);
+
     default: {
       const neverNode: never = node;
       throw new Error(`Unhandled expression node: ${JSON.stringify(neverNode)}`);
@@ -203,6 +209,9 @@ function generateIdentifier(node: IdentifierNode): string {
 }
 
 function generateBinaryExpression(node: BinaryExpressionNode): string {
+  if (node.operator === "/") {
+    return `(__safeDiv(${generateExpression(node.left)}, ${generateExpression(node.right)}))`;
+  }
   return `(${generateExpression(node.left)} ${node.operator} ${generateExpression(node.right)})`;
 }
 
@@ -213,4 +222,12 @@ function generateAssignmentExpression(node: AssignmentExpressionNode): string {
 function generateCallExpression(node: CallExpressionNode): string {
   const args = node.arguments.map((arg) => generateExpression(arg)).join(", ");
   return `${generateExpression(node.callee)}(${args})`;
+}
+
+function generateUnaryExpression(node: UnaryExpressionNode): string {
+  const arg = generateExpression(node.argument);
+  if (node.argument.type === "NumberLiteral" || node.argument.type === "UnaryExpression") {
+    return `${node.operator}(${arg})`;
+  }
+  return `${node.operator}${arg}`;
 }
