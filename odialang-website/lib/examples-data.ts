@@ -115,54 +115,74 @@ sesa` },
   "05_while_loop": { level: "basics", code: `# Example 5: While Loop
 # Repeat actions with conditions
 
-# Basic while loop
+# Count from 1 to 5
+dekha "=== Counting 1 to 5 ==="
 dhara count = 1
+
 jebe count <= 5
   dekha "Count: " + count
-  count = count + 1
+  count += 1
 sesa
 
-# While with sum
+# Countdown
 dekha ""
+dekha "=== Countdown ==="
+dhara timer = 5
+
+jebe timer > 0
+  dekha "Time: " + timer
+  timer -= 1
+sesa
+
+dekha "Blast off!"
+
+# Sum of numbers 1 to 10
+dekha ""
+dekha "=== Sum of 1 to 10 ==="
 dhara sum = 0
-dhara i = 1
-jebe i <= 10
-  sum = sum + i
-  i = i + 1
-sesa
-dekha "Sum of 1-10: " + sum
+dhara num = 1
 
-# While with array-like logic
-dekha ""
-dhara n = 5
-dhara factorial = 1
-jebe n > 0
-  factorial = factorial * n
-  n = n - 1
+jebe num <= 10
+  sum += num
+  num += 1
 sesa
-dekha "Factorial: " + factorial` },
+
+dekha "Sum = " + sum` },
   "06_for_loop": { level: "basics", code: `# Example 6: For Loop
-# Count-controlled iteration
+# Iterate with range
 
-# Basic for loop
+# Print 1 to 5
+dekha "=== Print 1 to 5 ==="
 aarambha i = 1 ru 5
   dekha "Number: " + i
 sesa
 
-# For loop with sum
+# Countdown 5 to 1
 dekha ""
-dhara sum = 0
-aarambha i = 1 ru 10
-  sum = sum + i
+dekha "=== Countdown 5 to 1 ==="
+aarambha j = 5 ru 1
+  dekha j
 sesa
-dekha "Sum 1-10: " + sum
 
-# For loop with multiplication table
+# Multiplication table
 dekha ""
-dhara n = 7
-aarambha i = 1 ru 10
-  dekha n + " x " + i + " = " + (n * i)
-sesa` },
+dekha "=== Multiplication Table of 7 ==="
+dhara table = 7
+
+aarambha k = 1 ru 10
+  dekha table + " x " + k + " = " + (table * k)
+sesa
+
+# Sum using for loop
+dekha ""
+dekha "=== Sum of 1 to 100 ==="
+dhara total = 0
+
+aarambha n = 1 ru 100
+  total += n
+sesa
+
+dekha "Total: " + total` },
   "01_functions": { level: "intermediate", code: `# Example 1: Functions
 # Creating reusable code blocks
 
@@ -295,22 +315,23 @@ dekha ""
 dekha "Room temp (72F) in C: " + fahrenheitToCelsius(72)` },
   "01_fizzbuzz": { level: "advanced", code: `# Example 1: FizzBuzz
 # Classic programming interview question
+# Using logical operators (&&) and modulo (%)
 
 karya fizzBuzz(n)
-  dhara result = ""
-  
+  jadi n % 3 == 0 && n % 5 == 0 tahale
+    dekha "FizzBuzz"
+  sesa
+
   jadi n % 3 == 0 tahale
-    result = "Fizz"
+    dekha "Fizz"
   sesa
-  
+
   jadi n % 5 == 0 tahale
-    result = result + "Buzz"
+    dekha "Buzz"
   sesa
-  
-  jadi result == "" tahale
+
+  jadi n % 3 != 0 && n % 5 != 0 tahale
     dekha n
-  sesa
-    dekha result
   sesa
 sesa
 
@@ -422,83 +443,99 @@ sesa
 dekha ""
 dekha "Recursive 5! = " + factorialRecursive(5)` },
   "05_grade_calculator": { level: "advanced", code: `# Example 5: Grade Calculator
-# Calculate grades and statistics
+# Calculate grades with logical operators (&&)
 
-# Coming soon: Array and Class support
-
-karya getGrade(score)
-  jadi score >= 90 tahale
+karya calculateGrade(marks)
+  jadi marks >= 90 tahale
+    fera "A+"
+  sesa
+  jadi marks >= 80 tahale
     fera "A"
   sesa
-  jadi score >= 80 tahale
+  jadi marks >= 70 tahale
     fera "B"
   sesa
-  jadi score >= 70 tahale
+  jadi marks >= 60 tahale
     fera "C"
   sesa
-  jadi score >= 60 tahale
+  jadi marks >= 50 tahale
     fera "D"
   sesa
   fera "F"
 sesa
 
-dekha "=== Grade Calculator ==="
-dekha "Average of 4 subjects"
-dhara m1 = 85
-dhara m2 = 92
-dhara m3 = 78
-dhara m4 = 88
-dhara avg = (m1 + m2 + m3 + m4) / 4
+# Check if student passed all subjects using &&
+karya hasPassed(m1, m2, m3, m4, m5)
+  jadi m1 >= 50 && m2 >= 50 && m3 >= 50 && m4 >= 50 && m5 >= 50 tahale
+    fera sata
+  nahele
+    fera micha
+  sesa
+sesa
+
+# Student 1: All subjects passed
+dhara m1 = 92
+dhara m2 = 88
+dhara m3 = 85
+dhara m4 = 90
+dhara m5 = 87
+dhara avg = (m1 + m2 + m3 + m4 + m5) / 5
 dekha "Average: " + avg
-dekha "Grade: " + getGrade(avg)
+dekha "Grade: " + calculateGrade(avg)
+dekha "All passed: " + hasPassed(m1, m2, m3, m4, m5)
+
+# Student 2: Failed one subject
+dekha ""
+dhara s1 = 45
+dhara s2 = 78
+dhara s3 = 82
+dhara s4 = 75
+dhara s5 = 80
+dhara avg2 = (s1 + s2 + s3 + s4 + s5) / 5
+dekha "Average: " + avg2
+dekha "Grade: " + calculateGrade(avg2)
+dekha "All passed: " + hasPassed(s1, s2, s3, s4, s5)` },
+  "06_bank_account": { level: "advanced", code: `# Example 6: Bank Account
+# Banking operations with compound assignment (+=, -=)
+
+dhara balance = 1000
+
+karya showBalance()
+  dekha "Balance: Rs. " + balance
+sesa
+
+karya deposit(amount)
+  jadi amount > 0 tahale
+    balance += amount
+    dekha "Deposited Rs. " + amount
+    showBalance()
+  nahele
+    dekha "Error: Invalid amount"
+  sesa
+sesa
+
+karya withdraw(amount)
+  jadi amount <= 0 tahale
+    dekha "Error: Invalid amount"
+  sesa
+
+  jadi amount > balance tahale
+    dekha "Error: Insufficient balance"
+  sesa
+
+  balance -= amount
+  dekha "Withdrew Rs. " + amount
+  showBalance()
+sesa
+
+showBalance()
+deposit(500)
+withdraw(300)
+withdraw(5000)
 
 dekha ""
-dekha "[Arrays and Classes coming soon!]"
-dekha "Arrays: dhara arr = [1, 2, 3]"
-dekha "Classes: karya Person(name, age)"` },
-  "06_bank_account": { level: "advanced", code: `# Example 6: Bank Account Simulation
-# Simple banking operations
-
-karya createAccount(name, initialBalance)
-  dhara account = name
-  dhara balance = initialBalance
-  dekha "Account created for: " + name
-  dekha "Initial balance: " + initialBalance
-  fera initialBalance
-sesa
-
-karya deposit(balance, amount)
-  jadi amount <= 0 tahale
-    dekha "Invalid deposit amount"
-    fera balance
-  sesa
-  dhara newBalance = balance + amount
-  dekha "Deposited: " + amount
-  dekha "New balance: " + newBalance
-  fera newBalance
-sesa
-
-karya withdraw(balance, amount)
-  jadi amount <= 0 tahale
-    dekha "Invalid withdrawal amount"
-    fera balance
-  sesa
-  jadi amount > balance tahale
-    dekha "Insufficient funds"
-    fera balance
-  sesa
-  dhara newBalance = balance - amount
-  dekha "Withdrawn: " + amount
-  dekha "New balance: " + newBalance
-  fera newBalance
-sesa
-
-# Demo
-dekha "=== Bank Account Demo ==="
-dhara myBalance = createAccount("Rama", 1000)
-myBalance = deposit(myBalance, 500)
-myBalance = withdraw(myBalance, 200)
-dekha "Final balance: " + myBalance` },
+dekha "=== Transaction Summary ==="
+dekha "Final Balance: Rs. " + balance` },
   "07_strings": { level: "basics", code: `# Example 7: String Operations
 # Working with text in Odialang
 
@@ -744,4 +781,61 @@ dekha ""
 dekha "=== Min and Max ==="
 findMinMax(5, 3, 8)
 findMinMax(100, 25, 75)` },
+  "07_arrays": { level: "intermediate", code: `# Example 7: Arrays
+# Working with lists of data
+
+# Creating arrays
+dhara nums = [10, 20, 30, 40, 50]
+dekha "Numbers: " + nums
+
+# Accessing elements by index
+dekha "First: " + nums[0]
+dekha "Third: " + nums[2]
+dekha "Last: " + nums[4]
+
+# Array length
+dekha "Length: " + nums.length
+
+# Modifying array elements
+dekha ""
+dekha "=== Modifying Arrays ==="
+dhara scores = [85, 92, 78, 95, 88]
+dekha "Original scores: " + scores
+scores[0] = 90
+scores[2] = 82
+dekha "Updated scores: " + scores
+
+# Arrays with strings
+dhara names = ["Rama", "Sita", "Hari"]
+dekha "Names: " + names
+dekha "Second name: " + names[1]
+
+# Indexing in loops
+dekha ""
+dekha "=== Looping Through Arrays ==="
+aarambha i = 0 ru 4
+  dekha "nums[" + i + "] = " + nums[i]
+sesa
+
+# Nested arrays
+dekha ""
+dekha "=== Nested Arrays ==="
+dhara matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+dekha "Row 0: " + matrix[0]
+dekha "Row 1: " + matrix[1]
+dekha "Element [0][0]: " + matrix[0][0]
+dekha "Element [1][2]: " + matrix[1][2]
+
+# Compound assignment on array elements
+dhara data = [100, 200, 300]
+dekha ""
+dekha "Original: " + data
+data[1] += 50
+data[0] -= 10
+dekha "After += and -=: " + data
+
+# Empty array
+dhara empty = []
+dekha ""
+dekha "Empty array: " + empty` },
 };

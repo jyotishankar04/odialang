@@ -1,6 +1,6 @@
-import { tokenize as tokenizerTokenize } from "@devsuvam/odialang/dist/lexer/tokenizer";
-import { Parser as ParserClass } from "@devsuvam/odialang/dist/parser/parser";
-import { generateJavaScript } from "@devsuvam/odialang/dist/codegen/generate";
+import { tokenize as tokenizerTokenize } from "./tokenizer";
+import { Parser as ParserClass } from "./parser";
+import { generateJavaScript } from "./codegen";
 
 export interface CompileResult {
   success: boolean;

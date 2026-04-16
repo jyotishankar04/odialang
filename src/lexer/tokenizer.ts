@@ -78,6 +78,25 @@ export function tokenize(input: string): Token[] {
       continue;
     }
 
+    if (char === "/" && peek(1) === "/") {
+      while (current < input.length && peek() !== "\n") {
+        advance();
+      }
+      continue;
+    }
+
+    if (char === "[") {
+      addToken(TokenType.LBRACKET, "[", line, column);
+      advance();
+      continue;
+    }
+
+    if (char === "]") {
+      addToken(TokenType.RBRACKET, "]", line, column);
+      advance();
+      continue;
+    }
+
     if (char === "(") {
       addToken(TokenType.LPAREN, "(", line, column);
       advance();
@@ -96,10 +115,36 @@ export function tokenize(input: string): Token[] {
       continue;
     }
 
+    if (char === ".") {
+      addToken(TokenType.DOT, ".", line, column);
+      advance();
+      continue;
+    }
+
     const twoChar = (char ?? "") + (peek(1) ?? "");
+
+    if (["&&", "||"].includes(twoChar)) {
+      addToken(TokenType.LOGICAL_OPERATOR, twoChar, line, column);
+      advance();
+      advance();
+      continue;
+    }
 
     if (["==", "!=", ">=", "<="].includes(twoChar)) {
       addToken(TokenType.RELATIONAL_OPERATOR, twoChar, line, column);
+      advance();
+      advance();
+      continue;
+    }
+
+    if (char === "!") {
+      addToken(TokenType.UNARY_OPERATOR, "!", line, column);
+      advance();
+      continue;
+    }
+
+    if (["+=", "-=", "*=", "/="].includes(twoChar)) {
+      addToken(TokenType.COMPOUND_ASSIGNMENT, twoChar, line, column);
       advance();
       advance();
       continue;

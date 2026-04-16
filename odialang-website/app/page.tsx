@@ -76,7 +76,7 @@ export default function Home() {
                 <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-terracotta" />
                 <Badge variant="outline" className="border-transparent text-primary bg-transparent">
                   <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-                  v1.0.1 is here!
+                  v2.1.0 is here!
                 </Badge>
               </div>
               <Link href="/docs/changelog/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -359,7 +359,7 @@ const features = [
   },
   {
     title: "Full Features",
-    description: "Variables, functions, conditionals, loops - everything you need to build real programs.",
+    description: "Variables, functions, conditionals, loops, arrays, and more — everything you need to build real programs.",
     icon: <Terminal className="h-6 w-6" />,
   },
   {
@@ -376,21 +376,39 @@ const features = [
 
 const examplePreviews = [
   {
-    id: "hello",
+    id: "01_hello",
     title: "Hello World",
-    description: "Your first Odialang program",
-    level: "Beginner",
+    description: "Your first Odialang program — print messages using dekha",
+    level: "Basics",
   },
   {
-    id: "variables",
+    id: "02_variables",
     title: "Variables",
-    description: "Working with data types",
-    level: "Beginner",
+    description: "Store and manipulate data with dhara declarations",
+    level: "Basics",
   },
   {
-    id: "functions",
+    id: "01_functions",
     title: "Functions",
-    description: "Defining reusable code",
+    description: "Define reusable code blocks with karya and fera",
     level: "Intermediate",
+  },
+  {
+    id: "03_fibonacci",
+    title: "Fibonacci Sequence",
+    description: "Generate Fibonacci numbers iteratively",
+    level: "Advanced",
+  },
+  {
+    id: "06_bank_account",
+    title: "Bank Account",
+    description: "Simulate deposits, withdrawals, and transfers",
+    level: "Advanced",
+  },
+  {
+    id: "07_sorting",
+    title: "Sorting Algorithms",
+    description: "Sort numbers and check if sequences are sorted",
+    level: "Advanced",
   },
 ];

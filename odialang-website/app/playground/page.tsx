@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useRef, useCallback } from "react";
+import React, { useState, useEffect, Suspense, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -29,53 +29,35 @@ dekha message
 
 # Try editing this code...`;
 
-const examples: Record<string, string> = {
-  hello: `# Hello World
-dekha "Namaskar, Odia!"
-dekha "Welcome to Odialang!"`,
-  
-  variables: `# Variables
-dhara name = "Rama"
-dhara age = 25
-dhara isHappy = sata
+const examples: Record<string, string> = {};
 
-dekha "Name: " + name
-dekha "Age: " + age`,
-  
-  conditionals: `# Conditionals
-dhara marks = 85
-
-jadi marks >= 60 tahale
-  dekha "You passed!"
-nahele
-  dekha "You failed"
-sesa`,
-  
-  loops: `# Loops
-# While loop
-dhara count = 1
-jebe count <= 5
-  dekha "Count: " + count
-  count = count + 1
-sesa
-
-# For loop
-aarambha i = 1 ru 3
-  dekha "Number: " + i
-sesa`,
-  
-  functions: `# Functions
-karya greet(name)
-  dekha "Namaskar, " + name + "!"
-sesa
-
-karya add(a, b)
-  fera a + b
-sesa
-
-greet("Odia")
-dekha "Sum: " + add(10, 20)`,
+type ExampleOption = {
+  id: string;
+  label: string;
+  level: string;
+  code: string;
 };
+
+const exampleOptions: ExampleOption[] = [];
+
+for (const [id, data] of Object.entries(examplesData)) {
+  examples[id] = data.code;
+  const label = id.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+  exampleOptions.push({ id, label, level: data.level, code: data.code });
+}
+
+const exampleGroups: { level: string; label: string; items: ExampleOption[] }[] = [
+  { level: "basics", label: "Basics", items: [] },
+  { level: "intermediate", label: "Intermediate", items: [] },
+  { level: "advanced", label: "Advanced", items: [] },
+];
+
+for (const opt of exampleOptions) {
+  const group = exampleGroups.find((g) => g.level === opt.level);
+  if (group) {
+    group.items.push(opt);
+  }
+}
 
 function PlaygroundContent() {
   const searchParams = useSearchParams();
@@ -99,8 +81,6 @@ function PlaygroundContent() {
     
     if (examples[exampleParam]) {
       setCode(examples[exampleParam]);
-    } else if (examplesData[exampleParam]) {
-      setCode(examplesData[exampleParam].code);
     }
   }, [exampleParam]);
 
@@ -261,11 +241,16 @@ function PlaygroundContent() {
               <SelectValue placeholder="Load..." />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="hello">Hello World</SelectItem>
-              <SelectItem value="variables">Variables</SelectItem>
-              <SelectItem value="conditionals">Conditionals</SelectItem>
-              <SelectItem value="loops">Loops</SelectItem>
-              <SelectItem value="functions">Functions</SelectItem>
+              {exampleGroups.map((group) => (
+                <React.Fragment key={group.level}>
+                  <SelectItem value={`sep-${group.level}`} disabled>
+                    ── {group.label} ──
+                  </SelectItem>
+                  {group.items.map((opt) => (
+                    <SelectItem key={opt.id} value={opt.id}>{opt.label}</SelectItem>
+                  ))}
+                </React.Fragment>
+              ))}
             </SelectContent>
           </Select>
           

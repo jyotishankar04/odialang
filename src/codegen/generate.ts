@@ -1,14 +1,20 @@
 import type {
+  ArrayLiteralNode,
   AssignmentExpressionNode,
   BinaryExpressionNode,
   BooleanLiteralNode,
+  BreakStatementNode,
   CallExpressionNode,
+  ContinueStatementNode,
   ExpressionNode,
   ExpressionStatementNode,
+  ForRangeStatementNode,
   ForStatementNode,
   FunctionDeclarationNode,
   IdentifierNode,
   IfStatementNode,
+  LogicalExpressionNode,
+  MemberExpressionNode,
   NumberLiteralNode,
   PrintStatementNode,
   ProgramNode,
@@ -53,7 +59,17 @@ function generateStatement(node: StatementNode, level: number): string {
     case "ReturnStatement":
       return generateReturnStatement(node, level);
     case "ForStatement":
-        return generateForStatement(node, level);
+      return generateForStatement(node, level);
+
+    case "ForRangeStatement":
+      return generateForRangeStatement(node, level);
+
+    case "BreakStatement":
+      return generateBreakStatement(node, level);
+
+    case "ContinueStatement":
+      return generateContinueStatement(node, level);
+
     default: {
       const neverNode: never = node;
       throw new Error(`Unhandled statement node: ${JSON.stringify(neverNode)}`);
@@ -185,6 +201,15 @@ function generateExpression(node: ExpressionNode): string {
     case "UnaryExpression":
       return generateUnaryExpression(node);
 
+    case "ArrayLiteral":
+      return generateArrayLiteral(node);
+
+    case "MemberExpression":
+      return generateMemberExpression(node);
+
+    case "LogicalExpression":
+      return generateLogicalExpression(node);
+
     default: {
       const neverNode: never = node;
       throw new Error(`Unhandled expression node: ${JSON.stringify(neverNode)}`);
@@ -230,4 +255,43 @@ function generateUnaryExpression(node: UnaryExpressionNode): string {
     return `${node.operator}(${arg})`;
   }
   return `${node.operator}${arg}`;
+}
+
+function generateArrayLiteral(node: ArrayLiteralNode): string {
+  const elements = node.elements.map((el) => generateExpression(el)).join(", ");
+  return `[${elements}]`;
+}
+
+function generateMemberExpression(node: MemberExpressionNode): string {
+  const obj = generateExpression(node.object);
+  if (node.computed) {
+    const prop = generateExpression(node.property);
+    return `${obj}[${prop}]`;
+  }
+  return `${obj}.${generateExpression(node.property)}`;
+}
+
+function generateLogicalExpression(node: LogicalExpressionNode): string {
+  return `(${generateExpression(node.left)} ${node.operator} ${generateExpression(node.right)})`;
+}
+
+function generateForRangeStatement(node: ForRangeStatementNode, level: number): string {
+  const iterator = generateExpression(node.iterator);
+  const start = generateExpression(node.start);
+  const end = generateExpression(node.end);
+
+  const body =
+    node.body.length > 0
+      ? node.body.map((stmt) => generateStatement(stmt, level + 1)).join("\n")
+      : `${indent(level + 1)}`;
+
+  return `${indent(level)}for (let ${iterator} = ${start}; ${iterator} <= ${end}; ${iterator}++) {\n${body}\n${indent(level)}}`;
+}
+
+function generateBreakStatement(node: BreakStatementNode, level: number): string {
+  return `${indent(level)}break;`;
+}
+
+function generateContinueStatement(node: ContinueStatementNode, level: number): string {
+  return `${indent(level)}continue;`;
 }

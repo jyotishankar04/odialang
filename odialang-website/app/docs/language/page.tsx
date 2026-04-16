@@ -17,6 +17,8 @@ const keywords = [
   { odia: "fera", english: "return", usage: "Return value", example: 'fera a + b' },
   { odia: "sata", english: "true", usage: "Boolean true", example: 'dhara isTrue = sata' },
   { odia: "micha", english: "false", usage: "Boolean false", example: 'dhara isFalse = micha' },
+  { odia: "ruha", english: "break", usage: "Break out of loop", example: 'ruha' },
+  { odia: "chala", english: "continue", usage: "Skip to next iteration", example: 'chala' },
 ];
 
 export default function LanguageReferencePage() {
@@ -133,6 +135,42 @@ dhara isFalse = micha`}
               <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">&lt;=</code></div>
             </div>
           </div>
+          <div>
+            <h3 className="text-lg font-medium">Logical</h3>
+            <div className="mt-2 grid grid-cols-3 gap-2 text-sm">
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">&amp;&amp;</code></div>
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">||</code></div>
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">!</code></div>
+            </div>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`dhara a = sata
+dhara b = micha
+dekha a && b   # false
+dekha a || b   # true
+dekha !a       # false`}
+                language="odia"
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium">Compound Assignment</h3>
+            <div className="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">+=</code></div>
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">-=</code></div>
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">*=</code></div>
+              <div className="bg-muted rounded p-2 text-center"><code className="text-pink-400">/=</code></div>
+            </div>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`dhara x = 10
+x += 5    # x is now 15
+x -= 3    # x is now 12
+x *= 2    # x is now 24`}
+                language="odia"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -199,6 +237,98 @@ sesa`}
                 code={`functionName(arg1, arg2)
 
 dhara result = functionName(arg1, arg2)`}
+                language="odia"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-2xl font-semibold">Arrays</h2>
+        <div className="mt-4 space-y-4">
+          <div>
+            <h3 className="text-lg font-medium">Creating Arrays</h3>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`dhara nums = [10, 20, 30, 40, 50]
+dhara names = ["Rama", "Sita", "Hari"]
+dhara empty = []`}
+                language="odia"
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium">Indexing &amp; Length</h3>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`dekha nums[0]         # 10 (0-based index)
+dekha nums.length      # 5
+
+dhara matrix = [[1, 2], [3, 4]]
+dekha matrix[0][1]     # 2 (nested indexing)`}
+                language="odia"
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium">Modifying Elements</h3>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`dhara arr = [1, 2, 3]
+arr[0] = 100          # Assign new value
+arr[1] += 50          # Compound assignment
+dekha arr              # [100, 52, 3]`}
+                language="odia"
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium">Looping Through Arrays</h3>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`dhara items = ["a", "b", "c", "d", "e"]
+aarambha i = 0 ru items.length - 1
+  dekha items[i]
+sesa`}
+                language="odia"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-2xl font-semibold">Break &amp; Continue</h2>
+        <div className="mt-4 space-y-4">
+          <div>
+            <h3 className="text-lg font-medium">Break (ruha)</h3>
+            <p className="mt-2 text-muted-foreground">Exit a loop early</p>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`aarambha i = 1 ru 10
+  jadi i == 5 tahale
+    ruha
+  sesa
+  dekha i
+sesa
+# Prints: 1, 2, 3, 4`}
+                language="odia"
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium">Continue (chala)</h3>
+            <p className="mt-2 text-muted-foreground">Skip to the next iteration</p>
+            <div className="mt-2">
+              <CodeBlock 
+                code={`aarambha i = 1 ru 5
+  jadi i == 3 tahale
+    chala
+  sesa
+  dekha i
+sesa
+# Prints: 1, 2, 4, 5`}
                 language="odia"
               />
             </div>

@@ -1,15 +1,21 @@
 import { type Token, TokenType } from "../lexer/tokenTypes";
 import type {
+    ArrayLiteralNode,
     AssignmentExpressionNode,
     BinaryExpressionNode,
     BooleanLiteralNode,
+    BreakStatementNode,
     CallExpressionNode,
+    ContinueStatementNode,
     ExpressionNode,
     ExpressionStatementNode,
+    ForRangeStatementNode,
     ForStatementNode,
     FunctionDeclarationNode,
     IdentifierNode,
     IfStatementNode,
+    LogicalExpressionNode,
+    MemberExpressionNode,
     NumberLiteralNode,
     PrintStatementNode,
     ProgramNode,
@@ -74,6 +80,15 @@ export class Parser {
         if (this.isKeyword("aarambha")) {
             return this.parseForStatement();
         }
+
+        if (this.isKeyword("ruha")) {
+            return this.parseBreakStatement();
+        }
+
+        if (this.isKeyword("chala")) {
+            return this.parseContinueStatement();
+        }
+
         return this.parseExpressionStatement();
     }
 
@@ -193,6 +208,20 @@ export class Parser {
             body,
         };
     }
+
+    private parseBreakStatement(): BreakStatementNode {
+        this.expectKeyword("ruha");
+        return {
+            type: "BreakStatement",
+        };
+    }
+
+    private parseContinueStatement(): ContinueStatementNode {
+        this.expectKeyword("chala");
+        return {
+            type: "ContinueStatement",
+        };
+    }
     private parseWhileStatement(): WhileStatementNode {
         this.expectKeyword("jebe");
 
@@ -303,12 +332,12 @@ export class Parser {
     }
 
     private parseAssignment(): ExpressionNode {
-        const left = this.parseRelational();
+        const left = this.parseLogical();
 
         if (this.match(TokenType.ASSIGNMENT_OPERATOR)) {
             const equals = this.previous();
 
-            if (left.type !== "Identifier") {
+            if (left.type !== "Identifier" && left.type !== "MemberExpression") {
                 throw this.error(equals, "Invalid assignment target");
             }
 
@@ -323,7 +352,54 @@ export class Parser {
             return assignmentNode;
         }
 
+        if (this.match(TokenType.COMPOUND_ASSIGNMENT)) {
+            const compoundOp = String(this.previous().value);
+            const operator = compoundOp.slice(0, -1);
+            const equals = this.previous();
+
+            if (left.type !== "Identifier" && left.type !== "MemberExpression") {
+                throw this.error(equals, "Invalid assignment target");
+            }
+
+            const right = this.parseAssignment();
+
+            const binaryNode: BinaryExpressionNode = {
+                type: "BinaryExpression",
+                operator,
+                left,
+                right,
+            };
+
+            const assignmentNode: AssignmentExpressionNode = {
+                type: "AssignmentExpression",
+                left,
+                right: binaryNode,
+            };
+
+            return assignmentNode;
+        }
+
         return left;
+    }
+
+    private parseLogical(): ExpressionNode {
+        let expression = this.parseRelational();
+
+        while (this.match(TokenType.LOGICAL_OPERATOR)) {
+            const operator = String(this.previous().value);
+            const right = this.parseRelational();
+
+            const node: LogicalExpressionNode = {
+                type: "LogicalExpression",
+                operator,
+                left: expression,
+                right,
+            };
+
+            expression = node;
+        }
+
+        return expression;
     }
 
     private parseRelational(): ExpressionNode {
@@ -404,12 +480,43 @@ export class Parser {
                 }
 
                 expression = this.finishCall(expression);
+            } else if (this.match(TokenType.LBRACKET)) {
+                expression = this.finishMemberAccess(expression, true);
+            } else if (this.match(TokenType.DOT)) {
+                const propertyToken = this.expect(
+                    TokenType.IDENTIFIER,
+                    "Expected property name after '.'",
+                );
+
+                const property: IdentifierNode = {
+                    type: "Identifier",
+                    name: String(propertyToken.value),
+                };
+
+                expression = {
+                    type: "MemberExpression",
+                    object: expression,
+                    property,
+                    computed: false,
+                };
             } else {
                 break;
             }
         }
 
         return expression;
+    }
+
+    private finishMemberAccess(object: ExpressionNode, computed: boolean): MemberExpressionNode {
+        const property = this.parseExpression();
+        this.expect(TokenType.RBRACKET, "Expected ']' after expression");
+
+        return {
+            type: "MemberExpression",
+            object,
+            property,
+            computed,
+        };
     }
 
     private finishCall(callee: IdentifierNode): CallExpressionNode {
@@ -432,6 +539,17 @@ export class Parser {
 
     private parsePrimary(): ExpressionNode {
         const token = this.peek();
+
+        if (this.check(TokenType.UNARY_OPERATOR) && this.peek().value === "!") {
+            const operator = this.advance().value as string;
+            const argument = this.parsePrimary();
+            const unaryNode: UnaryExpressionNode = {
+                type: "UnaryExpression",
+                operator,
+                argument,
+            };
+            return unaryNode;
+        }
 
         if (this.check(TokenType.ARITHMETIC_OPERATOR) && (this.peek().value === "-" || this.peek().value === "+")) {
             const operator = this.advance().value as string;
@@ -476,6 +594,10 @@ export class Parser {
             return node;
         }
 
+        if (this.match(TokenType.LBRACKET)) {
+            return this.parseArrayLiteral();
+        }
+
         if (this.match(TokenType.LPAREN)) {
             const expression = this.parseExpression();
             this.expect(TokenType.RPAREN, "Expected ')' after expression");
@@ -483,6 +605,28 @@ export class Parser {
         }
 
         throw this.error(token, `Unexpected token '${token.value}'`);
+    }
+
+    private parseArrayLiteral(): ArrayLiteralNode {
+        if (this.check(TokenType.RBRACKET)) {
+            this.advance();
+            return {
+                type: "ArrayLiteral",
+                elements: [],
+            };
+        }
+
+        const elements: ExpressionNode[] = [];
+        do {
+            elements.push(this.parseExpression());
+        } while (this.match(TokenType.COMMA));
+
+        this.expect(TokenType.RBRACKET, "Expected ']' after array elements");
+
+        return {
+            type: "ArrayLiteral",
+            elements,
+        };
     }
 
     private skipNewlines(): void {

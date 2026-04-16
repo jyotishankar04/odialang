@@ -311,6 +311,104 @@ dekha "10 + 20 = " + add(10, 20)`}
         </Card>
       </section>
 
+      {/* Arrays */}
+      <section className="mt-8">
+        <h2 className="text-2xl font-semibold">Arrays</h2>
+        <Card className="mt-4">
+          <div className="p-4 space-y-4">
+            <div>
+              <h3 className="text-lg font-medium">Creating Arrays</h3>
+              <div className="mt-2">
+                <CodeBlock 
+                  code={`dhara nums = [10, 20, 30, 40, 50]
+dhara names = ["Rama", "Sita", "Hari"]
+dhara empty = []`}
+                  language="odia"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium">Accessing Elements</h3>
+              <div className="mt-2">
+                <CodeBlock 
+                  code={`dekha nums[0]         # First element (10)
+dekha nums.length     # Array length (5)
+
+dhara matrix = [[1, 2], [3, 4]]
+dekha matrix[0][1]    # Nested access (2)`}
+                  language="odia"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium">Modifying Elements</h3>
+              <div className="mt-2">
+                <CodeBlock 
+                  code={`dhara arr = [1, 2, 3]
+arr[0] = 100
+arr[1] += 50
+dekha arr   # [100, 52, 3]`}
+                  language="odia"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium">Looping Through Arrays</h3>
+              <div className="mt-2">
+                <CodeBlock 
+                  code={`dhara items = ["a", "b", "c"]
+aarambha i = 0 ru items.length - 1
+  dekha items[i]
+sesa`}
+                  language="odia"
+                />
+              </div>
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      {/* Break and Continue */}
+      <section className="mt-8">
+        <h2 className="text-2xl font-semibold">Break &amp; Continue</h2>
+        <Card className="mt-4">
+          <div className="p-4 space-y-4">
+            <div>
+              <h3 className="text-lg font-medium">Break (ruha)</h3>
+              <p className="mt-2 text-muted-foreground">Exit a loop early:</p>
+              <div className="mt-2">
+                <CodeBlock 
+                  code={`aarambha i = 1 ru 10
+  jadi i == 5 tahale
+    ruha
+  sesa
+  dekha i
+sesa
+# Prints: 1, 2, 3, 4`}
+                  language="odia"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium">Continue (chala)</h3>
+              <p className="mt-2 text-muted-foreground">Skip to the next iteration:</p>
+              <div className="mt-2">
+                <CodeBlock 
+                  code={`aarambha i = 1 ru 5
+  jadi i == 3 tahale
+    chala
+  sesa
+  dekha i
+sesa
+# Prints: 1, 2, 4, 5`}
+                  language="odia"
+                />
+              </div>
+            </div>
+          </div>
+        </Card>
+      </section>
+
       {/* Quick Reference */}
       <section className="mt-8">
         <h2 className="text-2xl font-semibold">Quick Reference</h2>
@@ -325,6 +423,10 @@ dekha "10 + 20 = " + add(10, 20)`}
               <div><code className="text-pink-400">karya name(params) ... sesa</code><p className="text-muted-foreground">Function</p></div>
               <div><code className="text-pink-400">fera value</code><p className="text-muted-foreground">Return</p></div>
               <div><code className="text-pink-400">sata / micha</code><p className="text-muted-foreground">True / False</p></div>
+              <div><code className="text-pink-400">ruha</code><p className="text-muted-foreground">Break</p></div>
+              <div><code className="text-pink-400">chala</code><p className="text-muted-foreground">Continue</p></div>
+              <div><code className="text-pink-400">[1, 2, 3]</code><p className="text-muted-foreground">Array literal</p></div>
+              <div><code className="text-pink-400">arr[0], arr.length</code><p className="text-muted-foreground">Index / Property</p></div>
             </div>
           </div>
         </Card>

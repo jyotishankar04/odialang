@@ -11,7 +11,10 @@ export type StatementNode =
   | WhileStatementNode
   | FunctionDeclarationNode
   | ReturnStatementNode
-  | ForStatementNode;
+  | ForStatementNode
+  | ForRangeStatementNode
+  | BreakStatementNode
+  | ContinueStatementNode;
 
 export type ExpressionNode =
   | NumberLiteralNode
@@ -21,7 +24,10 @@ export type ExpressionNode =
   | BinaryExpressionNode
   | AssignmentExpressionNode
   | CallExpressionNode
-  | UnaryExpressionNode;
+  | UnaryExpressionNode
+  | ArrayLiteralNode
+  | MemberExpressionNode
+  | LogicalExpressionNode;
 
 export type VariableDeclarationNode = {
   type: "VariableDeclaration";
@@ -93,7 +99,7 @@ export type BinaryExpressionNode = {
 
 export type AssignmentExpressionNode = {
   type: "AssignmentExpression";
-  left: IdentifierNode;
+  left: IdentifierNode | MemberExpressionNode;
   right: ExpressionNode;
 };
 
@@ -115,4 +121,39 @@ export type UnaryExpressionNode = {
   type: "UnaryExpression";
   operator: string;
   argument: ExpressionNode;
+};
+
+export type ArrayLiteralNode = {
+  type: "ArrayLiteral";
+  elements: ExpressionNode[];
+};
+
+export type MemberExpressionNode = {
+  type: "MemberExpression";
+  object: ExpressionNode;
+  property: ExpressionNode;
+  computed: boolean;
+};
+
+export type LogicalExpressionNode = {
+  type: "LogicalExpression";
+  operator: string;
+  left: ExpressionNode;
+  right: ExpressionNode;
+};
+
+export type ForRangeStatementNode = {
+  type: "ForRangeStatement";
+  iterator: IdentifierNode;
+  start: ExpressionNode;
+  end: ExpressionNode;
+  body: StatementNode[];
+};
+
+export type BreakStatementNode = {
+  type: "BreakStatement";
+};
+
+export type ContinueStatementNode = {
+  type: "ContinueStatement";
 };
