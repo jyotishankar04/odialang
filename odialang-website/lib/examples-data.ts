@@ -499,4 +499,249 @@ dhara myBalance = createAccount("Rama", 1000)
 myBalance = deposit(myBalance, 500)
 myBalance = withdraw(myBalance, 200)
 dekha "Final balance: " + myBalance` },
+  "07_strings": { level: "basics", code: `# Example 7: String Operations
+# Working with text in Odialang
+
+# Basic string concatenation
+dhara firstName = "Rama"
+dhara lastName = "Das"
+dhara fullName = firstName + " " + lastName
+dekha "Name: " + fullName
+
+# String with numbers
+dhara age = 25
+dekha "Age: " + age
+
+# String with escape sequences
+dhara quote = "He said \"Namaste\" to everyone"
+dekha quote
+
+# String concatenation chain
+dekha "Hello" + ", " + "World" + "!"` },
+  "08_math": { level: "basics", code: `# Example 8: Math Operations
+# Advanced mathematical operations
+
+# Decimal numbers
+dhara pi = 3.14159
+dhara radius = 5
+dhara area = pi * radius * radius
+dekha "Circle area (r=" + radius + "): " + area
+
+# Negative numbers
+dhara x = -5
+dhara y = -10
+dekha "x = " + x + ", y = " + y
+dekha "-x = " + (-x)
+dekha "-y = " + (-y)
+
+# Absolute value
+karya abs(n)
+  jadi n < 0 tahale
+    dhara result = 0 - n
+    dekha "abs(" + n + ") = " + result
+  nahele
+    dekha "abs(" + n + ") = " + n
+  sesa
+sesa
+
+abs(-42)
+abs(25)
+abs(0)
+
+# Modulo
+dekha "10 % 3 = " + (10 % 3)` },
+  "05_math_funcs": { level: "intermediate", code: `# Example 5: Mathematical Functions
+# Common mathematical algorithms
+
+# Factorial
+karya factorial(n)
+  dhara result = 1
+  dhara i = 2
+  jebe i <= n
+    result = result * i
+    i = i + 1
+  sesa
+  fera result
+sesa
+
+# Check if prime
+karya isPrime(n)
+  jadi n <= 1 tahale
+    fera micha
+  sesa
+  dhara i = 2
+  jebe i * i <= n
+    jadi n % i == 0 tahale
+      fera micha
+    sesa
+    i = i + 1
+  sesa
+  fera sata
+sesa
+
+# GCD
+karya gcd(a, b)
+  jebe b != 0
+    dhara temp = b
+    b = a % b
+    a = temp
+  sesa
+  fera a
+sesa
+
+dekha "5! = " + factorial(5)
+dekha "Is 7 prime? " + isPrime(7)
+dekha "Is 15 prime? " + isPrime(15)
+dekha "GCD(48, 18) = " + gcd(48, 18)` },
+  "06_scope": { level: "intermediate", code: `# Example 6: Variable Scope
+# Understanding variable visibility
+
+# Global variable
+dhara globalVar = "I am global"
+dekha "Global: " + globalVar
+
+karya testScope()
+  # Local variable
+  dhara localVar = "I am local"
+  dekha "Inside function - Local: " + localVar
+  dekha "Inside function - Global: " + globalVar
+sesa
+
+testScope()
+dekha "Outside - Global: " + globalVar
+
+# Modifying global
+dhara counter = 0
+karya increment()
+  counter = counter + 1
+  dekha "Incremented to: " + counter
+sesa
+
+dekha "Initial: " + counter
+increment()
+increment()
+dekha "Final: " + counter` },
+  "07_sorting": { level: "advanced", code: `# Example 7: Sorting Algorithms
+# Sorting concepts in Odialang
+
+# Manual sorting of 3 numbers
+karya sort3(a, b, c)
+  dhara smallest = a
+  dhara largest = c
+  
+  # Find smallest
+  jadi b < smallest tahale
+    smallest = b
+  sesa
+  jadi c < smallest tahale
+    smallest = c
+  sesa
+  
+  # Find largest
+  jadi b > largest tahale
+    largest = b
+  sesa
+  jadi c > largest tahale
+    largest = c
+  sesa
+  
+  # Middle calculation
+  dhara middle = a + b + c - smallest - largest
+  
+  dekha "Sorted: " + smallest + ", " + middle + ", " + largest
+sesa
+
+dekha "=== Sorting ==="
+sort3(5, 2, 8)
+sort3(9, 1, 3)
+
+# Check if sorted
+karya isSorted(a, b, c)
+  dhara result = sata
+  jadi a > b tahale
+    result = micha
+  sesa
+  jadi b > c tahale
+    result = micha
+  sesa
+  dekha "Is " + a + ", " + b + ", " + c + " sorted? " + result
+sesa
+
+isSorted(1, 5, 9)
+isSorted(3, 7, 2)` },
+  "08_binary_search": { level: "advanced", code: `# Example 8: Binary Search
+# Efficient searching algorithm
+
+# Linear search simulation
+karya linearSearch(target, n1, n2, n3, n4, n5)
+  dhara found = micha
+  
+  jadi n1 == target tahale
+    dekha "Found at position 1!"
+    found = sata
+  sesa
+  
+  jadi found == micha tahale
+    jadi n2 == target tahale
+      dekha "Found at position 2!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n3 == target tahale
+      dekha "Found at position 3!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n4 == target tahale
+      dekha "Found at position 4!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    jadi n5 == target tahale
+      dekha "Found at position 5!"
+      found = sata
+    sesa
+  sesa
+  
+  jadi found == micha tahale
+    dekha target + " not found"
+  sesa
+sesa
+
+dekha "=== Linear Search ==="
+linearSearch(8, 3, 8, 5, 9, 2)
+linearSearch(7, 3, 8, 5, 9, 2)
+
+# Find min and max
+karya findMinMax(a, b, c)
+  dhara minVal = a
+  dhara maxVal = a
+  
+  jadi b < minVal tahale
+    minVal = b
+  sesa
+  jadi c < minVal tahale
+    minVal = c
+  sesa
+  
+  jadi b > maxVal tahale
+    maxVal = b
+  sesa
+  jadi c > maxVal tahale
+    maxVal = c
+  sesa
+  
+  dekha "Min: " + minVal + ", Max: " + maxVal
+sesa
+
+dekha ""
+dekha "=== Min and Max ==="
+findMinMax(5, 3, 8)
+findMinMax(100, 25, 75)` },
 };

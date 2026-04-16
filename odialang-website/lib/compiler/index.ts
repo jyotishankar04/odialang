@@ -1,6 +1,6 @@
-import { tokenize } from "./tokenizer";
-import { Parser } from "./parser";
-import { generateJavaScript } from "./codegen";
+import { tokenize as tokenizerTokenize } from "@devsuvam/odialang/dist/lexer/tokenizer";
+import { Parser as ParserClass } from "@devsuvam/odialang/dist/parser/parser";
+import { generateJavaScript } from "@devsuvam/odialang/dist/codegen/generate";
 
 export interface CompileResult {
   success: boolean;
@@ -10,8 +10,8 @@ export interface CompileResult {
 
 export function compile(code: string): CompileResult {
   try {
-    const tokens = tokenize(code);
-    const parser = new Parser(tokens);
+    const tokens = tokenizerTokenize(code);
+    const parser = new ParserClass(tokens);
     const ast = parser.parseProgram();
     const jsCode = generateJavaScript(ast);
     return { success: true, output: jsCode };
@@ -23,8 +23,8 @@ export function compile(code: string): CompileResult {
 
 export function execute(code: string): CompileResult {
   try {
-    const tokens = tokenize(code);
-    const parser = new Parser(tokens);
+    const tokens = tokenizerTokenize(code);
+    const parser = new ParserClass(tokens);
     const ast = parser.parseProgram();
     const jsCode = generateJavaScript(ast);
 
@@ -48,6 +48,9 @@ export function execute(code: string): CompileResult {
   }
 }
 
-export { tokenize, generateJavaScript };
-export { Parser } from "./parser";
-export type { ProgramNode, StatementNode, ExpressionNode } from "./ast";
+export function tokenize(code: string) {
+  return tokenizerTokenize(code);
+}
+
+export { generateJavaScript };
+export { ParserClass as Parser };
