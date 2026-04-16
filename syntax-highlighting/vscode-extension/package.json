@@ -2,7 +2,7 @@
   "name": "odialang-vscode",
   "displayName": "Odialang Support",
   "description": "Syntax highlighting for Odialang programming language",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "publisher": "devsuvam",
   "engines": {
     "vscode": "^1.60.0"
