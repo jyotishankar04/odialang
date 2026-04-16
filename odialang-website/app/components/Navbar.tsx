@@ -50,45 +50,31 @@ export default function Navbar() {
           <div className="relative flex h-10 w-10 items-center justify-center">
             <div className="absolute inset-0 rounded-lg bg-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             
-            {/* Enhanced Konark Chakra Symbol */}
+            {/* Chaka Akhi (Wheel of Eyes) Logo */}
             <svg 
-              viewBox="0 0 40 40" 
+              viewBox="0 0 50 50" 
               className="h-10 w-10 transition-transform duration-300 group-hover:scale-105"
               fill="none"
             >
-              {/* Outer chakra ring */}
-              <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+              {/* Outer ring */}
+              <circle cx="25" cy="25" r="23" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
               
-              {/* Middle decorative ring */}
-              <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="0.75" className="text-accent" opacity="0.6"/>
-              
-              {/* 12-spoke pattern (Konark style) */}
-              <g stroke="currentColor" strokeWidth="0.75" className="text-primary" opacity="0.5">
-                <line x1="20" y1="2" x2="20" y2="6"/>
-                <line x1="20" y1="34" x2="20" y2="38"/>
-                <line x1="2" y1="20" x2="6" y2="20"/>
-                <line x1="34" y1="20" x2="38" y2="20"/>
-                <line x1="7.25" y1="7.25" x2="10.1" y2="10.1"/>
-                <line x1="29.9" y1="29.9" x2="32.75" y2="32.75"/>
-                <line x1="32.75" y1="7.25" x2="29.9" y2="10.1"/>
-                <line x1="10.1" y1="29.9" x2="7.25" y2="32.75"/>
+              {/* Eye-like segments (6 petals) */}
+              <g stroke="currentColor" strokeWidth="1.2" className="text-primary" opacity="0.8">
+                <ellipse cx="25" cy="8" rx="7" ry="13"/>
+                <ellipse cx="25" cy="8" rx="7" ry="13" transform="rotate(60, 25, 25)"/>
+                <ellipse cx="25" cy="8" rx="7" ry="13" transform="rotate(120, 25, 25)"/>
+                <ellipse cx="25" cy="8" rx="7" ry="13" transform="rotate(180, 25, 25)"/>
+                <ellipse cx="25" cy="8" rx="7" ry="13" transform="rotate(240, 25, 25)"/>
+                <ellipse cx="25" cy="8" rx="7" ry="13" transform="rotate(300, 25, 25)"/>
               </g>
               
               {/* Inner decorative ring */}
-              <circle cx="20" cy="20" r="8" stroke="currentColor" strokeWidth="1" className="text-terracotta" opacity="0.5"/>
+              <circle cx="25" cy="25" r="10" stroke="currentColor" strokeWidth="1" className="text-terracotta" opacity="0.6"/>
               
-              {/* Center hub with terracotta */}
-              <circle cx="20" cy="20" r="4" fill="currentColor" className="text-primary"/>
-              <circle cx="20" cy="20" r="2" fill="currentColor" className="text-terracotta"/>
-              
-              {/* Odia letterform accent */}
-              <path d="M20 12 Q24 16 24 20 Q24 24 20 28 Q16 24 16 20 Q16 16 20 12" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="1" 
-                    strokeLinecap="round"
-                    className="text-accent"
-                    opacity="0.7"/>
+              {/* Center hub */}
+              <circle cx="25" cy="25" r="5" fill="currentColor" className="text-primary"/>
+              <circle cx="25" cy="25" r="2" fill="currentColor" className="text-terracotta"/>
             </svg>
           </div>
           <span className="text-lg font-semibold text-foreground tracking-tight">

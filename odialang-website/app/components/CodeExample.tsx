@@ -123,9 +123,19 @@ export default function CodeExample() {
           <div className="dot dot-green" />
           <span className="ml-2 text-xs text-muted-foreground">example.odia</span>
           
-          {/* Enhanced Konark chakra accent */}
+          {/* Chaka Akhi accent */}
           <div className="ml-auto flex items-center gap-2 opacity-40">
-            <div className="konark-chakra" style={{width: '24px', height: '24px'}} />
+            <svg viewBox="0 0 50 50" className="w-6 h-6 text-primary" fill="none">
+              <circle cx="25" cy="25" r="23" stroke="currentColor" strokeWidth="1"/>
+              <circle cx="25" cy="25" r="18" stroke="currentColor" strokeWidth="0.5"/>
+              <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+              <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(60, 25, 25)"/>
+              <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(120, 25, 25)"/>
+              <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(180, 25, 25)"/>
+              <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(240, 25, 25)"/>
+              <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(300, 25, 25)"/>
+              <circle cx="25" cy="25" r="5" fill="currentColor"/>
+            </svg>
           </div>
         </div>
         <div className="relative bg-card">

@@ -20,8 +20,35 @@ export default function Home() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 pb-24 sm:px-6 lg:px-8">
-        {/* Enhanced Konark Radial Watermark */}
-        <div className="radial-watermark" />
+        {/* Large Chaka Akhi Watermark Background */}
+        <div className="chaka-watermark-large" aria-hidden="true">
+          <svg viewBox="0 0 100 100" className="text-primary">
+            {/* Outer ring */}
+            <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+            {/* Middle ring */}
+            <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+            {/* Eye-like segments (12) */}
+            <g opacity="0.6">
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(30, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(60, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(90, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(120, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(150, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(180, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(210, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(240, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(270, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(300, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(330, 50, 50)"/>
+            </g>
+            {/* Inner rings */}
+            <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="none" stroke="currentColor" strokeWidth="1"/>
+            <circle cx="50" cy="50" r="3" fill="currentColor"/>
+          </svg>
+        </div>
         
         {/* Warm gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
@@ -77,9 +104,19 @@ export default function Home() {
                   <div className="dot dot-green" />
                   <span className="ml-2 text-xs text-muted-foreground">terminal</span>
                   
-                  {/* Mini Konark chakra in header */}
+                  {/* Mini Chaka Akhi in header */}
                   <div className="ml-auto flex items-center gap-2 opacity-30">
-                    <div className="konark-chakra" style={{width: '20px', height: '20px'}} />
+                    <svg viewBox="0 0 50 50" className="w-6 h-6 text-primary" fill="none">
+                      <circle cx="25" cy="25" r="23" stroke="currentColor" strokeWidth="1"/>
+                      <circle cx="25" cy="25" r="18" stroke="currentColor" strokeWidth="0.5"/>
+                      <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+                      <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(60, 25, 25)"/>
+                      <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(120, 25, 25)"/>
+                      <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(180, 25, 25)"/>
+                      <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(240, 25, 25)"/>
+                      <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(300, 25, 25)"/>
+                      <circle cx="25" cy="25" r="5" fill="currentColor"/>
+                    </svg>
                   </div>
                 </div>
                 <div className="flex items-center justify-between bg-card px-4 py-3">
@@ -238,9 +275,28 @@ export default function Home() {
         <div className="absolute inset-0 pattern-lotus opacity-10" />
         
         <div className="relative mx-auto max-w-4xl text-center">
-          {/* Large Konark Chakra watermark */}
-          <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-[0.04]">
-            <div className="konark-chakra" style={{width: '200px', height: '200px'}} />
+          {/* Large Chaka Akhi watermark */}
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-[0.04] pointer-events-none">
+            <svg viewBox="0 0 100 100" className="w-48 h-48 text-primary" fill="none">
+              <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="0.75"/>
+              <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="0.5"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(30, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(60, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(90, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(120, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(150, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(180, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(210, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(240, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(270, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(300, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" stroke="currentColor" strokeWidth="0.75" transform="rotate(330, 50, 50)"/>
+              <circle cx="50" cy="50" r="32" stroke="currentColor" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="22" stroke="currentColor" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="8" stroke="currentColor" strokeWidth="1"/>
+              <circle cx="50" cy="50" r="3" fill="currentColor"/>
+            </svg>
           </div>
           
           {/* Palmette accent above heading */}
