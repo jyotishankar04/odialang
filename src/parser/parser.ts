@@ -375,7 +375,7 @@ export class Parser {
 
         while (
             this.check(TokenType.ARITHMETIC_OPERATOR) &&
-            ["*", "/"].includes(String(this.peek().value))
+            ["*", "/", "%"].includes(String(this.peek().value))
         ) {
             this.advance();
             const operator = String(this.previous().value);

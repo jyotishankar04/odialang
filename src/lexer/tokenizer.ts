@@ -115,7 +115,7 @@ export function tokenize(input: string): Token[] {
       advance();
       continue;
     }
-    if (["+", "-", "*", "/"].includes(char ?? "")) {
+    if (["+", "-", "*", "/", "%"].includes(char ?? "")) {
       addToken(TokenType.ARITHMETIC_OPERATOR, char ?? "", line, column);
       advance();
       continue;
