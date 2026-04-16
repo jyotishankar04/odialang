@@ -20,7 +20,8 @@ export type ExpressionNode =
   | IdentifierNode
   | BinaryExpressionNode
   | AssignmentExpressionNode
-  | CallExpressionNode;
+  | CallExpressionNode
+  | UnaryExpressionNode;
 
 export type VariableDeclarationNode = {
   type: "VariableDeclaration";
@@ -108,4 +109,10 @@ export type ForStatementNode = {
   start: ExpressionNode;
   end: ExpressionNode;
   body: StatementNode[];
+};
+
+export type UnaryExpressionNode = {
+  type: "UnaryExpression";
+  operator: string;
+  argument: ExpressionNode;
 };

@@ -15,6 +15,7 @@ import type {
   ReturnStatementNode,
   StatementNode,
   StringLiteralNode,
+  UnaryExpressionNode,
   VariableDeclarationNode,
   WhileStatementNode,
 } from "../parser/ast";
@@ -179,6 +180,9 @@ function generateExpression(node: ExpressionNode): string {
     case "CallExpression":
       return generateCallExpression(node);
 
+    case "UnaryExpression":
+      return generateUnaryExpression(node);
+
     default: {
       const neverNode: never = node;
       throw new Error(`Unhandled expression node: ${JSON.stringify(neverNode)}`);
@@ -213,4 +217,12 @@ function generateAssignmentExpression(node: AssignmentExpressionNode): string {
 function generateCallExpression(node: CallExpressionNode): string {
   const args = node.arguments.map((arg) => generateExpression(arg)).join(", ");
   return `${generateExpression(node.callee)}(${args})`;
+}
+
+function generateUnaryExpression(node: UnaryExpressionNode): string {
+  const arg = generateExpression(node.argument);
+  if (node.argument.type === "NumberLiteral" || node.argument.type === "UnaryExpression") {
+    return `${node.operator}(${arg})`;
+  }
+  return `${node.operator}${arg}`;
 }
