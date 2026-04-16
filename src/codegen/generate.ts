@@ -25,7 +25,9 @@ function indent(level: number): string {
 }
 
 export function generateJavaScript(ast: ProgramNode): string {
-  return ast.body.map((stmt) => generateStatement(stmt, 0)).join("\n");
+  const helper = `function __safeDiv(a, b) { if (b === 0) { throw new Error("Division by zero"); } return a / b; }`;
+  const body = ast.body.map((stmt) => generateStatement(stmt, 0)).join("\n");
+  return helper + "\n" + body;
 }
 
 function generateStatement(node: StatementNode, level: number): string {
@@ -207,6 +209,9 @@ function generateIdentifier(node: IdentifierNode): string {
 }
 
 function generateBinaryExpression(node: BinaryExpressionNode): string {
+  if (node.operator === "/") {
+    return `(__safeDiv(${generateExpression(node.left)}, ${generateExpression(node.right)}))`;
+  }
   return `(${generateExpression(node.left)} ${node.operator} ${generateExpression(node.right)})`;
 }
 
