@@ -1,47 +1,14 @@
-const KEYWORDS = new Set<string>([
-  "dhara",
-  "dekha",
-  "jadi",
-  "tahale",
-  "nahele",
-  "jebe",
-  "karya",
-  "fera",
-  "sata",
-  "micha",
-  "sesa",
-  "kar",
-  "aarambha",
-  "ru",
-]);
-
-export enum TokenType {
-  KEYWORD = "KEYWORD",
-  IDENTIFIER = "IDENTIFIER",
-  NUMBER = "NUMBER",
-  STRING = "STRING",
-  BOOLEAN = "BOOLEAN",
-  ARITHMETIC_OPERATOR = "ARITHMETIC_OPERATOR",
-  ASSIGNMENT_OPERATOR = "ASSIGNMENT_OPERATOR",
-  RELATIONAL_OPERATOR = "RELATIONAL_OPERATOR",
-  LPAREN = "LPAREN",
-  RPAREN = "RPAREN",
-  COMMA = "COMMA",
-  NEWLINE = "NEWLINE",
-  EOF = "EOF",
-}
-
-type TokenValue = string | number | boolean | null;
-
-export interface Token {
-  type: TokenType;
-  value: TokenValue;
-  line: number;
-  column: number;
-}
+import { KEYWORDS } from "./keywords";
+import { type Token, TokenType, type TokenValue } from "./tokenTypes";
 
 export function tokenize(input: string): Token[] {
   const tokens: Token[] = [];
+  let currentToken: Token = {
+    type: TokenType.EOF,
+    value: "",
+    line: 1,
+    column: 0,
+  };
   let line = 1;
   let column = 1;
   let current = 0;
@@ -60,11 +27,9 @@ export function tokenize(input: string): Token[] {
     };
     tokens.push(token);
   }
-
   function peek(offset: number = 0): string | undefined {
     return input[current + offset];
   }
-
   function advance(): string | undefined {
     const char = input[current++];
     if (char === "\n") {
@@ -75,15 +40,12 @@ export function tokenize(input: string): Token[] {
     }
     return char;
   }
-
   function isWhitespace(char: string | undefined): boolean {
     return char === " " || char === "\t" || char === "\r";
   }
-
   function isDigit(char: string | undefined): boolean {
     return char !== undefined && char >= "0" && char <= "9";
   }
-
   function isAlpha(char: string | undefined): boolean {
     return (
       char !== undefined &&
@@ -92,11 +54,9 @@ export function tokenize(input: string): Token[] {
         char === "_")
     );
   }
-
   function isAlphaNumeric(char: string | undefined): boolean {
     return isAlpha(char) || isDigit(char);
   }
-
   while (current < input.length) {
     const char = peek();
 
@@ -118,6 +78,25 @@ export function tokenize(input: string): Token[] {
       continue;
     }
 
+    if (char === "/" && peek(1) === "/") {
+      while (current < input.length && peek() !== "\n") {
+        advance();
+      }
+      continue;
+    }
+
+    if (char === "[") {
+      addToken(TokenType.LBRACKET, "[", line, column);
+      advance();
+      continue;
+    }
+
+    if (char === "]") {
+      addToken(TokenType.RBRACKET, "]", line, column);
+      advance();
+      continue;
+    }
+
     if (char === "(") {
       addToken(TokenType.LPAREN, "(", line, column);
       advance();
@@ -136,10 +115,36 @@ export function tokenize(input: string): Token[] {
       continue;
     }
 
+    if (char === ".") {
+      addToken(TokenType.DOT, ".", line, column);
+      advance();
+      continue;
+    }
+
     const twoChar = (char ?? "") + (peek(1) ?? "");
+
+    if (["&&", "||"].includes(twoChar)) {
+      addToken(TokenType.LOGICAL_OPERATOR, twoChar, line, column);
+      advance();
+      advance();
+      continue;
+    }
 
     if (["==", "!=", ">=", "<="].includes(twoChar)) {
       addToken(TokenType.RELATIONAL_OPERATOR, twoChar, line, column);
+      advance();
+      advance();
+      continue;
+    }
+
+    if (char === "!") {
+      addToken(TokenType.UNARY_OPERATOR, "!", line, column);
+      advance();
+      continue;
+    }
+
+    if (["+=", "-=", "*=", "/="].includes(twoChar)) {
+      addToken(TokenType.COMPOUND_ASSIGNMENT, twoChar, line, column);
       advance();
       advance();
       continue;
@@ -164,22 +169,42 @@ export function tokenize(input: string): Token[] {
     if (char === '"') {
       const startLine = line;
       const startColumn = column;
-      advance();
+      advance(); // skip opening quote
+
       let value = "";
+
       while (current < input.length && peek() !== '"') {
-        if (peek() === "\n") {
-          throw new Error(
-            `Unterminated string at line ${startLine}, column ${startColumn}`,
-          );
+        if (peek() === "\\") {
+          advance();
+          const escaped = peek();
+          if (escaped === '"') {
+            value += '"';
+            advance();
+          } else if (escaped === "\\") {
+            value += "\\";
+            advance();
+          } else if (escaped === "n") {
+            value += "\n";
+            advance();
+          } else if (escaped === "t") {
+            value += "\t";
+            advance();
+          } else {
+            value += "\\";
+          }
+          continue;
         }
+
         value += advance();
       }
+
       if (peek() !== '"') {
         throw new Error(
           `Unterminated string at line ${startLine}, column ${startColumn}`,
         );
       }
-      advance();
+
+      advance(); // skip closing quote
       addToken(TokenType.STRING, value, startLine, startColumn);
       continue;
     }
@@ -188,9 +213,18 @@ export function tokenize(input: string): Token[] {
       const startLine = line;
       const startColumn = column;
       let value = "";
+
       while (current < input.length && isDigit(peek())) {
         value += advance();
       }
+
+      if (peek() === "." && peek(1) !== undefined && isDigit(peek(1))) {
+        value += advance();
+        while (current < input.length && isDigit(peek())) {
+          value += advance();
+        }
+      }
+
       addToken(TokenType.NUMBER, Number(value), startLine, startColumn);
       continue;
     }
@@ -199,6 +233,7 @@ export function tokenize(input: string): Token[] {
       const startLine = line;
       const startColumn = column;
       let value = "";
+
       while (current < input.length && isAlphaNumeric(peek())) {
         value += advance();
       }
@@ -210,6 +245,7 @@ export function tokenize(input: string): Token[] {
       } else {
         addToken(TokenType.IDENTIFIER, value, startLine, startColumn);
       }
+
       continue;
     }
 

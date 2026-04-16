@@ -96,6 +96,7 @@ cp -r node_modules/@devsuvam/odialang/syntax-highlighting/vscode-extension ~/.vs
 - 🛠️ **CLI Interface** - Simple commands for run, compile, and debug
 - 📁 **File-based** - Write `.odia` files and execute directly
 - 🔍 **Debug Tools** - View tokens and AST for learning
+- 📦 **Arrays** - Create, index, and modify arrays with `.length` support
 
 ## 💡 Language Keywords
 
@@ -114,6 +115,8 @@ cp -r node_modules/@devsuvam/odialang/syntax-highlighting/vscode-extension ~/.vs
 | `sesa` | end | Block terminator |
 | `sata` | true | Boolean true |
 | `micha` | false | Boolean false |
+| `ruha` | break | Break out of loop |
+| `chala` | continue | Skip to next loop iteration |
 
 ## 📖 Example Programs
 
@@ -166,6 +169,20 @@ sesa
 
 dhara result = add(10, 20)
 dekha "Sum: " + result
+```
+
+### Arrays
+
+```odia
+dhara nums = [10, 20, 30, 40, 50]
+dekha "Length: " + nums.length
+dekha "First: " + nums[0]
+
+nums[0] = 100
+dekha "Updated: " + nums
+
+dhara matrix = [[1, 2], [3, 4]]
+dekha "Nested: " + matrix[0][1]
 ```
 
 See [examples/](examples/) folder for more programs.

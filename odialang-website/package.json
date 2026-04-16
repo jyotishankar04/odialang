@@ -1,6 +1,6 @@
 {
   "name": "odialang-website",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@devsuvam/odialang": "^1.0.3",
+    "@devsuvam/odialang": "file:../",
     "@monaco-editor/react": "^4.7.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

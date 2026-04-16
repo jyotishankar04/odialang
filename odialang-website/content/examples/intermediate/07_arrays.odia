@@ -1,0 +1,57 @@
+# Example 7: Arrays
+# Working with lists of data
+
+# Creating arrays
+dhara nums = [10, 20, 30, 40, 50]
+dekha "Numbers: " + nums
+
+# Accessing elements by index
+dekha "First: " + nums[0]
+dekha "Third: " + nums[2]
+dekha "Last: " + nums[4]
+
+# Array length
+dekha "Length: " + nums.length
+
+# Modifying array elements
+dekha ""
+dekha "=== Modifying Arrays ==="
+dhara scores = [85, 92, 78, 95, 88]
+dekha "Original scores: " + scores
+scores[0] = 90
+scores[2] = 82
+dekha "Updated scores: " + scores
+
+# Arrays with strings
+dhara names = ["Rama", "Sita", "Hari"]
+dekha "Names: " + names
+dekha "Second name: " + names[1]
+
+# Indexing in loops
+dekha ""
+dekha "=== Looping Through Arrays ==="
+aarambha i = 0 ru 4
+  dekha "nums[" + i + "] = " + nums[i]
+sesa
+
+# Nested arrays
+dekha ""
+dekha "=== Nested Arrays ==="
+dhara matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+dekha "Row 0: " + matrix[0]
+dekha "Row 1: " + matrix[1]
+dekha "Element [0][0]: " + matrix[0][0]
+dekha "Element [1][2]: " + matrix[1][2]
+
+# Compound assignment on array elements
+dhara data = [100, 200, 300]
+dekha ""
+dekha "Original: " + data
+data[1] += 50
+data[0] -= 10
+dekha "After += and -=: " + data
+
+# Empty array
+dhara empty = []
+dekha ""
+dekha "Empty array: " + empty

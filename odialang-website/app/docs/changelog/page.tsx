@@ -5,6 +5,24 @@ import { Badge } from "@/components/ui/badge";
 
 const versions = [
   {
+    version: "2.1.0",
+    date: "2026-04-16",
+    type: "minor",
+    features: [
+      "Arrays — create, index, and modify ([1,2,3], arr[0], arr[0] = x)",
+      "Property access with dot notation (arr.length)",
+      "Nested array indexing (matrix[0][1])",
+      "Compound assignment on array elements (arr[i] += 5)",
+      "Logical operators (&&, ||, !)",
+      "Break statement (ruha keyword)",
+      "Continue statement (chala keyword)",
+      "Compound assignment operators (+=, -=, *=, /=)",
+      "Website playground now shows all 22 examples organized by level",
+    ],
+    cli: [],
+    fixes: [],
+  },
+  {
     version: "1.0.3",
     date: "2026-04-16",
     type: "patch",
@@ -59,12 +77,12 @@ const versions = [
 ];
 
 const comingSoon = [
-  "Arrays and array methods",
   "Object/Class support",
   "More built-in functions",
   "Import/Export modules",
   "Error handling (try-catch)",
   "Better error messages",
+  "Array methods (push, pop, map, filter)",
 ];
 
 export default function ChangelogPage() {
@@ -131,6 +149,11 @@ export default function ChangelogPage() {
         <h2 className="text-2xl font-semibold">Release History</h2>
         <Card className="mt-4 p-6">
           <div className="space-y-2">
+            <div className="flex items-center gap-4">
+              <code className="text-pink-400">2.1.0</code>
+              <span className="text-muted-foreground">2026-04-16</span>
+              <span className="text-muted-foreground">Arrays, dot access, logical/compound operators, break/continue</span>
+            </div>
             <div className="flex items-center gap-4">
               <code className="text-pink-400">1.0.3</code>
               <span className="text-muted-foreground">2026-04-16</span>
