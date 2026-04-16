@@ -157,6 +157,13 @@ export function tokenize(input: string): Token[] {
         value += advance();
       }
 
+      if (peek() === "." && peek(1) !== undefined && isDigit(peek(1))) {
+        value += advance();
+        while (current < input.length && isDigit(peek())) {
+          value += advance();
+        }
+      }
+
       addToken(TokenType.NUMBER, Number(value), startLine, startColumn);
       continue;
     }
