@@ -20,38 +20,42 @@ export default function Home() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 pb-24 sm:px-6 lg:px-8">
-        {/* Large Chaka Akhi Watermark Background */}
-        <div className="chaka-watermark-large" aria-hidden="true">
-          <svg viewBox="0 0 100 100" className="text-primary">
+        {/* Large Chaka Akhi Watermark Background - Centered */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <svg 
+            viewBox="0 0 100 100" 
+            className="w-[600px] h-[600px] text-primary opacity-[0.04] animate-[chaka-rotate_180s_linear_infinite]"
+            style={{ transform: 'rotate(0deg)' }}
+          >
             {/* Outer ring */}
-            <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+            <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="0.5"/>
             {/* Middle ring */}
-            <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="0.3"/>
             {/* Eye-like segments (12) */}
-            <g opacity="0.6">
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(30, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(60, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(90, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(120, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(150, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(180, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(210, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(240, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(270, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(300, 50, 50)"/>
-              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.75" transform="rotate(330, 50, 50)"/>
+            <g opacity="0.7">
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(30, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(60, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(90, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(120, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(150, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(180, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(210, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(240, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(270, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(300, 50, 50)"/>
+              <ellipse cx="50" cy="12" rx="6" ry="11" fill="none" stroke="currentColor" strokeWidth="0.5" transform="rotate(330, 50, 50)"/>
             </g>
             {/* Inner rings */}
-            <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-            <circle cx="50" cy="50" r="8" fill="none" stroke="currentColor" strokeWidth="1"/>
-            <circle cx="50" cy="50" r="3" fill="currentColor"/>
+            <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" strokeWidth="0.3"/>
+            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" strokeWidth="0.3"/>
+            <circle cx="50" cy="50" r="12" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+            <circle cx="50" cy="50" r="4" fill="currentColor"/>
           </svg>
         </div>
         
         {/* Warm gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent" />
         
         {/* Wave accent with palm leaf style */}
         <div className="wave-accent" />
