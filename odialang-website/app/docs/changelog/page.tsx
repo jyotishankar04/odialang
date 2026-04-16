@@ -5,6 +5,28 @@ import { Badge } from "@/components/ui/badge";
 
 const versions = [
   {
+    version: "1.0.3",
+    date: "2026-04-16",
+    type: "patch",
+    features: [
+      "Decimal number support (e.g., 3.14, 2.718)",
+      "Escape sequences in strings (\", \\, \\n, \\t)",
+      "Multi-line strings",
+      "Unary operators (+ and -)",
+      "Modulo operator (%)",
+      "Division by zero protection (throws error)",
+    ],
+    cli: [],
+    fixes: [
+      "Fixed tokenizer to support decimal numbers",
+      "Fixed string parsing for escape sequences",
+      "Fixed string tokenizer for multi-line strings",
+      "Fixed parser to handle unary operators",
+      "Fixed parser to support modulo operator",
+      "Added runtime check for division by zero",
+    ],
+  },
+  {
     version: "1.0.0",
     date: "2026-04-15",
     type: "major",
@@ -19,7 +41,7 @@ const versions = [
       "Return statements (fera)",
       "Boolean literals (sata, micha)",
       "String, number, and boolean data types",
-      "Arithmetic operators (+, -, *, /, %)",
+      "Arithmetic operators (+, -, *, /)",
       "Comparison operators (==, !=, >, <, >=, <=)",
       "Assignment operator (=)",
       "Single-line comments (#)",
@@ -32,6 +54,7 @@ const versions = [
       "odia ast <file.odia> - Display abstract syntax tree",
       "odia --help / odia -h - Show help",
     ],
+    fixes: [],
   },
 ];
 
@@ -79,6 +102,17 @@ export default function ChangelogPage() {
               ))}
             </ul>
           </div>
+
+          {v.fixes && v.fixes.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-lg font-semibold">Bug Fixes</h3>
+              <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
+                {v.fixes.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Card>
       ))}
 
@@ -97,6 +131,11 @@ export default function ChangelogPage() {
         <h2 className="text-2xl font-semibold">Release History</h2>
         <Card className="mt-4 p-6">
           <div className="space-y-2">
+            <div className="flex items-center gap-4">
+              <code className="text-pink-400">1.0.3</code>
+              <span className="text-muted-foreground">2026-04-16</span>
+              <span className="text-muted-foreground">Bug fixes: decimals, escapes, unary ops</span>
+            </div>
             <div className="flex items-center gap-4">
               <code className="text-pink-400">1.0.0</code>
               <span className="text-muted-foreground">2026-04-15</span>

@@ -10,6 +10,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - New features in development
 
+## [1.0.3] - 2026-04-16
+
+### Added
+- Decimal number support (e.g., `3.14`, `2.71828`, `42.0`)
+- Escape sequences in strings (`\"`, `\\`, `\n`, `\t`)
+- Multi-line strings (strings that span multiple lines)
+- Unary operators (`+` and `-`)
+- Modulo operator (`%`)
+- Division by zero protection (throws error)
+
+### Fixed
+- Fixed tokenizer to support decimal numbers
+- Fixed string parsing for escape sequences
+- Fixed string tokenizer for multi-line strings
+- Fixed parser to handle unary operators (`-5`, `+7`)
+- Fixed parser to support modulo operator
+- Added runtime check for division by zero
+
+### Examples Added
+- `07_strings.odia` - String operations and escape sequences
+- `08_math.odia` - Math operations with decimals and negatives
+- `05_math_funcs.odia` - Mathematical functions (factorial, prime, GCD, LCM)
+- `06_scope.odia` - Variable scope and shadowing
+- `07_sorting.odia` - Sorting algorithms
+- `08_binary_search.odia` - Binary search algorithm
+
 ## [1.0.0] - 2026-04-15
 
 ### Added
@@ -112,6 +138,10 @@ Each version section includes:
 
 ## Migration Guide
 
+### From 1.0.x to 1.0.3
+
+No breaking changes. All existing code will continue to work.
+
 ### From 0.x to 1.0.0
 
 This is the first stable release. No migration needed.
@@ -127,7 +157,7 @@ This is the first stable release. No migration needed.
 npm update -g @devsuvam/odialang
 
 # Install specific version
-npm install -g @devsuvam/odialang@1.0.0
+npm install -g @devsuvam/odialang@1.0.3
 ```
 
 ### Verify Version
@@ -162,6 +192,7 @@ Example:
 
 | Version | Date | Description |
 |---------|------|-------------|
+| 1.0.3 | 2026-04-16 | Bug fixes: decimals, escape sequences, unary ops |
 | 1.0.0 | 2026-04-15 | Initial stable release |
 
 ---

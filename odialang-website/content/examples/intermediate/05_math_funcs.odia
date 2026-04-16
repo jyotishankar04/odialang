@@ -1,0 +1,151 @@
+# Mathematical Functions
+# Common mathematical operations and algorithms
+
+# Factorial
+karya factorial(n)
+  dhara result = 1
+  dhara i = 2
+  jebe i <= n
+    result = result * i
+    i = i + 1
+  sesa
+  fera result
+sesa
+
+# Check if number is prime
+karya isPrime(n)
+  jadi n <= 1 tahale
+    fera micha
+  sesa
+  jadi n == 2 tahale
+    fera sata
+  sesa
+  dhara i = 2
+  jebe i * i <= n
+    jadi n % i == 0 tahale
+      fera micha
+    sesa
+    i = i + 1
+  sesa
+  fera sata
+sesa
+
+# Find GCD (Greatest Common Divisor)
+karya gcd(a, b)
+  jebe b != 0
+    dhara temp = b
+    b = a % b
+    a = temp
+  sesa
+  fera a
+sesa
+
+# Find LCM (Least Common Multiple)
+karya lcm(a, b)
+  dhara g = gcd(a, b)
+  dhara result = a * b / g
+  fera result
+sesa
+
+dekha "=== Factorial ==="
+dekha "5! = " + factorial(5)
+dekha "0! = " + factorial(0)
+dekha "10! = " + factorial(10)
+
+dekha ""
+dekha "=== Prime Numbers ==="
+dekha "Is 7 prime? " + isPrime(7)
+dekha "Is 15 prime? " + isPrime(15)
+dekha "Is 2 prime? " + isPrime(2)
+dekha "Is 1 prime? " + isPrime(1)
+
+dekha ""
+dekha "=== Finding Primes (1-20) ==="
+dhara i = 1
+jebe i <= 20
+  jadi isPrime(i) tahale
+    dekha i + " is prime"
+  sesa
+  i = i + 1
+sesa
+
+dekha ""
+dekha "=== GCD and LCM ==="
+dekha "GCD(48, 18) = " + gcd(48, 18)
+dekha "GCD(100, 25) = " + gcd(100, 25)
+dekha "LCM(4, 6) = " + lcm(4, 6)
+dekha "LCM(12, 18) = " + lcm(12, 18)
+
+# Power function
+karya power(base, exp)
+  dhara result = 1
+  dhara j = 0
+  jebe j < exp
+    result = result * base
+    j = j + 1
+  sesa
+  fera result
+sesa
+
+dekha ""
+dekha "=== Power ==="
+dekha "2^10 = " + power(2, 10)
+dekha "3^5 = " + power(3, 5)
+dekha "5^3 = " + power(5, 3)
+
+# Fibonacci
+karya fibonacci(n)
+  jadi n <= 1 tahale
+    fera n
+  sesa
+  dhara a = 0
+  dhara b = 1
+  dhara i = 2
+  jebe i <= n
+    dhara temp = a + b
+    a = b
+    b = temp
+    i = i + 1
+  sesa
+  dhara result = a + b
+  fera result
+sesa
+
+dekha ""
+dekha "=== Fibonacci ==="
+dekha "fib(0) = " + fibonacci(0)
+dekha "fib(1) = " + fibonacci(1)
+dekha "fib(5) = " + fibonacci(5)
+dekha "fib(10) = " + fibonacci(10)
+
+# Output:
+# === Factorial ===
+# 5! = 120
+# 0! = 1
+# 10! = 3628800
+# === Prime Numbers ===
+# Is 7 prime? true
+# Is 15 prime? false
+# === Finding Primes (1-20) ===
+# 2 is prime
+# 3 is prime
+# 5 is prime
+# 7 is prime
+# 11 is prime
+# 13 is prime
+# 17 is prime
+# 19 is prime
+# === GCD and LCM ===
+# GCD(48, 18) = 6
+# GCD(100, 25) = 25
+# LCM(4, 6) = 12
+# LCM(12, 18) = 36
+# === Power ===
+# 2^10 = 1024
+# 3^5 = 243
+# 5^3 = 125
+# === Fibonacci ===
+# fib(0) = 0
+# fib(1) = 1
+# fib(5) = 5
+# fib(10) = 55

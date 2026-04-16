@@ -1,0 +1,95 @@
+# Math Operations
+# Advanced mathematical operations in Odialang
+
+# Basic arithmetic
+dekha "=== Basic Math ==="
+dhara a = 10
+dhara b = 3
+dekha "a = " + a + ", b = " + b
+dekha "a + b = " + (a + b)
+dekha "a - b = " + (a - b)
+dekha "a * b = " + (a * b)
+dekha "a / b = " + (a / b)
+dekha "a % b = " + (a % b)
+
+# Decimal numbers
+dekha ""
+dekha "=== Decimal Math ==="
+dhara pi = 3.14159
+dhara radius = 5
+dhara area = pi * radius * radius
+dekha "Circle area (r=" + radius + "): " + area
+
+dhara e = 2.71828
+dekha "e = " + e
+
+# Negative numbers
+dekha ""
+dekha "=== Negative Numbers ==="
+dhara x = -5
+dhara y = -10
+dekha "x = " + x
+dekha "y = " + y
+dekha "-x = " + (-x)
+dekha "-y = " + (-y)
+dekha "x + y = " + (x + y)
+
+# Absolute value (manual)
+karya abs(n)
+  jadi n < 0 tahale
+    dhara result = 0 - n
+    dekha "abs(" + n + ") = " + result
+  nahele
+    dekha "abs(" + n + ") = " + n
+  sesa
+sesa
+
+dekha ""
+dekha "=== Absolute Value ==="
+abs(-42)
+abs(25)
+abs(0)
+abs(-100)
+
+# Power calculation
+karya power(base, exp)
+  dhara result = 1
+  dhara i = 0
+  jebe i < exp
+    result = result * base
+    i = i + 1
+  sesa
+  dekha base + "^" + exp + " = " + result
+sesa
+
+dekha ""
+dekha "=== Powers ==="
+power(2, 10)
+power(3, 4)
+power(5, 3)
+
+# Output:
+# === Basic Math ===
+# a = 10, b = 3
+# a + b = 13
+# a - b = 7
+# a * b = 30
+# a / b = 3.333...
+# a % b = 1
+# === Decimal Math ===
+# Circle area (r=5): 78.53975
+# e = 2.71828
+# === Negative Numbers ===
+# x = -5
+# y = -10
+# -x = 5
+# -y = 10
+# x + y = -15
+# === Absolute Value ===
+# abs(-42) = 42
+# abs(25) = 25
+# abs(0) = 0
+# === Powers ===
+# 2^10 = 1024
+# 3^4 = 81
+# 5^3 = 125
