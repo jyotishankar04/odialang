@@ -60,13 +60,13 @@ export default function ExamplesPage() {
   const getLevelColor = (level: string) => {
     switch (level) {
       case "Basics":
-        return "bg-green-500/10 text-green-400 border-green-500/20";
+        return "bg-primary/10 text-primary border-primary/20";
       case "Intermediate":
-        return "bg-yellow-500/10 text-yellow-400 border-yellow-500/20";
+        return "bg-terracotta/10 text-terracotta border-terracotta/20";
       case "Advanced":
-        return "bg-red-500/10 text-red-400 border-red-500/20";
+        return "bg-accent/10 text-accent border-accent/20";
       default:
-        return "bg-pink-500/10 text-pink-400 border-pink-500/20";
+        return "bg-primary/10 text-primary border-primary/20";
     }
   };
 
@@ -75,10 +75,10 @@ export default function ExamplesPage() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Example Programs
           </h1>
-          <p className="mt-4 text-lg text-zinc-400">
+          <p className="mt-4 text-lg text-muted-foreground">
             Learn Odialang through hands-on examples. From Hello World to complex algorithms.
           </p>
         </div>
@@ -88,29 +88,33 @@ export default function ExamplesPage() {
           {Object.entries(groupedExamples).map(([level, levelExamples]) => (
             levelExamples.length > 0 && (
               <section key={level}>
-                <h2 className="mb-6 text-2xl font-bold text-white">{level}</h2>
+                {/* Level header with decorative element */}
+                <div className="mb-6 flex items-center gap-4">
+                  <h2 className="text-2xl font-bold text-foreground">{level}</h2>
+                  <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+                </div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {levelExamples.map((example) => (
                     <Link key={example.id} href={`/playground/?example=${example.id}`}>
-                      <Card className="bg-white/5 border-white/10 hover:border-pink-500/30 transition-all cursor-pointer h-full group">
+                      <Card className="hover:border-primary/30 transition-all cursor-pointer h-full group corner-ornament">
                         <CardHeader>
                           <div className="flex items-center justify-between">
                             <Badge variant="outline" className={getLevelColor(example.level)}>
                               {example.level}
                             </Badge>
-                            <ArrowRight className="h-5 w-5 text-zinc-500 transition-colors group-hover:text-pink-400" />
+                            <ArrowRight className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
                           </div>
-                          <CardTitle className="text-white mt-4 text-lg">{example.title}</CardTitle>
-                          <p className="text-sm text-zinc-400 line-clamp-2">{example.description}</p>
+                          <CardTitle className="text-foreground mt-4 text-lg">{example.title}</CardTitle>
+                          <p className="text-sm text-muted-foreground line-clamp-2">{example.description}</p>
                         </CardHeader>
                         <CardContent>
-                          <div className="overflow-hidden rounded-lg bg-[#0d1117] p-3 border border-white/5">
-                            <pre className="font-mono text-xs text-zinc-500 line-clamp-4">
+                          <div className="overflow-hidden rounded-lg bg-card p-3 border border-border">
+                            <pre className="font-mono text-xs text-muted-foreground line-clamp-4">
                               {example.code}
                             </pre>
                           </div>
                           <div className="mt-4 flex items-center justify-between">
-                            <span className="text-sm text-pink-400 flex items-center">
+                            <span className="text-sm text-primary flex items-center">
                               <Play className="mr-1 h-4 w-4" />
                               Open in Playground
                             </span>
@@ -128,7 +132,7 @@ export default function ExamplesPage() {
         {/* Empty state */}
         {examples.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-zinc-500">No examples found. Make sure the examples directory exists.</p>
+            <p className="text-muted-foreground">No examples found. Make sure the examples directory exists.</p>
             <Link href="/playground/">
               <Button className="mt-4">Go to Playground</Button>
             </Link>

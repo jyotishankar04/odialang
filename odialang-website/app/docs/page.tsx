@@ -44,10 +44,10 @@ export default function DocsPage() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Documentation
           </h1>
-          <p className="mt-4 text-lg text-zinc-400">
+          <p className="mt-4 text-lg text-muted-foreground">
             Everything you need to know about Odialang
           </p>
         </div>
@@ -56,18 +56,18 @@ export default function DocsPage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {docLinks.map((doc) => (
             <Link key={doc.slug} href={`/docs/${doc.slug}/`}>
-              <Card className="bg-white/5 border-white/10 hover:border-pink-500/30 transition-all cursor-pointer h-full group">
+              <Card className="hover:border-primary/30 transition-all cursor-pointer h-full group corner-ornament">
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-pink-500/10 text-pink-400">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
                       {doc.icon}
                     </div>
-                    <CardTitle className="text-white text-lg">{doc.title}</CardTitle>
+                    <CardTitle className="text-foreground text-lg">{doc.title}</CardTitle>
                   </div>
-                  <p className="text-sm text-zinc-400 mt-2">{doc.description}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{doc.description}</p>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center text-sm text-zinc-500 group-hover:text-pink-400">
+                  <div className="flex items-center text-sm text-muted-foreground group-hover:text-primary transition-colors">
                     Read more
                     <ArrowRight className="ml-1 h-4 w-4" />
                   </div>
@@ -79,46 +79,63 @@ export default function DocsPage() {
 
         {/* Getting Started Section */}
         <section className="mt-16">
-          <h2 className="mb-6 text-2xl font-bold text-white">Getting Started</h2>
-          <Card className="bg-white/5 border-white/10">
+          {/* Section divider */}
+          <div className="mb-6 flex items-center gap-4">
+            <h2 className="text-2xl font-bold text-foreground">Getting Started</h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+          </div>
+          
+          <Card className="border-pattachitra">
             <CardContent className="p-8">
-              <h3 className="text-xl font-semibold text-white">Installation</h3>
-              <p className="mt-4 text-zinc-400">
+              <h3 className="text-xl font-semibold text-foreground">Installation</h3>
+              <p className="mt-4 text-muted-foreground">
                 Install Odialang globally using npm:
-              </p>
-              <div className="mt-4 code-block">
-                <div className="bg-[#0d1117] px-4 py-3">
-                  <code className="font-mono text-sm text-zinc-300">
-                    npm install -g @devsuvam/odialang
-                  </code>
-                </div>
-              </div>
-
-              <h3 className="mt-8 text-xl font-semibold text-white">Your First Program</h3>
-              <p className="mt-4 text-zinc-400">
-                Create a file named <code className="rounded bg-white/10 px-1.5 py-0.5 text-pink-400">hello.odia</code>:
               </p>
               <div className="mt-4 code-block">
                 <div className="code-header">
                   <div className="dot dot-red" />
                   <div className="dot dot-yellow" />
                   <div className="dot dot-green" />
-                  <span className="ml-2 text-xs text-zinc-500">hello.odia</span>
+                  <span className="ml-2 text-xs text-muted-foreground">terminal</span>
                 </div>
-                <pre className="overflow-x-auto bg-[#0d1117] p-4 text-sm">
-                  <code className="font-mono text-zinc-300">
+                <div className="bg-card px-4 py-3">
+                  <code className="font-mono text-sm text-foreground">
+                    npm install -g @devsuvam/odialang
+                  </code>
+                </div>
+              </div>
+
+              <h3 className="mt-8 text-xl font-semibold text-foreground">Your First Program</h3>
+              <p className="mt-4 text-muted-foreground">
+                Create a file named <code className="rounded bg-muted px-1.5 py-0.5 text-primary font-mono">hello.odia</code>:
+              </p>
+              <div className="mt-4 code-block">
+                <div className="code-header">
+                  <div className="dot dot-red" />
+                  <div className="dot dot-yellow" />
+                  <div className="dot dot-green" />
+                  <span className="ml-2 text-xs text-muted-foreground">hello.odia</span>
+                </div>
+                <pre className="overflow-x-auto bg-card p-4 text-sm">
+                  <code className="font-mono text-foreground">
                     {`# My first Odialang program
 dekha "Namaskar, Odia!"`}
                   </code>
                 </pre>
               </div>
 
-              <p className="mt-6 text-zinc-400">
+              <p className="mt-6 text-muted-foreground">
                 Run it with:
               </p>
               <div className="mt-4 code-block">
-                <div className="bg-[#0d1117] px-4 py-3">
-                  <code className="font-mono text-sm text-zinc-300">
+                <div className="code-header">
+                  <div className="dot dot-red" />
+                  <div className="dot dot-yellow" />
+                  <div className="dot dot-green" />
+                  <span className="ml-2 text-xs text-muted-foreground">terminal</span>
+                </div>
+                <div className="bg-card px-4 py-3">
+                  <code className="font-mono text-sm text-foreground">
                     odia hello.odia
                   </code>
                 </div>
@@ -135,22 +152,27 @@ dekha "Namaskar, Odia!"`}
 
         {/* Keywords Section */}
         <section className="mt-16">
-          <h2 className="mb-6 text-2xl font-bold text-white">Language Keywords</h2>
-          <Card className="bg-white/5 border-white/10 overflow-hidden">
+          {/* Section divider */}
+          <div className="mb-6 flex items-center gap-4">
+            <h2 className="text-2xl font-bold text-foreground">Language Keywords</h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+          </div>
+          
+          <Card className="border-pattachitra overflow-hidden">
             <Table>
               <TableHeader>
-                <TableRow className="border-white/10 hover:bg-transparent">
-                  <TableHead className="text-white">Odia</TableHead>
-                  <TableHead className="text-white">English</TableHead>
-                  <TableHead className="text-white">Usage</TableHead>
+                <TableRow className="hover:bg-transparent">
+                  <TableHead className="text-foreground font-semibold">Odia</TableHead>
+                  <TableHead className="text-foreground font-semibold">English</TableHead>
+                  <TableHead className="text-foreground font-semibold">Usage</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {keywords.map((kw) => (
-                  <TableRow key={kw.odia} className="border-white/10 hover:bg-white/[0.02]">
-                    <TableCell className="font-mono text-pink-400">{kw.odia}</TableCell>
-                    <TableCell className="text-zinc-400">{kw.english}</TableCell>
-                    <TableCell className="text-zinc-500">{kw.usage}</TableCell>
+                  <TableRow key={kw.odia} className="hover:bg-muted/50">
+                    <TableCell className="font-mono text-primary">{kw.odia}</TableCell>
+                    <TableCell className="text-foreground">{kw.english}</TableCell>
+                    <TableCell className="text-muted-foreground">{kw.usage}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
