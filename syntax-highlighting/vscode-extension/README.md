@@ -79,7 +79,7 @@ greet("Odia")
 
 ## Contributing
 
-See the main [Odialang repository](https://github.com/devsuvam/odialang) for contribution guidelines.
+See the main [Odialang repository](https://github.com/jyotishankar04/odialang) for contribution guidelines.
 
 ## License
 

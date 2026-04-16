@@ -27,11 +27,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devsuvam/odialang",
+    "url": "https://github.com/jyotishankar04/odialang",
     "directory": "syntax-highlighting"
   },
   "bugs": {
-    "url": "https://github.com/devsuvam/odialang/issues"
+    "url": "https://github.com/jyotishankar04/odialang/issues"
   },
-  "homepage": "https://github.com/devsuvam/odialang#readme"
+  "homepage": "https://github.com/jyotishankar04/odialang#readme"
 }

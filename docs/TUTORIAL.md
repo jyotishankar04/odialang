@@ -595,5 +595,5 @@ You've completed the Odialang tutorial! You now know enough to write your own pr
 
 - [Language Specification](LANGUAGE.md) - Complete syntax reference
 - [Examples](../examples/) - Sample programs
-- [GitHub Repository](https://github.com/devsuvam/odialang) - Source code
+- [GitHub Repository](https://github.com/jyotishankar04/odialang) - Source code
 - [npm Package](https://www.npmjs.com/package/@devsuvam/odialang) - Installation

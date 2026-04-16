@@ -56,7 +56,7 @@ We pledge to make participation in our project a harassment-free experience for 
    ```
 3. Add upstream remote:
    ```bash
-   git remote add upstream https://github.com/devsuvam/odialang.git
+   git remote add upstream https://github.com/jyotishankar04/odialang.git
    ```
 
 ---
@@ -414,7 +414,7 @@ Any other relevant information
 
 ### Where to Report
 
-- GitHub Issues: https://github.com/devsuvam/odialang/issues
+- GitHub Issues: https://github.com/jyotishankar04/odialang/issues
 
 ---
 

@@ -219,7 +219,7 @@ MIT © 2026 Odialang Contributors
 
 ## 🔗 Links
 
-- [Odialang Repository](https://github.com/devsuvam/odialang)
+- [Odialang Repository](https://github.com/jyotishankar04/odialang)
 - [VS Code Extension Docs](https://code.visualstudio.com/api/language-extensions/overview)
 - [Monaco Editor Docs](https://microsoft.github.io/monaco-editor/)
 - [TextMate Grammar Docs](https://macromates.com/manual/en/language_grammars)

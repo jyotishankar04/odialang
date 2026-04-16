@@ -193,7 +193,7 @@ odia --help
 
 ```bash
 # Clone the repository
-git clone https://github.com/devsuvam/odialang.git
+git clone https://github.com/jyotishankar04/odialang
 cd odialang
 
 # Install dependencies
@@ -228,8 +228,8 @@ We welcome contributions! Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for
 
 ### Quick Contributions
 
-- 🐛 [Report bugs](https://github.com/devsuvam/odialang/issues)
-- 💡 [Suggest features](https://github.com/devsuvam/odialang/issues)
+- 🐛 [Report bugs](https://github.com/jyotishankar04/odialang/issues)
+- 💡 [Suggest features](https://github.com/jyotishankar04/odialang/issues)
 - 📝 [Improve docs](docs/)
 - 🌐 Translate to other languages
 
@@ -247,4 +247,4 @@ We welcome contributions! Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for
 
 **Made with ❤️ for Odia programmers** 🇮🇳
 
-[⭐ Star this repo](https://github.com/devsuvam/odialang) if you find it useful!
+[⭐ Star this repo](https://github.com/jyotishankar04/odialang) if you find it useful!

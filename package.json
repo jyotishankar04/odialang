@@ -1,6 +1,6 @@
 {
   "name": "@devsuvam/odialang",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A file-based, CLI-driven programming language with Odia (Oriya) keywords that compiles to JavaScript",
   "main": "dist/cli/index.js",
   "bin": {
