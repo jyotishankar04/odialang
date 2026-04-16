@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card,  CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CodeExample from "./components/CodeExample";
 import { BookOpen, Code2, Languages, Sparkles, Terminal, Check, Copy } from "lucide-react";
@@ -20,18 +20,35 @@ export default function Home() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 pb-24 sm:px-6 lg:px-8">
-        {/* Background gradient using primary color */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
+        {/* Enhanced Konark Radial Watermark */}
+        <div className="radial-watermark" />
+        
+        {/* Warm gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+        
+        {/* Wave accent with palm leaf style */}
+        <div className="wave-accent" />
+        
+        {/* Floating orbs for depth */}
+        <div className="orb-saffron -top-32 -right-32" />
+        <div className="orb-indigo top-1/3 -left-40" />
+        <div className="orb-terracotta top-2/3 right-1/4" />
         
         <div className="relative mx-auto max-w-7xl">
           <div className="text-center">
-            {/* Badge */}
+            {/* Enhanced Badge with Pattachitra border */}
             <div className="mb-8 inline-flex items-center gap-2">
-              <Badge variant="outline" className="border-primary/30 text-primary">
-                <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-                v1.0.1 is here!
-              </Badge>
-              <Link href="/docs/changelog/" className="text-sm text-muted-foreground hover:text-primary">
+              <div className="relative px-3 py-1">
+                {/* Mini border pattern */}
+                <div className="absolute inset-0 border border-primary/30 rounded-full" />
+                <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
+                <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-terracotta" />
+                <Badge variant="outline" className="border-transparent text-primary bg-transparent">
+                  <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
+                  v1.0.1 is here!
+                </Badge>
+              </div>
+              <Link href="/docs/changelog/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 What&#39;s new? →
               </Link>
             </div>
@@ -47,30 +64,35 @@ export default function Home() {
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Odialang is a <a href="https://github.com/jyotishankar04/Odialang" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-300 underline">toy language project</a> that uses Odia (Oriya) keywords. 
+              Odialang is a <a href="https://github.com/jyotishankar04/Odialang" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 underline underline-offset-2">toy language project</a> that uses Odia (Oriya) keywords. 
               Write programs in your native language and run them anywhere JavaScript runs.
             </p>
 
             {/* Install command */}
             <div className="mx-auto mt-10 max-w-lg">
-              <div className="code-block glow">
+              <div className="code-block glow-saffron">
                 <div className="code-header">
                   <div className="dot dot-red" />
                   <div className="dot dot-yellow" />
                   <div className="dot dot-green" />
                   <span className="ml-2 text-xs text-muted-foreground">terminal</span>
+                  
+                  {/* Mini Konark chakra in header */}
+                  <div className="ml-auto flex items-center gap-2 opacity-30">
+                    <div className="konark-chakra" style={{width: '20px', height: '20px'}} />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between bg-card px-4 py-3">
                   <code className="font-mono text-sm text-foreground">
                     npm install -g @devsuvam/odialang
                   </code>
                   <button 
-                    className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                    className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                     onClick={handleCopy}
                     title="Copy to clipboard"
                   >
                     {copied ? (
-                      <Check className="h-4 w-4 text-green-500" />
+                      <Check className="h-4 w-4 text-primary" />
                     ) : (
                       <Copy className="h-4 w-4" />
                     )}
@@ -94,17 +116,31 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Code Example */}
+          {/* Code Example with enhanced patterns */}
           <div className="mt-20">
             <CodeExample />
           </div>
         </div>
       </section>
 
+      {/* Pattachitra Divider with enhanced pattern */}
+      <div className="divider-pattachitra" />
+
       {/* Features Section */}
-      <section className="border-t border-border px-4 py-24 sm:px-6 lg:px-8">
+      <section className="border-t border-transparent px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
+            {/* Lotus motif separator */}
+            <div className="mb-6 flex items-center justify-center gap-4">
+              <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/30" />
+              <svg viewBox="0 0 40 40" className="w-10 h-10 text-primary opacity-30">
+                <ellipse cx="20" cy="25" rx="8" ry="4" fill="none" stroke="currentColor" strokeWidth="1"/>
+                <ellipse cx="20" cy="22" rx="6" ry="3" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+                <ellipse cx="20" cy="19" rx="4" ry="2" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                <circle cx="20" cy="17" r="1.5" fill="currentColor"/>
+              </svg>
+              <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/30" />
+            </div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Why Odialang?
             </h2>
@@ -115,9 +151,9 @@ export default function Home() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <Card key={feature.title} className="hover:border-primary/30 transition-colors">
+              <Card key={feature.title} className="hover:border-primary/30 transition-colors corner-ornament">
                 <CardHeader>
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
                     {feature.icon}
                   </div>
                   <CardTitle>{feature.title}</CardTitle>
@@ -129,8 +165,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Wave Pattern Divider with enhanced style */}
+      <div className="relative h-20 overflow-hidden">
+        <div className="absolute inset-0 pattern-lotus opacity-30" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <svg viewBox="0 0 400 30" className="w-full max-w-xl h-8 text-primary/20">
+            <path 
+              d="M0 15 Q50 5 100 15 T200 15 T300 15 T400 15" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2"
+            />
+            <path 
+              d="M0 20 Q50 12 100 20 T200 20 T300 20 T400 20" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="1"
+              opacity="0.5"
+            />
+          </svg>
+        </div>
+      </div>
+
       {/* Example Programs Preview */}
-      <section className="border-t border-border px-4 py-24 sm:px-6 lg:px-8">
+      <section className="border-t border-transparent px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row mb-12">
             <div>
@@ -151,13 +209,14 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {examplePreviews.map((example) => (
               <Link key={example.title} href={`/playground/?example=${example.id}`}>
-                <Card className="hover:border-primary/30 transition-all cursor-pointer h-full">
+                <Card className="hover:border-primary/30 transition-all cursor-pointer h-full corner-ornament">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <Badge variant="secondary">
+                      <Badge variant="secondary" className="bg-terracotta/10 text-terracotta border-terracotta/20">
                         {example.level}
                       </Badge>
-                      <Sparkles className="h-5 w-5 text-muted-foreground" />
+                      {/* Fish scale pattern accent */}
+                      <div className="w-6 h-6 pattern-fish-scale opacity-30" />
                     </div>
                     <CardTitle className="mt-4">{example.title}</CardTitle>
                     <CardDescription>{example.description}</CardDescription>
@@ -169,9 +228,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Enhanced Pattachitra Divider */}
+      <div className="divider-pattachitra" />
+
       {/* CTA Section */}
-      <section className="border-t border-border px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="border-t border-transparent px-4 py-24 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background accent with pattern */}
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 pattern-lotus opacity-10" />
+        
+        <div className="relative mx-auto max-w-4xl text-center">
+          {/* Large Konark Chakra watermark */}
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-[0.04]">
+            <div className="konark-chakra" style={{width: '200px', height: '200px'}} />
+          </div>
+          
+          {/* Palmette accent above heading */}
+          <div className="mb-6 flex justify-center">
+            <svg viewBox="0 0 60 30" className="w-16 h-8 text-primary/30">
+              <path d="M30 30 Q15 15 5 5 Q20 12 30 0 Q40 12 55 5 Q45 15 30 30" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M30 25 Q20 15 12 10" fill="none" stroke="currentColor" strokeWidth="0.75" opacity="0.5"/>
+              <path d="M30 25 Q40 15 48 10" fill="none" stroke="currentColor" strokeWidth="0.75" opacity="0.5"/>
+            </svg>
+          </div>
+          
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Ready to start coding in Odia?
           </h2>
@@ -190,7 +270,7 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               <Button size="lg" variant="outline">
-                <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.3-1.23 3.3-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 Star on GitHub
               </Button>
             </a>

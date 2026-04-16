@@ -1,0 +1,28 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Temple arch silhouette corner ornament -->
+  <defs>
+    <linearGradient id="corner-fade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:currentColor"/>
+      <stop offset="100%" style="stop-color:currentColor;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Curved arch silhouette (temple form inspired) -->
+  <path d="M2 38 L2 20 Q2 2 20 2 L38 2" 
+        fill="none" 
+        stroke="url(#corner-fade)" 
+        stroke-width="1.5" 
+        opacity="0.5"/>
+  
+  <!-- Inner decorative curve -->
+  <path d="M6 34 L6 20 Q6 6 20 6 L34 6" 
+        fill="none" 
+        stroke="url(#corner-fade)" 
+        stroke-width="0.75" 
+        opacity="0.3"/>
+  
+  <!-- Small accent dots -->
+  <circle cx="12" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
+  <circle cx="8" cy="18" r="1" fill="currentColor" opacity="0.3"/>
+  <circle cx="18" cy="8" r="1" fill="currentColor" opacity="0.3"/>
+</svg>

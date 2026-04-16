@@ -65,21 +65,21 @@ export default function CodeExample() {
     const keywords = ["dhara", "dekha", "jadi", "tahale", "nahele", "jebe", "karya", "fera", "sesa", "aarambha", "ru", "kar"];
     
     if (line.startsWith("#")) {
-      return <span className="text-muted-foreground">{line}</span>;
+      return <span className="syntax-comment">{line}</span>;
     }
     
     return line.split(" ").map((word, j) => {
       if (keywords.includes(word)) {
-        return <span key={j} className="text-primary">{word} </span>;
+        return <span key={j} className="syntax-keyword">{word} </span>;
       }
       if (word === "sata" || word === "micha") {
-        return <span key={j} className="text-blue-400">{word} </span>;
+        return <span key={j} className="syntax-boolean">{word} </span>;
       }
       if (!isNaN(Number(word))) {
-        return <span key={j} className="text-blue-400">{word} </span>;
+        return <span key={j} className="syntax-number">{word} </span>;
       }
       if (word.startsWith('"') && word.endsWith('"')) {
-        return <span key={j} className="text-green-400">{word} </span>;
+        return <span key={j} className="syntax-string">{word} </span>;
       }
       return <span key={j}>{word} </span>;
     });
@@ -104,13 +104,29 @@ export default function CodeExample() {
         ))}
       </div>
 
-      {/* Code block */}
-      <div className="code-block glow overflow-hidden">
+      {/* Code block with enhanced cultural accents */}
+      <div className="code-block glow-saffron overflow-hidden corner-ornament">
+        {/* Enhanced palm leaf/wave pattern strip at top */}
+        <div className="h-8 bg-gradient-to-b from-primary/8 to-transparent relative overflow-hidden">
+          {/* Wave pattern */}
+          <svg viewBox="0 0 300 24" className="absolute inset-0 w-full h-full text-primary/20">
+            <path d="M0 12 Q37.5 4 75 12 T150 12 T225 12 T300 12" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+            <path d="M0 18 Q37.5 10 75 18 T150 18 T225 18 T300 18" fill="none" stroke="currentColor" strokeWidth="1"/>
+          </svg>
+          {/* Fish scale accent on right */}
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-6 pattern-fish-scale opacity-40" />
+        </div>
+        
         <div className="code-header">
           <div className="dot dot-red" />
           <div className="dot dot-yellow" />
           <div className="dot dot-green" />
           <span className="ml-2 text-xs text-muted-foreground">example.odia</span>
+          
+          {/* Enhanced Konark chakra accent */}
+          <div className="ml-auto flex items-center gap-2 opacity-40">
+            <div className="konark-chakra" style={{width: '24px', height: '24px'}} />
+          </div>
         </div>
         <div className="relative bg-card">
           <pre className="overflow-x-auto p-4 sm:p-6 text-xs sm:text-sm">
@@ -135,6 +151,16 @@ export default function CodeExample() {
                 <span className="hidden sm:inline">Run</span>
               </Button>
             </Link>
+          </div>
+        </div>
+        
+        {/* Bottom decorative strip */}
+        <div className="h-4 bg-gradient-to-t from-terracotta/5 to-transparent relative">
+          {/* Mini repeating pattern */}
+          <div className="absolute inset-x-0 bottom-0 flex justify-center gap-4 opacity-30">
+            <div className="w-1 h-1 rounded-full bg-primary" />
+            <div className="w-1.5 h-1.5 rounded-full bg-terracotta" />
+            <div className="w-1 h-1 rounded-full bg-accent" />
           </div>
         </div>
       </div>

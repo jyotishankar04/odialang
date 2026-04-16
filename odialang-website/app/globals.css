@@ -4,39 +4,124 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark theme by default (Nova preset) */
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.65 0.22 350);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.65 0.22 280);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.65 0.22 350);
-  --radius: 0.625rem;
-  --chart-1: oklch(0.65 0.22 350);
-  --chart-2: oklch(0.65 0.22 280);
-  --chart-3: oklch(0.65 0.22 200);
-  --chart-4: oklch(0.65 0.22 150);
-  --chart-5: oklch(0.65 0.22 50);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.65 0.22 350);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.65 0.22 350);
+  /* Odia Cultural Design System - Light Mode */
+  
+  /* === CORE COLORS === */
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.145 0 0);
+  
+  /* === SURFACE COLORS === */
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  
+  /* === PRIMARY - Warm Saffron/Marigold === */
+  --primary: oklch(0.55 0.12 55);
+  --primary-foreground: oklch(0.98 0 0);
+  
+  /* === SECONDARY === */
+  --secondary: oklch(0.945 0 0);
+  --secondary-foreground: oklch(0.145 0 0);
+  
+  /* === MUTED === */
+  --muted: oklch(0.93 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  
+  /* === ACCENT - Deep Indigo === */
+  --accent: oklch(0.35 0.1 265);
+  --accent-foreground: oklch(0.98 0 0);
+  
+  /* === TERRACOTTA - Odia Earth Tone === */
+  --terracotta: oklch(0.45 0.15 35);
+  
+  /* === DESTRUCTIVE === */
+  --destructive: oklch(0.5 0.15 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  
+  /* === BORDERS === */
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: oklch(0.55 0.12 55);
+  
+  /* === RADIUS === */
+  --radius: 0.5rem;
+  
+  /* === CHART COLORS === */
+  --chart-1: oklch(0.55 0.12 55);
+  --chart-2: oklch(0.35 0.1 265);
+  --chart-3: oklch(0.45 0.15 35);
+  --chart-4: oklch(0.45 0.08 180);
+  --chart-5: oklch(0.6 0.1 60);
+  
+  /* === SIDEBAR === */
+  --sidebar: oklch(0.96 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.55 0.12 55);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.93 0 0);
+  --sidebar-accent-foreground: oklch(0.145 0 0);
+  --sidebar-border: oklch(0.92 0 0);
+  --sidebar-ring: oklch(0.55 0.12 55);
+}
+
+.dark {
+  /* Odia Cultural Design System - Dark Mode */
+  
+  /* === CORE COLORS === */
+  --background: oklch(0.11 0 0);
+  --foreground: oklch(0.95 0 0);
+  
+  /* === SURFACE COLORS === */
+  --card: oklch(0.15 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.13 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  
+  /* === PRIMARY === */
+  --primary: oklch(0.65 0.12 55);
+  --primary-foreground: oklch(0.11 0 0);
+  
+  /* === SECONDARY === */
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  
+  /* === MUTED === */
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  
+  /* === ACCENT === */
+  --accent: oklch(0.45 0.1 265);
+  --accent-foreground: oklch(0.95 0 0);
+  
+  /* === TERRACOTTA === */
+  --terracotta: oklch(0.5 0.15 35);
+  
+  /* === DESTRUCTIVE === */
+  --destructive: oklch(0.55 0.15 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  
+  /* === BORDERS === */
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.65 0.12 55);
+  
+  /* === CHART COLORS === */
+  --chart-1: oklch(0.65 0.12 55);
+  --chart-2: oklch(0.45 0.1 265);
+  --chart-3: oklch(0.5 0.15 35);
+  --chart-4: oklch(0.5 0.08 180);
+  --chart-5: oklch(0.7 0.1 60);
+  
+  /* === SIDEBAR === */
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.65 0.12 55);
+  --sidebar-primary-foreground: oklch(0.11 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-ring: oklch(0.65 0.12 55);
 }
 
 @theme inline {
@@ -54,7 +139,9 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-terracotta: var(--terracotta);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -63,13 +150,6 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -78,6 +158,13 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-mono);
   --font-heading: var(--font-inter);
@@ -95,24 +182,58 @@
   }
 }
 
-/* Custom scrollbar */
+/* === PAPER TEXTURE === */
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .paper-texture::before {
+  opacity: 0.025;
+}
+
+.paper-texture > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* === CUSTOM SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--muted);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
+  background: var(--primary);
   border-radius: 4px;
   opacity: 0.5;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+  opacity: 0.7;
 }
 
-/* Gradient text utility using primary color */
+/* === TEXT SELECTION === */
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* === GRADIENT TEXT === */
 .gradient-text {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
   -webkit-background-clip: text;
@@ -120,12 +241,24 @@
   background-clip: text;
 }
 
-/* Code block styling */
+/* === CODE BLOCK STYLING === */
 .code-block {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  position: relative;
+}
+
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--terracotta), var(--primary));
+  opacity: 0.5;
 }
 
 .code-header {
@@ -143,18 +276,430 @@
   border-radius: 50%;
 }
 
-.dot-red { background: oklch(0.577 0.245 27.325); }
-.dot-yellow { background: oklch(0.75 0.15 85); }
-.dot-green { background: oklch(0.65 0.2 145); }
+.dot-red { background: var(--terracotta); }
+.dot-yellow { background: var(--primary); }
+.dot-green { background: oklch(0.5 0.12 150); }
 
-/* Glow effect */
+/* === GLOW EFFECTS === */
 .glow {
-  box-shadow: 0 0 40px oklch(0.65 0.22 350 / 0.15);
+  box-shadow: 0 0 40px oklch(0.65 0.12 55 / 0.1);
 }
 
-/* Monaco editor container */
+.glow-saffron {
+  box-shadow: 0 0 25px oklch(0.65 0.12 55 / 0.12);
+}
+
+/* === MONACO EDITOR === */
 .monaco-editor-container {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  position: relative;
+}
+
+.monaco-editor-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 10;
+}
+
+/* === PATTACHITRA BORDER PATTERN === */
+.border-pattachitra {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-pattachitra::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      var(--primary) 0px,
+      var(--primary) 8px,
+      transparent 8px,
+      transparent 12px,
+      var(--terracotta) 12px,
+      var(--terracotta) 16px,
+      transparent 16px,
+      transparent 24px,
+      var(--accent) 24px,
+      var(--accent) 28px,
+      transparent 28px,
+      transparent 32px
+    );
+  opacity: 0.3;
+}
+
+.border-pattachitra::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0px,
+      var(--accent) 8px,
+      transparent 8px,
+      transparent 12px,
+      var(--primary) 12px,
+      var(--primary) 16px,
+      transparent 16px,
+      transparent 24px,
+      var(--terracotta) 24px,
+      var(--terracotta) 28px,
+      transparent 28px,
+      transparent 32px
+    );
+  opacity: 0.3;
+}
+
+/* === PATTACHITRA DIVIDER === */
+.divider-pattachitra {
+  height: 8px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 40px,
+      var(--primary) 40px,
+      var(--primary) 44px,
+      transparent 44px,
+      transparent 48px,
+      var(--accent) 48px,
+      var(--accent) 52px,
+      transparent 52px,
+      transparent 56px,
+      var(--terracotta) 56px,
+      var(--terracotta) 60px,
+      transparent 60px,
+      transparent 100px
+    );
+  opacity: 0.35;
+  position: relative;
+}
+
+.divider-pattachitra::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.7;
+}
+
+.divider-pattachitra::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 20px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* === KONARK CHAKRA WHEEL === */
+.konark-chakra {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.konark-chakra::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at center, transparent 0%, transparent 8px, var(--primary) 8px, var(--primary) 10px, transparent 10px, transparent 16px, var(--accent) 16px, var(--accent) 18px, transparent 18px, transparent 24px, var(--primary) 24px, var(--primary) 26px, transparent 26px, transparent 32px, var(--terracotta) 32px, var(--terracotta) 34px, transparent 34px);
+  border-radius: 50%;
+  animation: chakra-rotate 60s linear infinite;
+}
+
+.konark-chakra::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    conic-gradient(
+      from 0deg,
+      var(--primary) 0deg 15deg,
+      transparent 15deg 30deg,
+      var(--accent) 30deg 45deg,
+      transparent 45deg 60deg,
+      var(--terracotta) 60deg 75deg,
+      transparent 75deg 90deg,
+      var(--primary) 90deg 105deg,
+      transparent 105deg 120deg,
+      var(--accent) 120deg 135deg,
+      transparent 135deg 150deg,
+      var(--terracotta) 150deg 165deg,
+      transparent 165deg 180deg,
+      var(--primary) 180deg 195deg,
+      transparent 195deg 210deg,
+      var(--accent) 210deg 225deg,
+      transparent 225deg 240deg,
+      var(--terracotta) 240deg 255deg,
+      transparent 255deg 270deg,
+      var(--primary) 270deg 285deg,
+      transparent 285deg 300deg,
+      var(--accent) 300deg 315deg,
+      transparent 315deg 330deg,
+      var(--terracotta) 330deg 345deg,
+      transparent 345deg 360deg
+    );
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: chakra-rotate 30s linear infinite reverse;
+}
+
+@keyframes chakra-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === CORNER ORNAMENTS (Pattachitra style) === */
+.corner-ornament {
+  position: relative;
+}
+
+.corner-ornament::before,
+.corner-ornament::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.corner-ornament::before {
+  top: -1px;
+  left: -1px;
+  background: 
+    linear-gradient(135deg, var(--primary) 0%, var(--primary) 30%, transparent 30%, transparent 40%, var(--accent) 40%, var(--accent) 50%, transparent 50%, transparent 60%, var(--terracotta) 60%, var(--terracotta) 70%, transparent 70%);
+  border-top-left-radius: 8px;
+  opacity: 0.2;
+}
+
+.corner-ornament::after {
+  bottom: -1px;
+  right: -1px;
+  background: 
+    linear-gradient(315deg, var(--terracotta) 0%, var(--terracotta) 30%, transparent 30%, transparent 40%, var(--accent) 40%, var(--accent) 50%, transparent 50%, transparent 60%, var(--primary) 60%, var(--primary) 70%, transparent 70%);
+  border-bottom-right-radius: 8px;
+  opacity: 0.2;
+}
+
+.corner-ornament:hover::before,
+.corner-ornament:hover::after {
+  opacity: 0.35;
+}
+
+/* === HOVER MARKER === */
+.hover-marker {
+  position: relative;
+}
+
+.hover-marker::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
+
+.hover-marker:hover::after {
+  width: 100%;
+}
+
+/* === RADIAL WATERMARK (Enhanced Konark Sun Wheel) === */
+.radial-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.radial-watermark::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: 
+    radial-gradient(circle at center, 
+      transparent 0%, 
+      transparent 5%,
+      var(--primary) 5.2%, 
+      transparent 5.4%,
+      transparent 12%,
+      var(--accent) 12.2%, 
+      transparent 12.4%,
+      transparent 19%,
+      var(--terracotta) 19.2%, 
+      transparent 19.4%,
+      transparent 26%,
+      var(--primary) 26.2%, 
+      transparent 26.4%,
+      transparent 33%,
+      var(--accent) 33.2%, 
+      transparent 33.4%,
+      transparent 40%,
+      var(--terracotta) 40.2%, 
+      transparent 40.4%
+    );
+  opacity: 0.06;
+  animation: chakra-rotate 180s linear infinite;
+}
+
+/* === WAVE ACCENT (Palm Leaf Style) === */
+.wave-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wave-accent::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath d='M0,50 C120,80 240,20 360,50 C480,80 600,20 720,50 C840,80 960,20 1080,50 C1200,80 1320,20 1440,50 L1440,100 L0,100 Z' fill='%23c9730f' fill-opacity='0.06'/%3E%3Cpath d='M0,60 C120,90 240,30 360,60 C480,90 600,30 720,60 C840,90 960,30 1080,60 C1200,90 1320,30 1440,60 L1440,100 L0,100 Z' fill='%232a3f7c' fill-opacity='0.04'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* === FISH SCALE PATTERN (Pattachitra) === */
+.pattern-fish-scale {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 0 Q21 7 14 14 Q7 7 14 0' fill='none' stroke='%23c9730f' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M14 14 Q21 21 14 28 Q7 21 14 14' fill='none' stroke='%23c9730f' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M0 14 Q7 7 14 14 Q7 21 0 14' fill='none' stroke='%23c9730f' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M14 14 Q21 7 28 14 Q21 21 14 14' fill='none' stroke='%23c9730f' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* === LOTUS MOTIF PATTERN === */
+.pattern-lotus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg opacity='0.25'%3E%3Cellipse cx='20' cy='25' rx='8' ry='4' fill='none' stroke='%23c9730f' stroke-width='1'/%3E%3Cellipse cx='20' cy='22' rx='6' ry='3' fill='none' stroke='%23c9730f' stroke-width='0.75'/%3E%3Cellipse cx='20' cy='19' rx='4' ry='2' fill='none' stroke='%23c9730f' stroke-width='0.5'/%3E%3Ccircle cx='20' cy='17' r='1.5' fill='%23c9730f'/%3E%3Cpath d='M14 25 Q10 30 14 32' fill='none' stroke='%23c9730f' stroke-width='0.5'/%3E%3Cpath d='M26 25 Q30 30 26 32' fill='none' stroke='%23c9730f' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* === LOADING SPINNER === */
+.spinner-odia {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* === FLOATING ORBS === */
+.orb-saffron {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, oklch(0.65 0.12 55 / 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-indigo {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, oklch(0.45 0.1 265 / 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.orb-terracotta {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, oklch(0.5 0.15 35 / 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+/* === SYNTAX HIGHLIGHTING === */
+.syntax-keyword {
+  color: var(--primary);
+}
+
+.syntax-string {
+  color: oklch(0.5 0.12 150);
+}
+
+.syntax-number {
+  color: var(--accent);
+}
+
+.syntax-boolean {
+  color: var(--terracotta);
+}
+
+.syntax-comment {
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+.dark .syntax-string {
+  color: oklch(0.65 0.12 150);
+}
+
+.dark .syntax-number {
+  color: oklch(0.5 0.1 265);
+}
+
+/* === PALMETTE LEAF ACCENT === */
+.palmette-accent {
+  position: relative;
+}
+
+.palmette-accent::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M20 20 Q10 10 5 5 Q15 8 20 0 Q25 8 35 5 Q30 10 20 20' fill='none' stroke='%23c9730f' stroke-width='1' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
 }

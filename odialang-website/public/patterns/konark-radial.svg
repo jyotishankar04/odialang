@@ -1,0 +1,46 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Konark Sun Wheel / Radial Symmetry Pattern -->
+  <defs>
+    <radialGradient id="konark-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:currentColor;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background glow -->
+  <circle cx="100" cy="100" r="80" fill="url(#konark-glow)"/>
+  
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Middle rings -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+  <circle cx="100" cy="100" r="50" fill="none" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
+  <circle cx="100" cy="100" r="30" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- 12-spoke sun wheel (Konark temple motif) -->
+  <g stroke="currentColor" stroke-width="0.75" opacity="0.35">
+    <!-- Cardinal directions -->
+    <line x1="100" y1="10" x2="100" y2="40"/>
+    <line x1="100" y1="160" x2="100" y2="190"/>
+    <line x1="10" y1="100" x2="40" y2="100"/>
+    <line x1="160" y1="100" x2="190" y2="100"/>
+    
+    <!-- Diagonal spokes -->
+    <line x1="36.4" y1="36.4" x2="57.3" y2="57.3"/>
+    <line x1="142.7" y1="142.7" x2="163.6" y2="163.6"/>
+    <line x1="163.6" y1="36.4" x2="142.7" y2="57.3"/>
+    <line x1="57.3" y1="142.7" x2="36.4" y2="163.6"/>
+    
+    <!-- Secondary spokes (30° offset) -->
+    <line x1="155.9" y1="23.4" x2="138.6" y2="45.4"/>
+    <line x1="154.6" y1="176.6" x2="138.6" y2="154.6"/>
+    <line x1="44.1" y1="176.6" x2="27.7" y2="155.1"/>
+    <line x1="23.4" y1="44.1" x2="45.4" y2="27.7"/>
+  </g>
+  
+  <!-- Center hub -->
+  <circle cx="100" cy="100" r="15" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <circle cx="100" cy="100" r="6" fill="currentColor" opacity="0.3"/>
+  <circle cx="100" cy="100" r="2" fill="currentColor" opacity="0.5"/>
+</svg>

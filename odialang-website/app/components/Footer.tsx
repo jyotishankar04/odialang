@@ -3,12 +3,66 @@ import { Heart } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-card/50">
+    <footer className="relative border-t border-border bg-card/50 overflow-hidden">
+      {/* Enhanced Pattachitra border with repeating motifs */}
+      <div className="h-[3px] w-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        {/* Repeating pattern dots */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <div className="w-2 h-2 rounded-full bg-terracotta" />
+            <div className="w-1 h-1 rounded-full bg-accent" />
+            <div className="w-2 h-2 rounded-full bg-primary" />
+            <div className="w-1.5 h-1.5 rounded-full bg-terracotta" />
+            {/* Lotus center */}
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary mx-1">
+              <ellipse cx="12" cy="14" rx="5" ry="2.5" fill="none" stroke="currentColor" strokeWidth="1"/>
+              <ellipse cx="12" cy="12" rx="3" ry="1.5" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+              <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+            </svg>
+            <div className="w-1.5 h-1.5 rounded-full bg-terracotta" />
+            <div className="w-2 h-2 rounded-full bg-primary" />
+            <div className="w-1 h-1 rounded-full bg-accent" />
+            <div className="w-2 h-2 rounded-full bg-terracotta" />
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+          </div>
+        </div>
+      </div>
+      
+      {/* Corner ornaments with lotus motif */}
+      <div className="absolute bottom-8 left-4 w-20 h-20 opacity-[0.05] pointer-events-none">
+        <svg viewBox="0 0 60 60" className="w-full h-full text-primary">
+          <path d="M2 58 L2 30 Q2 2 30 2" fill="none" stroke="currentColor" strokeWidth="2"/>
+          <path d="M8 52 L8 30 Q8 8 30 8" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+          <ellipse cx="18" cy="18" rx="6" ry="3" fill="none" stroke="currentColor" strokeWidth="1"/>
+          <ellipse cx="18" cy="16" rx="4" ry="2" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+          <circle cx="18" cy="15" r="1.5" fill="currentColor"/>
+        </svg>
+      </div>
+      <div className="absolute bottom-8 right-4 w-20 h-20 opacity-[0.05] pointer-events-none transform scale-x-[-1]">
+        <svg viewBox="0 0 60 60" className="w-full h-full text-primary">
+          <path d="M2 58 L2 30 Q2 2 30 2" fill="none" stroke="currentColor" strokeWidth="2"/>
+          <path d="M8 52 L8 30 Q8 8 30 8" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+          <ellipse cx="18" cy="18" rx="6" ry="3" fill="none" stroke="currentColor" strokeWidth="1"/>
+          <ellipse cx="18" cy="16" rx="4" ry="2" fill="none" stroke="currentColor" strokeWidth="0.75"/>
+          <circle cx="18" cy="15" r="1.5" fill="currentColor"/>
+        </svg>
+      </div>
+      
+      {/* Wave pattern accent */}
+      <div className="absolute top-4 left-0 right-0 h-8 pointer-events-none opacity-[0.03]">
+        <svg viewBox="0 0 400 30" className="w-full h-full text-primary">
+          <path d="M0 15 Q50 5 100 15 T200 15 T300 15 T400 15" fill="none" stroke="currentColor" strokeWidth="2"/>
+          <path d="M0 22 Q50 12 100 22 T200 22 T300 22 T400 22" fill="none" stroke="currentColor" strokeWidth="1"/>
+        </svg>
+      </div>
+      
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>Made with</span>
-            <Heart className="h-4 w-4 text-pink-500 fill-pink-500" />
+            <Heart className="h-4 w-4 text-primary fill-primary" />
             <span> by <a target="_blank" href="https://suvam.qwikish.com">
               <span className="text-primary hover:text-foreground transition-colors">Jyotiahankar</span>
             </a> </span>
@@ -28,13 +82,13 @@ export default function Footer() {
             </a>
             <Link 
               href="/docs" 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors hover-marker"
             >
               Docs
             </Link>
             <Link 
               href="/examples" 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors hover-marker"
             >
               Examples
             </Link>
@@ -45,6 +99,9 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      
+      {/* Bottom accent with gradient */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-terracotta/30 via-accent/20 to-primary/30" />
     </footer>
   );
 }
