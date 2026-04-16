@@ -129,12 +129,6 @@ export function tokenize(input: string): Token[] {
       let value = "";
 
       while (current < input.length && peek() !== '"') {
-        if (peek() === "\n") {
-          throw new Error(
-            `Unterminated string at line ${startLine}, column ${startColumn}`,
-          );
-        }
-
         if (peek() === "\\") {
           advance();
           const escaped = peek();
