@@ -30,6 +30,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  verification:{
+    google: "googleb9d025dccf087a81.html",
+  }
 };
 
 export default function RootLayout({
