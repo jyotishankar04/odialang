@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -48,6 +49,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </TooltipProvider>
+        <Analytics />
       </body>
     </html>
   );

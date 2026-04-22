@@ -11,6 +11,7 @@
   "dependencies": {
     "@devsuvam/odialang": "file:../",
     "@monaco-editor/react": "^4.7.0",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.8.0",
