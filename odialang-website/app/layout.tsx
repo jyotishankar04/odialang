@@ -19,9 +19,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Odialang - Write Code in Odia",
-  description: "A file-based, CLI-driven programming language with Odia (Oriya) keywords that compiles to JavaScript",
-  keywords: ["odia", "programming language", "javascript", "compiler", "regional language"],
+  title: "OdiaLang — Programming Language in Odia | Code in Odia",
+  description: "OdiaLang is a fun programming language using Odia-style keywords. Write code in Odia, compile to JavaScript, and run with Node.js.",
+  keywords: [
+    "OdiaLang",
+    "Odia programming language",
+    "Programming language in Odia",
+    "Coding in Odia",
+    "JavaScript in Odia",
+    "Odia coding language",
+    "Programming in Odia language",
+    "Odia language for coding"
+  ],
   icons: {
     icon: [
       {
