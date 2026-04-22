@@ -31,10 +31,9 @@ export const metadata: Metadata = {
     ],
   },
   verification:{
-    google: "googleb9d025dccf087a81.html",
+    google: "OYtMJFig1jpi0b-GLO0kflwS7A6dW11gzIBII3kueV0",
   }
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
