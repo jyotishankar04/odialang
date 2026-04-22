@@ -86,11 +86,10 @@ export default function Home() {
 
             {/* Main heading */}
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Write code in{" "}
-              <span className="gradient-text">Odia</span>
+              <span className="gradient-text">OdiaLang</span> — Programming Language in Odia
             </h1>
             <p className="mx-auto mt-2 max-w-2xl text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-              Compiles to JavaScript
+              Code in Odia, compile to JavaScript
             </p>
 
             {/* Description */}

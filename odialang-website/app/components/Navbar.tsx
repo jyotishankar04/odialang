@@ -12,6 +12,8 @@ export default function Navbar() {
     { href: "/playground/", label: "Playground" },
     { href: "/examples/", label: "Examples" },
     { href: "/docs/", label: "Docs" },
+    { href: "/what-is-odialang/", label: "What is OdiaLang?" },
+    { href: "/install-odialang/", label: "Install" },
   ];
 
   return (
